@@ -17,6 +17,8 @@
 		66A3A242200760DA001D8723 /* ZxpUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3A241200760DA001D8723 /* ZxpUtilsTests.swift */; };
 		66A3A24D200760DA001D8723 /* ZxpUtilsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3A24C200760DA001D8723 /* ZxpUtilsUITests.swift */; };
 		85441F2E423D1CF61300A0B3 /* Pods_ZxpUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B49F9896CF5C8C4948FB5EA /* Pods_ZxpUtils.framework */; };
+		C71538F62007A96E0020EC3B /* ZXPAppleImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71538F52007A96E0020EC3B /* ZXPAppleImagePickerController.swift */; };
+		C71538F82007A9ED0020EC3B /* ZXPImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71538F72007A9ED0020EC3B /* ZXPImagePickerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		946DF7778CB0C947BE7DB5FF /* Pods_ZxpUtilsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZxpUtilsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7A7D9D40BD3C5F229FA56D9 /* Pods_ZxpUtilsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZxpUtilsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33D143344B785195EC68859 /* Pods-ZxpUtils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZxpUtils.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZxpUtils/Pods-ZxpUtils.debug.xcconfig"; sourceTree = "<group>"; };
+		C71538F52007A96E0020EC3B /* ZXPAppleImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXPAppleImagePickerController.swift; sourceTree = "<group>"; };
+		C71538F72007A9ED0020EC3B /* ZXPImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXPImagePickerController.swift; sourceTree = "<group>"; };
 		D9C5CC67ABC70A1A45DC1AB4 /* Pods-ZxpUtilsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZxpUtilsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZxpUtilsTests/Pods-ZxpUtilsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +128,7 @@
 		66A3A22B200760DA001D8723 /* ZxpUtils */ = {
 			isa = PBXGroup;
 			children = (
+				C7C96CDF20079E200029E8E1 /* utils */,
 				66A3A22C200760DA001D8723 /* AppDelegate.swift */,
 				66A3A22E200760DA001D8723 /* ViewController.swift */,
 				66A3A230200760DA001D8723 /* Main.storyboard */,
@@ -164,6 +169,15 @@
 			);
 			name = Pods;
 			sourceTree = "<group>";
+		};
+		C7C96CDF20079E200029E8E1 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				C71538F52007A96E0020EC3B /* ZXPAppleImagePickerController.swift */,
+				C71538F72007A9ED0020EC3B /* ZXPImagePickerController.swift */,
+			);
+			path = utils;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -461,8 +475,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C71538F82007A9ED0020EC3B /* ZXPImagePickerController.swift in Sources */,
 				66A3A22F200760DA001D8723 /* ViewController.swift in Sources */,
 				66A3A22D200760DA001D8723 /* AppDelegate.swift in Sources */,
+				C71538F62007A96E0020EC3B /* ZXPAppleImagePickerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +735,7 @@
 				66A3A253200760DA001D8723 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		66A3A254200760DA001D8723 /* Build configuration list for PBXNativeTarget "ZxpUtilsTests" */ = {
 			isa = XCConfigurationList;
@@ -727,6 +744,7 @@
 				66A3A256200760DA001D8723 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		66A3A257200760DA001D8723 /* Build configuration list for PBXNativeTarget "ZxpUtilsUITests" */ = {
 			isa = XCConfigurationList;
@@ -735,6 +753,7 @@
 				66A3A259200760DA001D8723 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
