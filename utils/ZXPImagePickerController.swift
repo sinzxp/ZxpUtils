@@ -31,6 +31,7 @@ public class ZXPImagePickerController: UIViewController , PHPhotoLibraryChangeOb
     private func getAllPhotos() {
         //  注意点！！-这里必须注册通知，不然第一次运行程序时获取不到图片，以后运行会正常显示。体验方式：每次运行项目时修改一下 Bundle Identifier，就可以看到效果。
         PHPhotoLibrary.shared().register(self)
+        
         //  获取所有系统图片信息集合体
         let allOptions = PHFetchOptions()
         //  对内部元素排序，按照时间由远到近排序
@@ -59,9 +60,7 @@ public class ZXPImagePickerController: UIViewController , PHPhotoLibraryChangeOb
         myCollectionView.scrollToItem(at: indexPath, at: .bottom, animated: false)
 
     }
-
-
-
+    
 }
 
 extension ZXPImagePickerController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -94,6 +93,7 @@ extension ZXPImagePickerController: UICollectionViewDelegateFlowLayout, UICollec
         PHCachingImageManager.default().requestImage(for: photosArray[indexPath.row], targetSize: CGSize.zero, contentMode: .aspectFit, options: nil) { (result: UIImage?, dictionry: Dictionary?) in
             cell.imageView.image = result ?? UIImage.init(named: "iw_none")
         }
+        
         return cell
     }
     
