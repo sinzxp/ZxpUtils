@@ -19,10 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
-        let vc = ZXPImagePickerController()
+        let vc = UINavigationController(rootViewController: ZXPTestTableViewController())
         window.rootViewController = vc
         window.makeKeyAndVisible()
-
+        
         return true
     }
 

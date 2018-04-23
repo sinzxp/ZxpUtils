@@ -1,0 +1,152 @@
+//
+//  ImagePickerAndBrowserController.swift
+//  ZxpUtils
+//
+//  Created by quickplain on 2018/4/3.
+//  Copyright © 2018年 quickplain. All rights reserved.
+//
+
+import UIKit
+import Photos
+import CJWUtilsS
+
+class ImagePickerAndBrowserController: UITableViewController {
+    
+    var imgs:[UIImage] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "图片选择"
+        self.tableView.setExtraCellLineHidden()
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 6
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 4 {
+            return self.imgs.count
+        }
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let section = indexPath.section
+        let row = indexPath.row
+        if section == 0 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "自己写"
+            return cell
+        }
+        if section == 1 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "自己写presentAssetsPicker"
+            return cell
+        }
+        if section == 2 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "自己写presentImagePicker"
+            return cell
+        }
+        if section == 3 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "选择相机或图库"
+            return cell
+        }
+        if section == 4 {
+            let cell = imgAbcCell()
+            cell.texts.text = "\(row)"
+            cell.img.image = imgs[row]
+            return cell
+        }
+        if section == 5 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "摄像"
+            return cell
+        }
+        if section == 8 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = ""
+            return cell
+        }
+        if section == 9 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = ""
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = indexPath.section
+        if section == 0 {
+            let vc = UINavigationController(rootViewController: ZXPImagePickerTableVC())
+            self.present(vc, animated: true, completion: {
+                
+            })
+        }
+        if section == 1 {
+            self.presentAssetsPicker(maxSelected: 5) { (assets) in
+                print("\(assets)-----\(assets.count)")
+                self.tableView.reloadData()
+            }
+        }
+        if section == 2 {
+            self.presentImagePicker(maxSelected: 5) { (imgs) in
+                print("\(imgs)-----\(imgs.count)")
+                self.imgs = imgs
+                self.tableView.reloadData()
+            }
+        }
+        if section == 3 {
+            let picker = ZXPAppleImagePickerController()
+            picker.isEditor = true
+            picker.isSavedPhoto = true
+            picker.pickerImage(vc: self,maxSelected:5, block: { (imgs) in
+                self.imgs = imgs
+                self.tableView.reloadData()
+                
+            })
+        }
+        if section == 5 {
+            let vc = ZXPAppleVideoController()
+            vc.videoShow(self)
+        }
+        if section == 7 {
+            
+        }
+        if section == 8 {
+            
+        }
+        if section == 9 {
+            
+        }
+    }
+
+}
+
+class imgAbcCell: QPTableViewCell {
+    
+    let img = UIImageView()
+    let texts = UILabel()
+    
+    override func setupViews(view: UIView) {
+        view.addSubview(img)
+        view.addSubview(texts)
+        img.backgroundColor = UIColor.white
+        img.contentMode = .scaleAspectFit
+        texts.text = "图片"
+    }
+    
+    override func setupConstrains(view: UIView) {
+        
+        img.topAlign(view, predicate: "0")
+        img.leadingAlign(view, predicate: "0")
+        img.trailingAlign(view, predicate: "0")
+        img.bottomAlign(view: view, predicate: "0")
+        img.heightConstrain("150")
+        
+        texts.centerView(view)
+    }
+}
