@@ -102,7 +102,7 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
             let vc = ZXPPopModalVc()
             vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             let vv = UILabel()
-            vv.text = "\(i)"
+            vv.text = "5"
             vv.backgroundColor = UIColor.orange
             vv.frame.size = CGSize(width: 200, height: 200)
             vc.setContentView(vv, isClickBackgroundDismiss: true)
