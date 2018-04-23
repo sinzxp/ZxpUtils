@@ -125,17 +125,6 @@ class ZXPImagePreviewGridCell: UICollectionViewCell {
         return nil
     }
     
-//    func responderViewControllerss() -> UIViewController? {
-//        var view:UIView? = self
-//        while let responder = view?.next, view != nil {
-//            if responder.isKind(of: UIViewController.self){
-//                return responder as? UIViewController
-//            }
-//            view = view?.superview
-//        }
-//        return nil
-//    }
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

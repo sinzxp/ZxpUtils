@@ -132,9 +132,25 @@ public extension NSObject {
     }
 }
 
+//MARK: - 查找View的控制器
+public extension UIView {
+    
+    func viewController() -> UIViewController? {
+        var view:UIView? = self
+        while let responder = view?.next, view != nil {
+            if responder.isKind(of: UIViewController.self){
+                return responder as? UIViewController
+            }
+            view = view?.superview
+        }
+        return nil
+    }
+    
+}
+
 //MARK: - GCD的延时执行
 public extension NSObject {
-    func delayPerform(_ time:DispatchTime,_ block: @escaping () -> Void) {
+    public func delayPerform(_ time:DispatchTime,_ block: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: time, execute: block)
     }
     
