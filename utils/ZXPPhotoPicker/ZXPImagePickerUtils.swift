@@ -13,7 +13,7 @@ class ZXPImagePickerUtils: NSObject {
 
 }
 
-extension UIViewController{
+extension UIViewController {
     
     ///跳转到设置
     func toOpenSetting(_ title:String,message:String) {

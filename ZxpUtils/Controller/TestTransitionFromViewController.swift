@@ -12,7 +12,9 @@ class TestTransitionFromViewController: UIViewController {
     
     var mainScrollView: UIScrollView = UIScrollView()
     var newViewController:UIViewController!
-    var oidCurrentPage = 0
+    var oldCurrentPage = 0
+    
+    var imgs:[UIImageView] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,12 +55,18 @@ class TestTransitionFromViewController: UIViewController {
     
     /// 配置子控制器
     func configChildControllers() {
-        mainScrollView.addSubview(self.childViewControllers[0].view)
         // 遍历控制器数组
         for (index,vc) in self.childViewControllers.enumerated() {
 //            mainScrollView.addSubview(vc.view)
-            vc.view.frame = CGRect(x: CGFloat(index) * mainScrollView.bounds.width, y: 0, width: mainScrollView.bounds.width, height: mainScrollView.bounds.height)
+            let frame  = CGRect(x: CGFloat(index) * mainScrollView.bounds.width, y: 0, width: mainScrollView.bounds.width, height: mainScrollView.bounds.height)
+            vc.view.frame = frame
+            let imgV = UIImageView(frame: frame)
+            let img = vc.view.viewShot()
+            imgV.image = img
+            imgs.append(imgV)
+            mainScrollView.addSubview(imgV)
         }
+        mainScrollView.addSubview(self.childViewControllers[0].view)
     }
     
     func fitFrameForChildViewController(_ index:Int,_ chileViewController:UIViewController) {
@@ -77,11 +85,19 @@ extension TestTransitionFromViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
         let tvc = self.childViewControllers[currentPage]
+        if tvc == newViewController {
+            return
+        }
 //        self.fitFrameForChildViewController(currentPage, tvc)
         self.transition(from: newViewController, to: tvc, duration: 0, options: UIViewAnimationOptions.transitionCrossDissolve, animations: nil, completion: { (bool) in
 //            self.fitFrameForChildViewController(self.oidCurrentPage, self.newViewController)
 //            self.oidCurrentPage = currentPage
 //            self.configChildControllers()
+            
+            let img = self.newViewController.view.viewShot()
+            self.imgs[self.oldCurrentPage].image = img
+            self.oldCurrentPage = currentPage
+            
             self.newViewController = tvc
 //            tvc.didMove(toParentViewController: self)
         })
@@ -112,11 +128,22 @@ class firstViewController: UIViewController {
 
 }
 
-class secondViewController: UIViewController {
+class secondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let tv = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.randomColor
+        tv.frame = self.view.frame
+        self.view.addSubview(tv)
+        tv.delegate = self
+        tv.dataSource = self
+        if #available(iOS 11.0, *) {
+            tv.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -130,10 +157,25 @@ class secondViewController: UIViewController {
     deinit {
         print("销毁secondViewController")
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = "\(indexPath.section)"
+        cell.accessoryType = .disclosureIndicator
+        return cell
+    }
 
 }
 
-class thirdViewController: UIViewController {
+class thirdViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,4 +193,20 @@ class thirdViewController: UIViewController {
     deinit {
         print("销毁thirdViewController")
     }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 20
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = "\(indexPath.section)"
+        cell.accessoryType = .disclosureIndicator
+        return cell
+    }
+    
 }

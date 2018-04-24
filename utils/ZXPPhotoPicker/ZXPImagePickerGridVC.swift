@@ -298,9 +298,9 @@ extension ZXPImagePickerGridVC: UICollectionViewDelegateFlowLayout, UICollection
         }
         /// 判断在不在本地
         self.imageManager.requestImage(for: self.fetchResult[indexPath.row], targetSize: PHImageManagerMaximumSize , contentMode: . default, options: opt, resultHandler: { (_, info) in
-            print(info)
+//            print(info)
             let ickey = info!["PHImageResultIsInCloudKey"]
-            if (ickey as? Bool) {
+            if let ickey = ickey as? Bool , ickey == true {
                 cell.isCloudImg()
             } else {
                 cell.islocalImg()

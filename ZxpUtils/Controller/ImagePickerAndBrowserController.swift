@@ -109,6 +109,9 @@ class ImagePickerAndBrowserController: UITableViewController {
                 
             })
         }
+        if section == 4 {
+            toImageBrowser()
+        }
         if section == 5 {
             let vc = ZXPAppleVideoController()
             vc.videoShow(self)
@@ -119,13 +122,20 @@ class ImagePickerAndBrowserController: UITableViewController {
             self.tableView.reloadData()
         }
         if section == 7 {
-            let img = tableView.viewShot()
+            print("\(ZSCREEN_HEIGHT)  \(ZSCREEN_WIDTH)")
+            let img = tableView.capture
             self.imgs.append(img!)
             self.tableView.reloadData()
         }
         if section == 9 {
             
         }
+    }
+    
+    func toImageBrowser() {
+        let vc = ZXPImageBrowserVC()
+        vc.images = imgs
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }

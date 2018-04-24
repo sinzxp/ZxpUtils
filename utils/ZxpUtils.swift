@@ -32,12 +32,13 @@ public extension UIView {
     
     ///双击
     public func addTapDoubleGesture(target: Any?, tapSingleDid: Selector?,tapDoubleDid: Selector?) {
+        self.isUserInteractionEnabled = true
         //单击监听
-        let tapSingle = UITapGestureRecognizer(target:self, action: tapSingleDid)
+        let tapSingle = UITapGestureRecognizer(target:target, action: tapSingleDid)
         tapSingle.numberOfTapsRequired = 1
         tapSingle.numberOfTouchesRequired = 1
         //双击监听
-        let tapDouble = UITapGestureRecognizer(target:self, action: tapDoubleDid)
+        let tapDouble = UITapGestureRecognizer(target:target, action: tapDoubleDid)
         tapDouble.numberOfTapsRequired = 2
         tapDouble.numberOfTouchesRequired = 1
         //声明点击事件需要双击事件检测失败后才会执行
@@ -186,7 +187,7 @@ public extension NSObject {
     ///全屏截图
     func screenShot(_ save: Bool) -> UIImage? {
         guard let window = UIApplication.shared.keyWindow else { return nil }
-        // 用下面这行而不是UIGraphicsBeginImageContext()，因为前者支持Retina
+        // 用下面这行而不是UIGraphicsBeginImageContext()，因为前者支持Retina // 参数①：截屏区域  参数②：是否透明  参数③：清晰度
         UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, UIScreen.main.scale)
         window.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -205,11 +206,46 @@ extension UIView {
         guard frame.size.height > 0 && frame.size.width > 0 else {
             return nil
         }
-        UIGraphicsBeginImageContextWithOptions(frame.size, false, UIScreen.main.scale)
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, 0)
         layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        print("\(frame.size)  \(bounds.size) \(image?.size)")
         return image
     }
+}
+
+//MARK: - ScrollView截图
+extension UIScrollView {
+    ///ScrollView截图
+    var capture: UIImage? {
+        // 记录当前的scrollView的偏移量和坐标
+        let currentContentOffSet:CGPoint = self.contentOffset
+        let currentFrame:CGRect = self.frame
+        // 设置为zero和相应的坐标
+        self.contentOffset = CGPoint.zero
+        self.frame = CGRect.init(x: 0, y: 0, width: self.contentSize.width, height: self.contentSize.height)
+        // 参数①：截屏区域  参数②：是否透明  参数③：清晰度
+        UIGraphicsBeginImageContextWithOptions(self.contentSize, true, UIScreen.main.scale)
+        self.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        // 重新设置原来的参数
+        self.contentOffset = currentContentOffSet
+        self.frame = currentFrame
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
+
+//MARK: - 从图片上截图一部分内容
+extension UIImage {
+    ///从图片上截图一部分内容
+    func shearImage(_ rect:CGRect ) -> UIImage {
+        let sourceImageRef: CGImage = self.cgImage!
+        let newCGImage = sourceImageRef.cropping(to: rect)
+        let newImage = UIImage(cgImage: newCGImage!)
+        return newImage
+    }
+    
 }
 

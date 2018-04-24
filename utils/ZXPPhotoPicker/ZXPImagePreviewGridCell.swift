@@ -191,7 +191,9 @@ extension ZXPImagePreviewGridCell {
     ///本地的图片
     func loadLocalImg(imagesAsset:PHAsset) {
         PHImageManager.default().requestImage(for: imagesAsset, targetSize: PHImageManagerMaximumSize , contentMode: . default, options: nil, resultHandler: { (image, info) in
-            if (info!["PHImageResultIsInCloudKey"] as! Bool) && (image == nil) {
+//            let ickey = info!["PHImageResultIsInCloudKey"]
+//            if let _ = ickey as? Bool && (image == nil) {
+            if image == nil {
                 PHImageManager.default().requestImage(for: imagesAsset, targetSize: self.calculateTargetSize(imagesAsset) , contentMode: .default, options: nil , resultHandler: { (image, info) in
                     self.isICloud = true
                     self.imageView.image = image
