@@ -21,7 +21,7 @@ class ImagePickerAndBrowserController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return 8
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,14 +65,14 @@ class ImagePickerAndBrowserController: UITableViewController {
             cell.textLabel?.text = "摄像"
             return cell
         }
-        if section == 8 {
+        if section == 6 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = ""
+            cell.textLabel?.text = "屏幕截图"
             return cell
         }
-        if section == 9 {
+        if section == 7 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = ""
+            cell.textLabel?.text = "view截图"
             return cell
         }
         return UITableViewCell()
@@ -113,11 +113,15 @@ class ImagePickerAndBrowserController: UITableViewController {
             let vc = ZXPAppleVideoController()
             vc.videoShow(self)
         }
-        if section == 7 {
-            
+        if section == 6 {
+            let img = screenShot(true)
+            self.imgs.append(img!)
+            self.tableView.reloadData()
         }
-        if section == 8 {
-            
+        if section == 7 {
+            let img = tableView.viewShot()
+            self.imgs.append(img!)
+            self.tableView.reloadData()
         }
         if section == 9 {
             

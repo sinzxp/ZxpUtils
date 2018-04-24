@@ -168,4 +168,48 @@ extension DispatchTime: ExpressibleByFloatLiteral {
     }
 }
 
+//MARK: - 返回随机颜色
+extension UIColor {
+    ///返回随机颜色
+    open class var randomColor:UIColor{
+        get {
+            let red = CGFloat(arc4random()%256)/255.0
+            let green = CGFloat(arc4random()%256)/255.0
+            let blue = CGFloat(arc4random()%256)/255.0
+            return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        }
+    }
+}
+
+//MARK: - 全屏截图
+public extension NSObject {
+    ///全屏截图
+    func screenShot(_ save: Bool) -> UIImage? {
+        guard let window = UIApplication.shared.keyWindow else { return nil }
+        // 用下面这行而不是UIGraphicsBeginImageContext()，因为前者支持Retina
+        UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, UIScreen.main.scale)
+        window.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        if save {
+//            UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+        }
+        return image
+    }
+}
+
+//MARK: - view截图
+extension UIView {
+    ///截取view的图片
+    func viewShot() -> UIImage? {
+        guard frame.size.height > 0 && frame.size.width > 0 else {
+            return nil
+        }
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, UIScreen.main.scale)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
 

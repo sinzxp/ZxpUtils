@@ -16,7 +16,7 @@ class ZXPTestTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,7 +42,7 @@ class ZXPTestTableViewController: UITableViewController {
         }
         if section == 3 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "删除文件"
+            cell.textLabel?.text = "TestTransitionFromViewController"
             return cell
         }
         if section == 4 {
@@ -93,7 +93,8 @@ class ZXPTestTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 3 {
-
+            let vc = TestTransitionFromViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 4 {
         }
