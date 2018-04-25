@@ -85,31 +85,59 @@ class TestTransitionFromViewController: UIViewController {
         if let tv = object as? UITableView , keyPath == "contentOffset" {
             let contentOffsetY = tv.contentOffset.y
             print("\(contentOffsetY)")
-            if contentOffsetY >= 0 && contentOffsetY < 100 {
+            if contentOffsetY < -44 && contentOffsetY > -150 {
 //                tv.contentInset.top = 150 - contentOffsetY
-                self.topView.frame.origin.y = 64 - contentOffsetY
-            } else if contentOffsetY >= 100 && contentOffsetY <= 150{
-                self.topView.frame.origin.y = 64 - 100
-            } else if contentOffsetY < 0 {
+                    for (index,vc) in self.childViewControllers.enumerated() {
+                        if let tv1 = vc.view as? UITableView ,currentPage != index {
+                            if tv1.contentOffset.y != tv.contentOffset.y {
+                                tv1.contentOffset = tv.contentOffset
+                            }
+                        }
+                    }
+                self.topView.frame.origin.y = 64 - contentOffsetY - 150
+            } else if contentOffsetY >= -44 {
+                self.topView.frame.origin.y = -44
+            }else if contentOffsetY <= -150 {
 //                tv.contentInset.top = 150
                 self.topView.frame.origin.y = 64
             }
 //            tvContentInsetTop = tv.contentInset.top
 //            topViewY = self.topView.frame.origin.y
-            tvOffsetY = contentOffsetY
+            tvOffsetY = tv.contentOffset.y
         }
     }
 }
-
+//
 extension TestTransitionFromViewController: UIScrollViewDelegate {
     
     //开始
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        for (index,vc) in self.childViewControllers.enumerated() {
-            if let tv = vc.view as? UITableView ,currentPage != index {
-                tv.contentOffset.y = tvOffsetY
+//        var maxOffsetY:CGFloat = 0
+//        for vc in self.childViewControllers {
+//            if let tv = vc.view as? UITableView {
+//                if  tv.contentOffset.y > maxOffsetY {
+//                    maxOffsetY = tv.contentOffset.y
+//                }
+//            }
+//        }
+//        if tvOffsetY <= -44 {
+            for (index,vc) in self.childViewControllers.enumerated() {
+                if let tv = vc.view as? UITableView ,currentPage != index {
+//                    tv.contentInset.top = tvContentInsetTop
+                    let yy = tv.contentOffset.y
+                    print("yy -- \(yy)")
+                    if yy > -44  {
+                        tv.contentOffset.y = tvOffsetY
+                    }
+//                    else if yy {
+//
+//                    }
+//                    if tv.contentOffset.y < -44 {
+//                        tv.contentOffset = CGPoint(x: 0, y: -44)
+//                    }
+                }
             }
-        }
+//        }
     }
     
     //结束
@@ -140,9 +168,7 @@ extension TestTransitionFromViewController: UIScrollViewDelegate {
 
 
 
-class firstViewController: UIViewController {
-    
-    var roodVc:TestTransitionFromViewController!
+class firstViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -159,6 +185,21 @@ class firstViewController: UIViewController {
     
     deinit {
         print("销毁firstViewController")
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 5
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = "\(indexPath.section)"
+        cell.accessoryType = .disclosureIndicator
+        return cell
     }
 
 }
@@ -183,7 +224,7 @@ class secondViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 30
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -220,7 +261,7 @@ class thirdViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 20
+        return 30
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

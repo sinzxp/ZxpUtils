@@ -10,6 +10,8 @@ target 'ZxpUtils' do
     pod 'PhoneNumberKit','1.2.3'
     pod 'SnapKit','3.2.0'
     pod 'XCGLogger','5.0.1'
+    pod 'Alamofire','4.7.0'
+
 
 #    pod 'ZLPhotoLib', :path => '/Users/quickplain/Downloads/ZLPhotoLib'
 
