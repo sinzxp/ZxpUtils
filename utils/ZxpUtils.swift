@@ -206,11 +206,10 @@ extension UIView {
         guard frame.size.height > 0 && frame.size.width > 0 else {
             return nil
         }
-        UIGraphicsBeginImageContextWithOptions(frame.size, false, 0)
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, UIScreen.main.scale)
         layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        print("\(frame.size)  \(bounds.size) \(image?.size)")
         return image
     }
 }
@@ -241,9 +240,11 @@ extension UIScrollView {
 extension UIImage {
     ///从图片上截图一部分内容
     func shearImage(_ rect:CGRect ) -> UIImage {
+        let scale = UIScreen.main.scale // 获取当前屏幕坐标与像素坐标的比例
         let sourceImageRef: CGImage = self.cgImage!
-        let newCGImage = sourceImageRef.cropping(to: rect)
+        let newCGImage = sourceImageRef.cropping(to: CGRect(x: rect.minX * scale, y: rect.minY * scale, width: rect.width * scale, height: rect.height * scale ))
         let newImage = UIImage(cgImage: newCGImage!)
+        print("---> \(rect)")
         return newImage
     }
     
