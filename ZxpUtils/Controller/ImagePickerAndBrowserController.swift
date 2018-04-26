@@ -8,7 +8,6 @@
 
 import UIKit
 import Photos
-import CJWUtilsS
 
 class ImagePickerAndBrowserController: UITableViewController {
     
@@ -132,6 +131,14 @@ class ImagePickerAndBrowserController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 4 {
+            return 150
+        } else {
+            return 44
+        }
+    }
+    
     func toImageBrowser() {
         let vc = ZXPImageBrowserVC()
         vc.images = imgs
@@ -140,27 +147,32 @@ class ImagePickerAndBrowserController: UITableViewController {
 
 }
 
-class imgAbcCell: QPTableViewCell {
+class imgAbcCell: UITableViewCell {
     
     let img = UIImageView()
     let texts = UILabel()
     
-    override func setupViews(view: UIView) {
-        view.addSubview(img)
-        view.addSubview(texts)
+    public func setup() {
+        self.contentView.addSubview(img)
+        self.contentView.addSubview(texts)
         img.backgroundColor = UIColor.white
         img.contentMode = .scaleAspectFit
         texts.text = "图片"
     }
     
-    override func setupConstrains(view: UIView) {
-        
-        img.topAlign(view, predicate: "0")
-        img.leadingAlign(view, predicate: "0")
-        img.trailingAlign(view, predicate: "0")
-        img.bottomAlign(view: view, predicate: "0")
-        img.heightConstrain("150")
-        
-        texts.centerView(view)
+    override func layoutSubviews() {
+        img.frame = self.contentView.frame
+        texts.frame = self.contentView.frame
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
     }
 }

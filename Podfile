@@ -5,12 +5,14 @@ target 'ZxpUtils' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-	pod 'CJWUtilsS', :path => '~/Desktop/3.0/CJWUtilsPro'
-    pod 'CryptoSwift','0.7.0'
-    pod 'PhoneNumberKit','1.2.3'
-    pod 'SnapKit','3.2.0'
-    pod 'XCGLogger','5.0.1'
+#    pod 'CJWUtilsS', :path => '~/Desktop/3.0/CJWUtilsPro'
+#    pod 'CryptoSwift','0.7.0'
+#    pod 'PhoneNumberKit','1.2.3'
+#    pod 'SnapKit','3.2.0'
+#    pod 'XCGLogger','5.0.1'
     pod 'Alamofire','4.7.0'
+    pod 'HMSegmentedControl'
+
 
 
 #    pod 'ZLPhotoLib', :path => '/Users/quickplain/Downloads/ZLPhotoLib'
