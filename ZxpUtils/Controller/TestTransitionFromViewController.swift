@@ -7,24 +7,28 @@
 //
 
 import UIKit
+import CJWUtilsS
 
 class TestTransitionFromViewController: UIViewController {
     
+    var containsView = UIView()
     var containsScrollView = UIView()
     var topView = UIView()
     var bottomView = UIView()
 
     lazy var mainScrollView: UIScrollView = UIScrollView()
-    var newViewController:UIViewController!
+    
+    var oldController:UIViewController!
     var currentPage = 0
-    var tvContentInsetTop:CGFloat = 0
-    var topViewY:CGFloat = 0
-    var tvOffsetY:CGFloat = 0
     
     var imgs:[UIImageView] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        containsView.frame = CGRect(x: 0, y: 64, width: self.view.width, height: self.view.height - 64)
+        containsView.backgroundColor = UIColor.green
+        self.view.addSubview(containsView)
+
         let firstVC = firstViewController()
         self.addChildViewController(firstVC)
         let secondVC = secondViewController()
@@ -33,17 +37,23 @@ class TestTransitionFromViewController: UIViewController {
         self.addChildViewController(thirdVC)
         
         topView.backgroundColor = UIColor.randomColor
-        topView.frame = CGRect(x: 0, y: 64, width: ZSCREEN_WIDTH, height: 150)
+        topView.frame = CGRect(x: 0, y: 0, width: containsView.width, height: 150)
         configMainScrollView()
-        self.view.addSubview(topView)
-        newViewController = firstVC
+        containsView.addSubview(topView)
+        let cc = UIView()
+        topView.addSubview(cc)
+        cc.backgroundColor = UIColor.orange
+        cc.bottomAlign(topView, predicate: "0")
+        cc.leadingAlign(topView, predicate: "0")
+        cc.trailingAlign(topView, predicate: "0")
+        cc.heightConstrain("50")
+        oldController = firstVC
     }
     
     func configMainScrollView() {
         if mainScrollView.superview == nil {
-            mainScrollView.frame = CGRect(x: 0, y: 64, width: ZSCREEN_WIDTH, height: ZSCREEN_HEIGHT - 64)
-//            mainScrollView.frame = self.view.frame
-            self.view.addSubview(mainScrollView)
+            mainScrollView.frame = CGRect(x: 0, y: 0, width: containsView.width, height: containsView.height)
+            self.containsView.addSubview(mainScrollView)
             // 设置内容视图的相关属性
             mainScrollView.contentSize = CGSize(width: CGFloat(self.childViewControllers.count) * mainScrollView.bounds.width, height: 0)
             mainScrollView.bounces = false
@@ -58,7 +68,7 @@ class TestTransitionFromViewController: UIViewController {
         // 遍历控制器数组
         for (index,vc) in self.childViewControllers.enumerated() {
             let view = vc.view
-            mainScrollView.addSubview(view!)
+//            mainScrollView.addSubview(view!)
             let frame  = CGRect(x: CGFloat(index) * mainScrollView.bounds.width, y: 0, width: mainScrollView.bounds.width, height: mainScrollView.bounds.height)
             view?.frame = frame
             if let tv = view as? UITableView {
@@ -66,14 +76,13 @@ class TestTransitionFromViewController: UIViewController {
                 ///首先是增加一个观察者,然后是实现代理方法
                 tv.addObserver(self, forKeyPath: "contentOffset", options: NSKeyValueObservingOptions.new, context: nil)
             }
-            
 //            let imgV = UIImageView(frame: frame)
-//            let img = vc.view.viewShot()
+//            let img = view!.viewShot()
 //            imgV.image = img
 //            imgs.append(imgV)
 //            mainScrollView.addSubview(imgV)
         }
-//        mainScrollView.addSubview(self.childViewControllers[0].view)
+        mainScrollView.addSubview(self.childViewControllers[0].view)
     }
     
     func fitFrameForChildViewController(_ index:Int,_ chileViewController:UIViewController) {
@@ -84,26 +93,30 @@ class TestTransitionFromViewController: UIViewController {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let tv = object as? UITableView , keyPath == "contentOffset" {
             let contentOffsetY = tv.contentOffset.y
-            print("\(contentOffsetY)")
-            if contentOffsetY < -44 && contentOffsetY > -150 {
-//                tv.contentInset.top = 150 - contentOffsetY
-                    for (index,vc) in self.childViewControllers.enumerated() {
-                        if let tv1 = vc.view as? UITableView ,currentPage != index {
-                            if tv1.contentOffset.y != tv.contentOffset.y {
-                                tv1.contentOffset = tv.contentOffset
-                            }
+//            print("-----> \(contentOffsetY)")
+            if contentOffsetY < -50 && contentOffsetY >= -150 {
+                for vc in self.childViewControllers {
+                    if let tv1 = vc.view as? UITableView, vc != oldController {
+                        if tv1.contentOffset.y != tv.contentOffset.y {
+                            tv1.contentOffset = tv.contentOffset
                         }
                     }
-                self.topView.frame.origin.y = 64 - contentOffsetY - 150
-            } else if contentOffsetY >= -44 {
-                self.topView.frame.origin.y = -44
-            }else if contentOffsetY <= -150 {
-//                tv.contentInset.top = 150
-                self.topView.frame.origin.y = 64
+                }
+                self.topView.frame.origin.y = -contentOffsetY - 150
+            } else if contentOffsetY >= -50 {
+                self.topView.frame.origin.y = -100
+            } else if contentOffsetY <= -150 {
+                self.topView.frame.origin.y = 0
             }
-//            tvContentInsetTop = tv.contentInset.top
-//            topViewY = self.topView.frame.origin.y
-            tvOffsetY = tv.contentOffset.y
+        }
+    }
+    
+    deinit {
+        for vc in self.childViewControllers {
+            let view = vc.view
+            if let tv = view as? UITableView {
+                tv.removeObserver(self, forKeyPath: "contentOffset")
+            }
         }
     }
 }
@@ -112,61 +125,40 @@ extension TestTransitionFromViewController: UIScrollViewDelegate {
     
     //开始
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        var maxOffsetY:CGFloat = 0
-//        for vc in self.childViewControllers {
-//            if let tv = vc.view as? UITableView {
-//                if  tv.contentOffset.y > maxOffsetY {
-//                    maxOffsetY = tv.contentOffset.y
-//                }
-//            }
-//        }
-//        if tvOffsetY <= -44 {
-            for (index,vc) in self.childViewControllers.enumerated() {
-                if let tv = vc.view as? UITableView ,currentPage != index {
-//                    tv.contentInset.top = tvContentInsetTop
-                    let yy = tv.contentOffset.y
-                    print("yy -- \(yy)")
-                    if yy > -44  {
-                        tv.contentOffset.y = tvOffsetY
-                    }
-//                    else if yy {
-//
-//                    }
-//                    if tv.contentOffset.y < -44 {
-//                        tv.contentOffset = CGPoint(x: 0, y: -44)
-//                    }
+        var maxOffsetY:CGFloat = -150
+        for vc in self.childViewControllers {
+            if let tv = vc.view as? UITableView {
+                if  tv.contentOffset.y > maxOffsetY {
+                    maxOffsetY = tv.contentOffset.y
                 }
             }
-//        }
+        }
+        if maxOffsetY > -50 {
+            for (index,vc) in self.childViewControllers.enumerated() {
+                if let tv = vc.view as? UITableView ,currentPage != index {
+                    let yy = tv.contentOffset.y
+                    if yy < -50  {
+                        tv.contentOffset.y = -50
+                    }
+                }
+            }
+        }
     }
     
     //结束
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
         let tvc = self.childViewControllers[currentPage]
-        if tvc == newViewController {
+        if tvc == oldController {
             return
         }
-        self.currentPage = currentPage
-
-//        self.fitFrameForChildViewController(currentPage, tvc)
-//        self.transition(from: newViewController, to: tvc, duration: 0, options: UIViewAnimationOptions.transitionCrossDissolve, animations: nil, completion: { (bool) in
-//            self.fitFrameForChildViewController(self.oidCurrentPage, self.newViewController)
-//            self.oidCurrentPage = currentPage
-//            self.configChildControllers()
-            
-//            let img = self.view.viewShot()?.shearImage(scrollView.frame)
-//            self.imgs[self.oldCurrentPage].image = img
-//            self.oldCurrentPage = currentPage
-            
-            self.newViewController = tvc
-//            tvc.didMove(toParentViewController: self)
-//        })
+        self.transition(from: oldController, to: tvc, duration: 0, options: UIViewAnimationOptions.transitionCrossDissolve, animations: nil, completion: { (bool) in
+            self.currentPage = currentPage
+            self.oldController = tvc
+        })
     }
     
 }
-
-
 
 class firstViewController: UITableViewController {
     
@@ -197,7 +189,7 @@ class firstViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "\(indexPath.section)"
+        cell.textLabel?.text = "firstViewController - \(indexPath.section)"
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -233,7 +225,7 @@ class secondViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "\(indexPath.section)"
+        cell.textLabel?.text = "secondViewController - \(indexPath.section)"
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -246,6 +238,7 @@ class thirdViewController: UITableViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.randomColor
         self.tableView.addRefreshHeader(target: self, action: #selector(requestMore))
+//        self.tableView.mj_header.ignoredScrollViewContentInsetTop = -194
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -270,7 +263,7 @@ class thirdViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "\(indexPath.section)"
+        cell.textLabel?.text = "thirdViewController - \(indexPath.section)"
         cell.accessoryType = .disclosureIndicator
         return cell
     }

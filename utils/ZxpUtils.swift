@@ -247,6 +247,40 @@ extension UIImage {
         print("---> \(rect)")
         return newImage
     }
+}
+
+//MARK: - iphone X 的顶部和底部距离
+extension NSObject {
+    
+    var safeAreaTopHeight:CGFloat {
+        get {
+            if isX {
+                return 88
+            } else {
+                return 64
+            }
+        }
+    }
+    
+    var safeAreabottomHeight:CGFloat {
+        get {
+            if isX {
+                return 34
+            } else {
+                return 0
+            }
+        }
+    }
+    
+    var isX:Bool {
+        get {
+            if ZSCREEN_HEIGHT == 812.0 && ZSCREEN_WIDTH == 375.0 {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
     
 }
 

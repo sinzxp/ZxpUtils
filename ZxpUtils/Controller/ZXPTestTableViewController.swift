@@ -16,7 +16,7 @@ class ZXPTestTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,7 +47,7 @@ class ZXPTestTableViewController: UITableViewController {
         }
         if section == 4 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "删除Document下的文件"
+            cell.textLabel?.text = "测试ZXPFixedSelectViewController"
             return cell
         }
         if section == 5 {
@@ -97,6 +97,8 @@ class ZXPTestTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 4 {
+            let vc = ZXPFixedSelectViewControllerCS()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 5 {
 
