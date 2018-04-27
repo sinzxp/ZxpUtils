@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CJWUtilsS
 
 class ViewController: UIViewController {
     
@@ -51,7 +50,6 @@ class ViewController: UIViewController {
         if let img = DownloadAndFile.share.readFileForImage("favorite_select.png") {
             self.img.image = img
         } else {
-            self.showText("失败")
         }
         
 //        let pickerVc = ZLPhotoPickerViewController()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HMSegmentedControl
 
 public class ZXPFixedSelectViewController: UIViewController {
 
@@ -15,44 +16,57 @@ public class ZXPFixedSelectViewController: UIViewController {
     private var middleContainsView = UIView()
     private var bottomContainsView = UIView()
     
+    ///选择的vc
     var oldController:UIViewController!
+    ///选择的index
     var currentPage = 0
     
     ///顶部距离
     open func topPading() -> CGFloat {
-        return safeAreaTopHeight
+        if let _ = self.navigationController {
+            return safeAreaTopHeight
+        }
+        return 0
     }
     ///底部距离
     open func bottomPading() -> CGFloat {
         return safeAreabottomHeight
     }
-    
+    ///上边view的高
     open func topViewHeight() -> CGFloat {
         return 0
     }
-    
+    ///添加上边view
     open func topView() -> UIView? {
         return nil
     }
-    
+    ///下边view的高
     open func bottomViewHeight() -> CGFloat {
         return 0
     }
-    
+    ///添加下边view
     open func bottomView() -> UIView? {
         return nil
     }
-    
+    ///中间view的高 自动计算
     private func middleViewHeight() -> CGFloat {
         return containsView.height - topViewHeight() - bottomViewHeight()
     }
-    
+    ///添加上边view 不用加
     private func middleView() -> UIView? {
         return nil
     }
-    
-    open func addViewControllers() -> [UIViewController] {
-        return []
+    ///vc个数
+    open func numberOfViewController() -> Int {
+        return 1
+    }
+    ///添加vc
+    open func addViewControllerAt(_ index: Int) -> UIViewController {
+        return UIViewController()
+    }
+    ///设置vc   vc设置父vc之类
+    open func setViewControllerAt(_ vc: UIViewController,index: Int) {
+        
     }
     
     override public func viewDidLoad() {
@@ -83,24 +97,25 @@ public class ZXPFixedSelectViewController: UIViewController {
     
     private func addView() {
         if let topView = topView() {
-            topView.frame = topContainsView.frame
+            topView.frame = topContainsView.bounds
             topContainsView.addSubview(topView)
         }
         if let bottomView = bottomView() {
-            bottomView.frame = bottomContainsView.frame
+            bottomView.frame = bottomContainsView.bounds
             bottomContainsView.addSubview(bottomView)
         }
     }
 
     private func initViewControllers() {
-        let vcs = addViewControllers().isEmpty ? self.childViewControllers : addViewControllers()
         let frame = middleContainsView.bounds
-        for (index,vc) in vcs.enumerated() {
+        for index in 0..<numberOfViewController() {
+            let vc = addViewControllerAt(index)
             let view = vc.view!
             if index == 0 {
                 middleContainsView.addSubview(view)
                 oldController = vc
             }
+            setViewControllerAt(vc, index: index)
             self.addChildViewController(vc)
             view.frame = frame
         }
@@ -108,24 +123,57 @@ public class ZXPFixedSelectViewController: UIViewController {
     
     public func showViewControllerOf(_ index: Int) {
         let vcs = self.childViewControllers
-        let tvc = vcs[index]
-        if index < vcs.count && oldController != tvc {
-            self.transition(from: oldController, to: tvc, duration: 0, options: UIViewAnimationOptions.transitionCrossDissolve, animations: nil, completion: { (bool) in
-                self.currentPage = index
-                self.oldController = tvc
-            })
+        if index < vcs.count {
+            let tvc = vcs[index]
+            if oldController != tvc {
+                self.transition(from: oldController, to: tvc, duration: 0, options: UIViewAnimationOptions.transitionCrossDissolve, animations: nil, completion: { (bool) in
+                    self.currentPage = index
+                    self.oldController = tvc
+                })
+            }
+            selectIndexAndVC(index, vc: tvc)
         } else {
             print("超出范围")
         }
     }
+    
+    ///选择的index和vc
+    open func selectIndexAndVC(_ index: Int,vc:UIViewController) {
+        
+    }
 
 }
-
+///继承这个
 class ZXPFixedSelectViewControllerCS: ZXPFixedSelectViewController {
     
-    override func addViewControllers() -> [UIViewController] {
-        let vc = thirdViewController()
-        return [vc]
+    var segment: HMSegmentedControl!
+    
+    var sss = "0"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func numberOfViewController() -> Int {
+        return sectionTitles().count
+    }
+    
+    override func addViewControllerAt(_ index: Int) -> UIViewController {
+        if index == 0 {
+            return firstViewController()
+        } else if index == 1 {
+            return secondViewController()
+        } else if index == 2 {
+            return thirdViewController()
+        }
+        return super.addViewControllerAt(index)
+    }
+    
+    override func setViewControllerAt(_ vc: UIViewController, index: Int) {
+        ///设置父vc才能传递数据
+        if let vc = vc as? ZXPFixedSelectChildTableViewController {
+            vc.rootSegment = self
+        }
     }
     
     override func topViewHeight() -> CGFloat {
@@ -133,34 +181,71 @@ class ZXPFixedSelectViewControllerCS: ZXPFixedSelectViewController {
     }
     
     override func topView() -> UIView? {
-        let bg = UIView()
-        let l1 = UILabel()
-        let l2 = UILabel()
-        bg.addSubview(l1)
-        bg.addSubview(l2)
-        l1.text = "1"
-        l2.text = "2"
-        l1.backgroundColor = UIColor.orange
-        l2.backgroundColor = UIColor.purple
-        l1.frame = CGRect(x: 0, y: 0, width: ZSCREEN_WIDTH/2, height: 44)
-        l2.frame = CGRect(x: ZSCREEN_WIDTH/2, y: 0, width: ZSCREEN_WIDTH/2, height: 44)
-        l1.tag = 0
-        l2.tag = 1
-        l1.addTapViewGesture(self, action: #selector(tapSingleDid))
-        l2.addTapViewGesture(self, action: #selector(tapSingleDid))
-        return bg
+        return initSegmentView()
     }
     
     override func bottomViewHeight() -> CGFloat {
-        return 0
+        return 44
     }
     
     override func bottomView() -> UIView? {
-        return nil
+        let vv = UILabel()
+        vv.backgroundColor = UIColor.blue
+        vv.text = "hahahahahahahhahha"
+        return vv
     }
     
-    func tapSingleDid(_ ges:UITapGestureRecognizer){
-        let tag = ges.view!.tag
-        showViewControllerOf(tag)
+    override func selectIndexAndVC(_ index: Int, vc: UIViewController) {
+        
     }
+}
+
+extension ZXPFixedSelectViewControllerCS {
+    
+    ///设置segment的title
+    open func sectionTitles() -> [String] {
+        return ["11111","22223","33333"]
+    }
+    ///自定义segment
+    open func customSegment(segment: HMSegmentedControl) -> HMSegmentedControl {
+        return segment
+    }
+    ///选择后
+    open func selectIndex(index: Int) {
+        
+    }
+    
+    public func initSegmentView() -> UIView {
+        let selectionViewSelectedColor = UIColor.blue
+        let selectionViewDeselectedColor = UIColor.purple
+        let selectionViewFont = UIFont.systemFont(ofSize: 14)
+        if segment == nil {
+            segment = HMSegmentedControl(frame: CGRect(x: 0, y: 0, width: ZSCREEN_WIDTH, height: 44))
+        }
+        segment.backgroundColor = UIColor.white
+        segment.sectionTitles = sectionTitles()
+        segment.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocation.down
+        segment.selectionIndicatorColor = selectionViewSelectedColor
+        segment.selectionIndicatorHeight = 3
+        segment.selectionStyle = HMSegmentedControlSelectionStyle.fullWidthStripe
+        segment.isVerticalDividerEnabled = true
+        segment.verticalDividerWidth = 0 ///间隔大小
+        segment.verticalDividerColor = UIColor.purple ///间隔颜色
+        segment.titleTextAttributes = [ NSForegroundColorAttributeName: selectionViewDeselectedColor,NSFontAttributeName: selectionViewFont]
+        segment.selectedTitleTextAttributes = [NSForegroundColorAttributeName: selectionViewSelectedColor, NSFontAttributeName: selectionViewFont]
+        segment.addTarget(self, action: #selector(segmentedControlChangedValue), for: UIControlEvents.valueChanged)
+        segment = customSegment(segment: segment)
+        return segment
+    }
+    
+    @objc private func segmentedControlChangedValue(control: HMSegmentedControl) {
+        let index = control.selectedSegmentIndex
+        showViewControllerOf(index)
+        selectIndex(index: index)
+    }
+    
+}
+
+public class ZXPFixedSelectChildTableViewController: UITableViewController {
+    var rootSegment: ZXPFixedSelectViewControllerCS!
 }

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import CJWUtilsS
-import Alamofire
 import Photos
 
 class DownloadAndFileController: UITableViewController {
@@ -170,29 +168,42 @@ class DownloadAndFileController: UITableViewController {
         vv.backgroundColor = UIColor.orange
         return vv
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 2 {
+            return 150
+        } else {
+            return 44
+        }
+    }
 }
 
-class imgCell: QPTableViewCell {
+class imgCell: UITableViewCell {
+    
     
     let img = UIImageView()
     let texts = UILabel()
 
-    override func setupViews(view: UIView) {
-        view.addSubview(img)
-        view.addSubview(texts)
+    public func setup() {
+        self.contentView.addSubview(img)
+        self.contentView.addSubview(texts)
         img.backgroundColor = UIColor.white
         texts.text = "从Document获取图片"
     }
     
-    override func setupConstrains(view: UIView) {
-        
-        img.topAlign(view, predicate: "0")
-        img.leadingAlign(view, predicate: "0")
-        img.trailingAlign(view, predicate: "0")
-        img.bottomAlign(view: view, predicate: "0")
-        img.heightConstrain("100")
-        
-        texts.centerView(view)
+    override func layoutSubviews() {
+        img.frame = self.contentView.frame
+        texts.frame = self.contentView.frame
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
     }
 }
 

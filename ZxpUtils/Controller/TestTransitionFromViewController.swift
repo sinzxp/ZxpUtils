@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CJWUtilsS
 
 class TestTransitionFromViewController: UIViewController {
     
@@ -43,10 +42,7 @@ class TestTransitionFromViewController: UIViewController {
         let cc = UIView()
         topView.addSubview(cc)
         cc.backgroundColor = UIColor.orange
-        cc.bottomAlign(topView, predicate: "0")
-        cc.leadingAlign(topView, predicate: "0")
-        cc.trailingAlign(topView, predicate: "0")
-        cc.heightConstrain("50")
+        cc.frame = CGRect(x: 0, y: 100, width: containsView.width, height: 50)
         oldController = firstVC
     }
     
@@ -160,7 +156,7 @@ extension TestTransitionFromViewController: UIScrollViewDelegate {
     
 }
 
-class firstViewController: UITableViewController {
+class firstViewController: ZXPFixedSelectChildTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,11 +164,10 @@ class firstViewController: UITableViewController {
     }
     
     public override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear------ firstViewController")
+        self.tableView.reloadData()
     }
     
     public override func viewDidAppear(_ animated: Bool) {
-        print("viewDidAppear------ firstViewController")
     }
     
     deinit {
@@ -189,14 +184,20 @@ class firstViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "firstViewController - \(indexPath.section)"
+        cell.textLabel?.text = "firstViewController - \(indexPath.section) --- \(rootSegment.sss)"
         cell.accessoryType = .disclosureIndicator
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        rootSegment.sss = "\(indexPath.section)"
+        self.tableView.reloadData()
     }
 
 }
 
-class secondViewController: UITableViewController {
+class secondViewController: ZXPFixedSelectChildTableViewController {
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -204,11 +205,10 @@ class secondViewController: UITableViewController {
     }
     
     public override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear------ secondViewController")
+        self.tableView.reloadData()
     }
     
     public override func viewDidAppear(_ animated: Bool) {
-        print("viewDidAppear------ secondViewController")
     }
     
     deinit {
@@ -225,14 +225,19 @@ class secondViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "secondViewController - \(indexPath.section)"
+        cell.textLabel?.text = "secondViewController - \(indexPath.section) --- \(rootSegment.sss)"
         cell.accessoryType = .disclosureIndicator
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        rootSegment.sss = "\(indexPath.section)"
+        self.tableView.reloadData()
     }
 
 }
 
-class thirdViewController: UITableViewController {
+class thirdViewController: ZXPFixedSelectChildTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -242,11 +247,9 @@ class thirdViewController: UITableViewController {
     }
     
     public override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear------ thirdViewController")
     }
     
     public override func viewDidAppear(_ animated: Bool) {
-        print("viewDidAppear------ thirdViewController")
     }
 
     deinit {
