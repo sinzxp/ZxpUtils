@@ -244,13 +244,6 @@
 			path = ZxpUtilsUITests;
 			sourceTree = "<group>";
 		};
-		66ABF8F92092F06B00BD6784 /* QP */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = QP;
-			sourceTree = "<group>";
-		};
 		72CE2EFA951AA47FDF77B856 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,7 +280,6 @@
 		C7C96CDF20079E200029E8E1 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				66ABF8F92092F06B00BD6784 /* QP */,
 				664348BC2091C7DB00F8BC98 /* VarietyViewController */,
 				664AE9802089CB1100EB5621 /* PopupWindow */,
 				C78AEB5A2088EDE5009A61DC /* DownloadAndFile */,

@@ -11,10 +11,12 @@ import HMSegmentedControl
 
 class ZXPScrollSelectViewController: UIViewController {
     
+    fileprivate var isSlidingAroundIng = false
+    
     private var containsView = UIView()
     private var topContainsView = UIView()
     private var bottomContainsView = UIView()
-    private var mainScrollView = UIScrollView()
+    fileprivate var mainScrollView = UIScrollView()
     ///选择的vc
     var oldController:UIViewController!
     ///选择的index
@@ -123,7 +125,6 @@ class ZXPScrollSelectViewController: UIViewController {
             let vc = addViewControllerAt(index)
             let view = vc.view!
             if index == 0 {
-//                mainScrollView.addSubview(view)
                 oldController = vc
             }
             mainScrollView.addSubview(view)
@@ -149,7 +150,7 @@ class ZXPScrollSelectViewController: UIViewController {
     
     ///观察者代理方法
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if let tv = object as? UITableView , keyPath == "contentOffset" , isScrollTopViewOK() {
+        if let tv = object as? UITableView , keyPath == "contentOffset" , isScrollTopViewOK() , !isSlidingAroundIng {
             let contentOffsetY = tv.contentOffset.y
             realimecContentOffsetY(contentOffsetY)
             if contentOffsetY < -topViewSlideStop() && contentOffsetY >= -topViewHeight() {
@@ -179,7 +180,7 @@ class ZXPScrollSelectViewController: UIViewController {
         }
     }
     
-    ///可以滑动?
+    ///TopView可以滑动?
     fileprivate func isScrollTopViewOK() -> Bool {
         return isScrollTopView() && topViewHeight() > topViewSlideStop()
     }
@@ -187,16 +188,17 @@ class ZXPScrollSelectViewController: UIViewController {
     ///滑动到哪里
     func scrollTo(_ index:Int) {
         if index < numberOfViewController() {
+            syncContentOffset()
             mainScrollView.setContentOffset(CGPoint(x:mainScrollView.bounds.width * CGFloat(index) ,y:0) , animated: true)
+            showViewControllerOf(index)
         }
     }
 }
 
 extension ZXPScrollSelectViewController: UIScrollViewDelegate {
     
-    //左右滑开始
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        print("scrollViewWillBeginDragging")
+    func syncContentOffset() {
+        self.isSlidingAroundIng = true
         if isScrollTopViewOK() {
             var maxOffsetY:CGFloat = -topViewHeight()
             for vc in self.childViewControllers {
@@ -220,10 +222,15 @@ extension ZXPScrollSelectViewController: UIScrollViewDelegate {
         }
     }
     
+    //左右滑开始
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        syncContentOffset()
+    }
+    
     //左右滑结束
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("scrollViewDidEndDecelerating")
-        let index = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        let scx = scrollView.contentOffset.x
+        let index = Int(scx / scrollView.bounds.width)
         showViewControllerOf(index)
     }
     
@@ -234,19 +241,26 @@ extension ZXPScrollSelectViewController: UIScrollViewDelegate {
             let tvc = vcs[index]
             if oldController != tvc {
 //                self.transition(from: oldController, to: tvc, duration: 0, options: UIViewAnimationOptions.transitionCrossDissolve, animations: nil, completion: { (bool) in
+//                  tvc.willMove(toParentViewController: nil)
+//                   tvc.didMove(toParentViewController: self)
                     self.currentPage = index
                     self.oldController = tvc
 //                })
+                selectIndexAndVC(index, vc: tvc)
             }
-            selectIndexAndVC(index, vc: tvc)
         } else {
             print("超出范围")
         }
+        self.isSlidingAroundIng = false
     }
     
     ///选择的index和vc
     open func selectIndexAndVC(_ index: Int,vc:UIViewController) {
         
+    }
+    
+    func fitFrameForChildViewController(_ index:Int,_ chileViewController:UIViewController) {
+        chileViewController.view.frame = CGRect(x: CGFloat(index) * mainScrollView.bounds.width, y: 0, width: mainScrollView.bounds.width, height: mainScrollView.bounds.height)
     }
     
 }

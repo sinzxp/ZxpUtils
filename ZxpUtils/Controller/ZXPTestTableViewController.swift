@@ -93,13 +93,11 @@ class ZXPTestTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 3 {
-//            let vc = TestTransitionFromViewController()
             let vc = ZXPScrollSelectViewControllerCS()
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 4 {
-//            let vc = ZXPFixedSelectViewControllerCS()
-            let vc = TestTransitionFromViewController()
+            let vc = ZXPFixedSelectViewControllerCS()
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 5 {
