@@ -71,24 +71,25 @@ public class ZXPFixedSelectViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
         initContainsView()
         initViewControllers()
     }
     
     private func initContainsView() {
         containsView.frame = CGRect(x: 0, y: topPading() , width: self.view.width, height: self.view.height - topPading() - bottomPading())
-        containsView.backgroundColor = UIColor.green
+//        containsView.backgroundColor = UIColor.green
         self.view.addSubview(containsView)
         
-        topContainsView.backgroundColor = UIColor.alizarin()
+//        topContainsView.backgroundColor = UIColor.alizarin()
         topContainsView.frame = CGRect(x: 0, y: 0, width: containsView.width, height: topViewHeight())
         containsView.addSubview(topContainsView)
         
-        middleContainsView.backgroundColor = UIColor.yellow
+//        middleContainsView.backgroundColor = UIColor.yellow
         middleContainsView.frame = CGRect(x: 0, y: topViewHeight(), width: containsView.width, height: middleViewHeight())
         containsView.addSubview(middleContainsView)
         
-        bottomContainsView.backgroundColor = UIColor.green
+//        bottomContainsView.backgroundColor = UIColor.green
         bottomContainsView.frame = CGRect(x: 0, y: topViewHeight() + middleViewHeight(), width: containsView.width, height: bottomViewHeight())
         containsView.addSubview(bottomContainsView)
         
@@ -198,9 +199,13 @@ class ZXPFixedSelectViewControllerCS: ZXPFixedSelectViewController {
     override func selectIndexAndVC(_ index: Int, vc: UIViewController) {
         
     }
+    
+    override func selectSegmentedControlIndex(_ index: Int) {
+        showViewControllerOf(index)
+    }
 }
 
-extension ZXPFixedSelectViewControllerCS {
+extension UIViewController {
     
     ///设置segment的title
     open func sectionTitles() -> [String] {
@@ -210,18 +215,16 @@ extension ZXPFixedSelectViewControllerCS {
     open func customSegment(segment: HMSegmentedControl) -> HMSegmentedControl {
         return segment
     }
-    ///选择后
-    open func selectIndex(index: Int) {
+    ///SegmentedControl选择后的Index
+    open func selectSegmentedControlIndex(_ index: Int) {
         
     }
-    
+    ///返回一个HMSegmentedControl
     public func initSegmentView() -> UIView {
         let selectionViewSelectedColor = UIColor.blue
         let selectionViewDeselectedColor = UIColor.purple
         let selectionViewFont = UIFont.systemFont(ofSize: 14)
-        if segment == nil {
-            segment = HMSegmentedControl(frame: CGRect(x: 0, y: 0, width: ZSCREEN_WIDTH, height: 44))
-        }
+        var segment = HMSegmentedControl(frame: CGRect(x: 0, y: 0, width: ZSCREEN_WIDTH, height: 44))
         segment.backgroundColor = UIColor.white
         segment.sectionTitles = sectionTitles()
         segment.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocation.down
@@ -240,8 +243,12 @@ extension ZXPFixedSelectViewControllerCS {
     
     @objc private func segmentedControlChangedValue(control: HMSegmentedControl) {
         let index = control.selectedSegmentIndex
-        showViewControllerOf(index)
-        selectIndex(index: index)
+        selectSegmentedControlIndex(index)
+        selectSegmentedControl(control)
+    }
+    
+    func selectSegmentedControl(_ control: HMSegmentedControl) {
+        
     }
     
 }

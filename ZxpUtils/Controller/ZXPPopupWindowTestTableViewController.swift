@@ -100,7 +100,7 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
         }
         if section == 4 {
             let vc = ZXPPopModalVc()
-            vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+//            vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             let vv = UILabel()
             vv.text = "5"
             vv.backgroundColor = UIColor.orange

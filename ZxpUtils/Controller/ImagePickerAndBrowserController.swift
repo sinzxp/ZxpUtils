@@ -121,7 +121,6 @@ class ImagePickerAndBrowserController: UITableViewController {
             self.tableView.reloadData()
         }
         if section == 7 {
-            print("\(ZSCREEN_HEIGHT)  \(ZSCREEN_WIDTH)")
             let img = tableView.capture
             self.imgs.append(img!)
             self.tableView.reloadData()

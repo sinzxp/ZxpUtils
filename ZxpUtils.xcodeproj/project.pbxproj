@@ -30,6 +30,8 @@
 		66A3A237200760DA001D8723 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A3A235200760DA001D8723 /* LaunchScreen.storyboard */; };
 		66A3A242200760DA001D8723 /* ZxpUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3A241200760DA001D8723 /* ZxpUtilsTests.swift */; };
 		66A3A24D200760DA001D8723 /* ZxpUtilsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3A24C200760DA001D8723 /* ZxpUtilsUITests.swift */; };
+		66ABF8FB2092F99F00BD6784 /* AppAndDeviceInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ABF8FA2092F99F00BD6784 /* AppAndDeviceInfoManager.swift */; };
+		66ABF8FD20930DDD00BD6784 /* ZXPScrollSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ABF8FC20930DDD00BD6784 /* ZXPScrollSelectViewController.swift */; };
 		66C561E32074B98900C77A7E /* ZXPImagePreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C561E22074B98900C77A7E /* ZXPImagePreviewVC.swift */; };
 		66C561E52074BD4E00C77A7E /* ZXPImagePreviewGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C561E42074BD4E00C77A7E /* ZXPImagePreviewGridCell.swift */; };
 		85441F2E423D1CF61300A0B3 /* Pods_ZxpUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B49F9896CF5C8C4948FB5EA /* Pods_ZxpUtils.framework */; };
@@ -91,6 +93,8 @@
 		66A3A248200760DA001D8723 /* ZxpUtilsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZxpUtilsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A3A24C200760DA001D8723 /* ZxpUtilsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZxpUtilsUITests.swift; sourceTree = "<group>"; };
 		66A3A24E200760DA001D8723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66ABF8FA2092F99F00BD6784 /* AppAndDeviceInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAndDeviceInfoManager.swift; sourceTree = "<group>"; };
+		66ABF8FC20930DDD00BD6784 /* ZXPScrollSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPScrollSelectViewController.swift; sourceTree = "<group>"; };
 		66C561E22074B98900C77A7E /* ZXPImagePreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImagePreviewVC.swift; sourceTree = "<group>"; };
 		66C561E42074BD4E00C77A7E /* ZXPImagePreviewGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImagePreviewGridCell.swift; sourceTree = "<group>"; };
 		69F608B0CE695CAD78B3957E /* Pods-ZxpUtilsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZxpUtilsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZxpUtilsUITests/Pods-ZxpUtilsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				664348BD2091C82E00F8BC98 /* ZXPFixedSelectViewController.swift */,
+				66ABF8FC20930DDD00BD6784 /* ZXPScrollSelectViewController.swift */,
 			);
 			path = VarietyViewController;
 			sourceTree = "<group>";
@@ -239,6 +244,13 @@
 			path = ZxpUtilsUITests;
 			sourceTree = "<group>";
 		};
+		66ABF8F92092F06B00BD6784 /* QP */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = QP;
+			sourceTree = "<group>";
+		};
 		72CE2EFA951AA47FDF77B856 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,12 +287,14 @@
 		C7C96CDF20079E200029E8E1 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				66ABF8F92092F06B00BD6784 /* QP */,
 				664348BC2091C7DB00F8BC98 /* VarietyViewController */,
 				664AE9802089CB1100EB5621 /* PopupWindow */,
 				C78AEB5A2088EDE5009A61DC /* DownloadAndFile */,
 				66294D3D20732C54000B57D3 /* ZXPPhotoPicker */,
 				C71538F52007A96E0020EC3B /* ZXPAppleImagePickerController.swift */,
 				C7229735208F7098007B5CAC /* ZXPImageBrowserVC.swift */,
+				66ABF8FA2092F99F00BD6784 /* AppAndDeviceInfoManager.swift */,
 				66294D3B20732BF7000B57D3 /* ZxpUtils.swift */,
 				6607E8642073421800A4A0E5 /* TableViewUtils.swift */,
 			);
@@ -547,13 +561,77 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ZxpUtils/Pods-ZxpUtils-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AwesomeCache/AwesomeCache.framework",
+				"${BUILT_PRODUCTS_DIR}/CGFloatType/CGFloatType.framework",
+				"${BUILT_PRODUCTS_DIR}/CJWUtilsS/CJWUtilsS.framework",
+				"${BUILT_PRODUCTS_DIR}/ClusterPrePermissions/ClusterPrePermissions.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/FCFileManager/FCFileManager.framework",
+				"${BUILT_PRODUCTS_DIR}/FLKAutoLayout/FLKAutoLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/FlatUIKit/FlatUIKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GPUImage/GPUImage.framework",
 				"${BUILT_PRODUCTS_DIR}/HMSegmentedControl/HMSegmentedControl.framework",
+				"${BUILT_PRODUCTS_DIR}/HappyDNS/HappyDNS.framework",
+				"${BUILT_PRODUCTS_DIR}/INTULocationManager/INTULocationManager.framework",
+				"${BUILT_PRODUCTS_DIR}/JXBAdPageView/JXBAdPageView.framework",
+				"${BUILT_PRODUCTS_DIR}/KLCPopup/KLCPopup.framework",
+				"${BUILT_PRODUCTS_DIR}/LKDBHelper/LKDBHelper.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/NSDate+TimeAgo/NSDate_TimeAgo.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/PodAsset/PodAsset.framework",
+				"${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
+				"${BUILT_PRODUCTS_DIR}/iRate/iRate.framework",
+				"${BUILT_PRODUCTS_DIR}/iVersion/iVersion.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AwesomeCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CGFloatType.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJWUtilsS.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ClusterPrePermissions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FCFileManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLKAutoLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlatUIKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GPUImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HMSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HappyDNS.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INTULocationManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JXBAdPageView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KLCPopup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LKDBHelper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSDate_TimeAgo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PodAsset.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiniu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iRate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iVersion.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -593,11 +671,13 @@
 				664AE9822089CBA600EB5621 /* ZXPAlertController.swift in Sources */,
 				66C561E52074BD4E00C77A7E /* ZXPImagePreviewGridCell.swift in Sources */,
 				66294D3F20732C72000B57D3 /* ZXPImagePickerTableVC.swift in Sources */,
+				66ABF8FB2092F99F00BD6784 /* AppAndDeviceInfoManager.swift in Sources */,
 				6607E869207353E600A4A0E5 /* ZXPImagePickerGridVC.swift in Sources */,
 				C75CAD572087896700438E89 /* ZXPImagePickerVC.swift in Sources */,
 				66A3A22F200760DA001D8723 /* ViewController.swift in Sources */,
 				66C561E32074B98900C77A7E /* ZXPImagePreviewVC.swift in Sources */,
 				C78AEB5C2088EDE5009A61DC /* DownloadAndFile.swift in Sources */,
+				66ABF8FD20930DDD00BD6784 /* ZXPScrollSelectViewController.swift in Sources */,
 				6607E8652073421800A4A0E5 /* TableViewUtils.swift in Sources */,
 				66A3A22D200760DA001D8723 /* AppDelegate.swift in Sources */,
 				C7229736208F7098007B5CAC /* ZXPImageBrowserVC.swift in Sources */,

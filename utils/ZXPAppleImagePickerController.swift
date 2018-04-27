@@ -14,7 +14,7 @@ import AssetsLibrary
 // 使用录制视频功能
 import MobileCoreServices
 
-
+///获取相册图片和拍照并保存图片  ps:录像功能还没加
 public class ZXPAppleImagePickerController: UIImagePickerController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     private var block: ImagePickerBlock!

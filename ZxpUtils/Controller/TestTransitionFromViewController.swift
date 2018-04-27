@@ -184,14 +184,16 @@ class firstViewController: ZXPFixedSelectChildTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "firstViewController - \(indexPath.section) --- \(rootSegment.sss)"
+//        cell.textLabel?.text = "firstViewController - \(indexPath.section) --- \(rootSegment.sss)"
+        cell.textLabel?.text = "firstViewController - \(indexPath.section)"
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        rootSegment.sss = "\(indexPath.section)"
-        self.tableView.reloadData()
+//        rootSegment.sss = "\(indexPath.section)"
+//        self.tableView.reloadData()
+        print("\(atTheTopViewController())")
     }
 
 }
@@ -225,14 +227,16 @@ class secondViewController: ZXPFixedSelectChildTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "secondViewController - \(indexPath.section) --- \(rootSegment.sss)"
+//        cell.textLabel?.text = "secondViewController - \(indexPath.section) --- \(rootSegment.sss)"
+        cell.textLabel?.text = "secondViewController - \(indexPath.section)"
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        rootSegment.sss = "\(indexPath.section)"
-        self.tableView.reloadData()
+//        rootSegment.sss = "\(indexPath.section)"
+//        self.tableView.reloadData()
+        self.showTextTime("哈哈哈哈")
     }
 
 }

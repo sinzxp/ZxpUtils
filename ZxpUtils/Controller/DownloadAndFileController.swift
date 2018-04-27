@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import CJWUtilsS
 
 class DownloadAndFileController: UITableViewController {
     
@@ -98,15 +99,14 @@ class DownloadAndFileController: UITableViewController {
             if let img = DownloadAndFile.share.readFileForImage("favorite_select.png") {
                 cell.img.image = img
             } else {
-                self.showText("失败")
                 cell.img.image = UIImage(color: UIColor.white)
             }
         }
         if section == 3 {
             if DownloadAndFile.share.removefile("favorite_select.png") {
-                self.showText("成功")
+                self.showTextTime("成功")
             } else {
-                self.showText("失败")
+                self.showTextTime("失败")
             }
         }
         if section == 4 {
@@ -137,11 +137,11 @@ class DownloadAndFileController: UITableViewController {
             })
         }
         if section == 8 {
-            if Daf.isFileExistsForDocuments(downloadName) && downloadName.valid() {
+            if Daf.isFileExistsForDocuments(downloadName) && !downloadName.isEmpty {
                 let filePath = NSHomeDirectory() + "/Documents/" + downloadName.urlEncoded()
                 openPdfforWed(filePath)
             } else {
-                self.showText("没有文件")
+                self.showTextTime("没有文件")
             }
         }
         

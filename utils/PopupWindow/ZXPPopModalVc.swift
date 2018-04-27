@@ -24,7 +24,7 @@ public class ZXPPopModalVc: UIViewController {
     }
     
     func wakeUpTheerform() {
-        print("perform------ 唤醒present")
+//        print("perform------ 唤醒present")
     }
     
 //    public override func viewWillAppear(_ animated: Bool) {
@@ -75,10 +75,29 @@ public class ZXPPopModalVc: UIViewController {
 
 }
 
+extension NSObject {
+    ///弹窗
+    func showTextTime(_ text:String,_ time:DispatchTime = 2) {
+        let pvc = ZXPPopModalVc()
+        let view = UILabel()
+        view.text = text
+        view.textAlignment = .center
+        view.backgroundColor = UIColor.white
+        view.frame.size = CGSize(width: ZSCREEN_WIDTH * 0.6, height: ZSCREEN_HEIGHT * 0.1)
+        view.layer.cornerRadius = 10
+        view.layer.masksToBounds = true
+        pvc.setContentView(view, isClickBackgroundDismiss: false)
+        pvc.toPresent()
+        delayPerform(time) {
+            pvc.toDismiss()
+        }
+    }
+    
+}
 //public class ZXPPopModal: NSObject {
 //
 //    let pvc = ZXPPopModalVc()
-//    
+//
 //    func presentModalView(_ view:UIView) {
 //        if let vc = atTheTopViewController() {
 //            pvc.view.backgroundColor = setbackgroundColor()

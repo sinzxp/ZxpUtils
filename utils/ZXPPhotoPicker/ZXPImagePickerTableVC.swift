@@ -21,7 +21,7 @@ class AlbumItem {
         self.fetchResult = fetchResult
     }
 }
-
+///相册new这个  可以显示IC上的图片并下载
 class ZXPImagePickerTableVC: UITableViewController {
     
     var completeHandlerPHA:((_ assets:[PHAsset])->())?
