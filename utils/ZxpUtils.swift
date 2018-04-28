@@ -185,15 +185,15 @@ extension UIColor {
 //MARK: - 全屏截图
 public extension NSObject {
     ///全屏截图
-    func screenShot(_ save: Bool) -> UIImage? {
+    func screenShot(_ save: Bool = false) -> UIImage? {
         guard let window = UIApplication.shared.keyWindow else { return nil }
         // 用下面这行而不是UIGraphicsBeginImageContext()，因为前者支持Retina // 参数①：截屏区域  参数②：是否透明  参数③：清晰度
         UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, UIScreen.main.scale)
         window.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        if save {
-//            UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+        if let image = image , save {
+            savedPhoto(image)
         }
         return image
     }
@@ -202,7 +202,7 @@ public extension NSObject {
 //MARK: - view截图
 extension UIView {
     ///截取view的图片
-    func viewShot() -> UIImage? {
+    func viewShot(_ save: Bool = false) -> UIImage? {
         guard frame.size.height > 0 && frame.size.width > 0 else {
             return nil
         }
@@ -210,6 +210,9 @@ extension UIView {
         layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        if let image = image , save {
+            savedPhoto(image)
+        }
         return image
     }
 }
@@ -217,7 +220,7 @@ extension UIView {
 //MARK: - ScrollView截图
 extension UIScrollView {
     ///ScrollView截图
-    var capture: UIImage? {
+    func capture(_ save: Bool = false) ->  UIImage? {
         // 记录当前的scrollView的偏移量和坐标
         let currentContentOffSet:CGPoint = self.contentOffset
         let currentFrame:CGRect = self.frame
@@ -232,6 +235,9 @@ extension UIScrollView {
         self.contentOffset = currentContentOffSet
         self.frame = currentFrame
         UIGraphicsEndImageContext()
+        if let image = image , save {
+            savedPhoto(image)
+        }
         return image
     }
 }

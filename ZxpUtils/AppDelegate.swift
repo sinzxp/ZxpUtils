@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import Photos
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: ZXPResponder {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = vc
         window.makeKeyAndVisible()
         
+        addPhPhotoLibraryRegister()
+                
         return true
     }
 
@@ -48,6 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    override func getNewAddedImage(_ thumbnail: UIImage?, asset: PHAsset) {
+        print("\(thumbnail) --- \(asset)")
+    }
 
 }
 

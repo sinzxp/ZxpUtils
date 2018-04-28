@@ -17,6 +17,7 @@ class ImagePickerAndBrowserController: UITableViewController {
         super.viewDidLoad()
         self.title = "图片选择"
         self.tableView.setExtraCellLineHidden()
+
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -121,7 +122,7 @@ class ImagePickerAndBrowserController: UITableViewController {
             self.tableView.reloadData()
         }
         if section == 7 {
-            let img = tableView.capture
+            let img = tableView.capture(true)
             self.imgs.append(img!)
             self.tableView.reloadData()
         }

@@ -126,6 +126,18 @@ public class ZXPAppleImagePickerController: UIImagePickerController,UIImagePicke
         self.dismiss(animated: true, completion: nil)
     }
     
+
+    
+    ///cancel后执行的方法
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
+        ///关闭窗口
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension NSObject{
+    
     ///保存图片
     func savedPhoto(_ image:UIImage) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
@@ -138,16 +150,6 @@ public class ZXPAppleImagePickerController: UIImagePickerController,UIImagePicke
         }
         print("OK")
     }
-    
-    ///cancel后执行的方法
-    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
-        ///关闭窗口
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-}
-
-extension NSObject{
     
     ///相机可不可以用
     func isCamera() -> Bool {
@@ -281,7 +283,7 @@ public class ZXPAppleVideoController: UIImagePickerController,UIImagePickerContr
     }
     
     //保存回调
-    func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject) {
+    override func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject) {
         if didFinishSavingWithError != nil {
             print("保存失败")
             return
