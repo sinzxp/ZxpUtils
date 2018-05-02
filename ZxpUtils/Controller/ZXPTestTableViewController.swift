@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CJWUtilsS
 
 class ZXPTestTableViewController: UITableViewController {
 
@@ -16,7 +17,7 @@ class ZXPTestTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 7
+        return 8
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,12 +58,12 @@ class ZXPTestTableViewController: UITableViewController {
         }
         if section == 6 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "wwwwwwww"
+            cell.textLabel?.text = "6666666"
             return cell
         }
         if section == 7 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "继续下载文件"
+            cell.textLabel?.text = "77777"
             return cell
         }
         if section == 8 {
@@ -105,7 +106,15 @@ class ZXPTestTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 6 {
-            ToastView().showLoadingDlg()
+            DispatchTimer(timeInterval: 3, repeatCount: 5) { (ttt, iii) in
+//                self.view.showLoading(text: "\(iii)")
+                ZXPToastView().showToast("\(iii)哈哈哈哈哈哈哈哈",position:.Bottom)
+
+            }
+            
+//            delayPerform(5) {
+//                self.view.hideLoading()
+//            }
         }
         if section == 7 {
 
@@ -116,6 +125,10 @@ class ZXPTestTableViewController: UITableViewController {
         if section == 9 {
 
         }
+    }
+    
+    override func TimerPerformHandler() {
+        print("hhhhhhh")
     }
     
 }

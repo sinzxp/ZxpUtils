@@ -108,7 +108,7 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
             vc.toPresent()
         }
         if section == 5 {
-            ZXPToastView().showLoadingTexts("哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈",position:.Top)
+            ZXPToastView().showToast("哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈",position:.Bottom)
         }
         if section == 6 {
         }

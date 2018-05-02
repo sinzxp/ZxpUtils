@@ -16,28 +16,6 @@ class Zuser: NSObject {
 
 }
 
-extension String {
-    /**
-     * 查询lable高度
-     * @param fontSize, 字体大小
-     * @param width, lable宽度
-     */
-    func getLableHeightByWidth(_ fontSize: CGFloat,
-                               width: CGFloat,
-                               font: UIFont) -> CGFloat {
-        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineBreakMode = .byWordWrapping
-        let attributes = [NSFontAttributeName:font,
-                          NSParagraphStyleAttributeName:paragraphStyle.copy()]
-        
-        let text = self as NSString
-        let rect = text.boundingRect(with: size, options:.usesLineFragmentOrigin, attributes: attributes, context:nil)
-        return rect.size.height
-    }
-    
-}
-
 class ToastView: NSObject {
     var delay: Double = 5.0  //延迟时间
     

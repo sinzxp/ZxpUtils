@@ -56,7 +56,7 @@ class ZXPToastView: NSObject {
         show(container)
     }
     
-    func showLoadingTexts(_ title:String = "" ,delay:Double = 3.0 ,position:Position = .Mid, modal:Bool = true) {
+    func showToast(_ title:String = "" ,delay:Double = 1.0 ,position:Position = .Mid, modal:Bool = true) {
 
         let container = UIView()
         container.backgroundColor = UIColor.clear
@@ -72,7 +72,6 @@ class ZXPToastView: NSObject {
         lableView.numberOfLines = 0
         let lableViewSize = lableView.getLableSize(text: title, maxWidth: maxW)
 
-
         let bgView = UIView()
         bgView.layer.cornerRadius = 10
         bgView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
@@ -82,7 +81,7 @@ class ZXPToastView: NSObject {
         case .Top:
             bgView.frame.size = CGSize(width: lableViewSize.width + 20, height: lableViewSize.height + 20)
             bgView.center = container.center
-            bgView.frame.origin.y = ZSCREEN_HEIGHT * 0.1
+            bgView.frame.origin.y = ZSCREEN_HEIGHT * 0.15
         case .Mid:
             bgView.frame.size = CGSize(width: lableViewSize.width + 20, height: lableViewSize.height + 20)
             bgView.center = container.center
@@ -94,7 +93,12 @@ class ZXPToastView: NSObject {
 
         lableView.frame = CGRect(x: 10, y: 10 , width: lableViewSize.width, height: lableViewSize.height)
         bgView.addSubview(lableView)
+        
         show(container)
+    }
+    
+    func showToastExt() {
+        
     }
     
     func show(_ view:UIView){
@@ -108,6 +112,7 @@ class ZXPToastView: NSObject {
         self.windows.append(window)
         self.perform(#selector(showShutDown(sender:)), with: window, afterDelay: delay)
     }
+    
     
     //添加点击事件
     func tapGesture(sender: UITapGestureRecognizer) {

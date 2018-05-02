@@ -169,6 +169,71 @@ extension DispatchTime: ExpressibleByFloatLiteral {
     }
 }
 
+//MARK: - GCD定时器倒计时
+public extension NSObject {
+    
+//    timer.suspend() //定时器暂停执行
+//    timer.cancel() //定时器取消，会销毁
+//    timer.activate() //定时器开始激活
+//    timer.resume() //定时器继续
+    
+    ///   - timeInterval: 循环间隔时间
+    ///   - repeatCount: 重复次数
+    ///   - handler: 循环事件, 闭包参数： 1. timer， 2. 剩余执行次数
+    public func DispatchTimer(timeInterval: Double, repeatCount:Int, handler:@escaping (DispatchSourceTimer?, Int)->()) {
+        if repeatCount <= 0 {
+            return
+        }
+        // 在global线程里创建一个时间源 在主线程中创建一个定时器
+//        let codeTimer = DispatchSource.makeTimerSource(queue:DispatchQueue.global())
+        let timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
+        var count = repeatCount
+        // 立即开始 设定这个时间间隔
+        timer.scheduleRepeating(deadline: .now(), interval: timeInterval)
+        timer.setEventHandler(handler: {
+            count -= 1
+            DispatchQueue.main.async {
+                handler(timer, count)
+            }
+            if count == 0 {
+                timer.cancel()
+            }
+        })
+        timer.resume()
+    }
+    
+    ///   - timeInterval: 循环间隔时间
+    ///   - handler: 循环事件
+    public func DispatchTimer(timeInterval: Double, handler:@escaping (DispatchSourceTimer?)->()) {
+        let timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
+        timer.scheduleRepeating(deadline: .now(), interval: timeInterval)
+        timer.setEventHandler {
+            DispatchQueue.main.async {
+                handler(timer)
+            }
+        }
+        timer.resume()
+    }
+   
+}
+
+//MARK: - Timer定时器倒计时
+public extension NSObject {
+    
+    ///  退出的时候清空定时器->timer.invalidate()
+    func TimerPerform(timeInterval: Double) -> Timer {
+        // 启用计时器，控制每秒执行一次tickDown方法
+        let timer = Timer.scheduledTimer(timeInterval: timeInterval, target:self,selector:#selector(TimerPerformHandler), userInfo:nil,repeats:true)
+        return timer
+    }
+    
+    ///计时器每秒触发事件
+    public func TimerPerformHandler() {
+        
+    }
+}
+
+
 //MARK: - 返回随机颜色
 extension UIColor {
     ///返回随机颜色
@@ -311,6 +376,25 @@ extension UILabel {
         let maxSize = CGSize(width: maxWidth, height: 0)   //注意高度是0
         let size = text.boundingRect(with: maxSize, options: .usesLineFragmentOrigin,attributes: [NSFontAttributeName:self.font], context: nil)
         return size.size
+    }
+    
+}
+
+//MARK: - 查询lable高度
+extension String {
+    /**
+     * 查询lable高度
+     * @param fontSize, 字体大小
+     * @param width, lable宽度
+     */
+    func getLableHeightByWidth(_ fontSize: CGFloat, width: CGFloat, font: UIFont) -> CGFloat {
+        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineBreakMode = .byWordWrapping
+        let attributes = [NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle.copy()]
+        let text = self as NSString
+        let rect = text.boundingRect(with: size, options:.usesLineFragmentOrigin, attributes: attributes, context:nil)
+        return rect.size.height
     }
     
 }
