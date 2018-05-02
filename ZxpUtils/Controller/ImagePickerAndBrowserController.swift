@@ -17,11 +17,14 @@ class ImagePickerAndBrowserController: UITableViewController {
         super.viewDidLoad()
         self.title = "图片选择"
         self.tableView.setExtraCellLineHidden()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
 
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 8
+        return 9
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,6 +78,11 @@ class ImagePickerAndBrowserController: UITableViewController {
             cell.textLabel?.text = "view截图"
             return cell
         }
+        if section == 8 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "监听相册变化 获取最新添加的图片"
+            return cell
+        }
         return UITableViewCell()
     }
     
@@ -122,12 +130,19 @@ class ImagePickerAndBrowserController: UITableViewController {
             self.tableView.reloadData()
         }
         if section == 7 {
-            let img = tableView.capture(true)
+            let img = tableView.viewShot(true)
             self.imgs.append(img!)
             self.tableView.reloadData()
         }
-        if section == 9 {
-            
+        if section == 8 {
+            self.imgs.removeAll()
+            ///获取最新添加的图片 监听相册变化
+            if let img = Zuser.sharedInstance.Zimg {
+                imgs.append(img)
+            } else {
+                self.showTextTime("无图")
+            }
+            self.tableView.reloadData()
         }
     }
     

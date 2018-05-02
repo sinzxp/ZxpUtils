@@ -16,7 +16,7 @@ class ZXPTestTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return 7
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,7 +57,7 @@ class ZXPTestTableViewController: UITableViewController {
         }
         if section == 6 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "停止下载文件"
+            cell.textLabel?.text = "wwwwwwww"
             return cell
         }
         if section == 7 {
@@ -105,6 +105,7 @@ class ZXPTestTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 6 {
+            ToastView().showLoadingDlg()
         }
         if section == 7 {
 
@@ -116,7 +117,7 @@ class ZXPTestTableViewController: UITableViewController {
 
         }
     }
-
+    
 }
 
 class AppAndDeviceInfoVC: UIViewController {

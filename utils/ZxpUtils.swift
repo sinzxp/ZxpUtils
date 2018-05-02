@@ -302,6 +302,16 @@ extension NSObject {
             }
         }
     }
+}
+
+//MARK: - UILabel根据最大宽度计算宽高
+extension UILabel {
+    ///根据最大宽度计算宽高
+    func getLableSize(text: String , maxWidth: CGFloat) -> CGSize {
+        let maxSize = CGSize(width: maxWidth, height: 0)   //注意高度是0
+        let size = text.boundingRect(with: maxSize, options: .usesLineFragmentOrigin,attributes: [NSFontAttributeName:self.font], context: nil)
+        return size.size
+    }
     
 }
 

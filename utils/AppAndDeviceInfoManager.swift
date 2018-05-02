@@ -64,7 +64,6 @@ class AppAndDeviceInfoManager: NSObject {
             return nil
         }
     }
-    
 }
 
 //扩展UIDevice

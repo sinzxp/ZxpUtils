@@ -51,7 +51,8 @@ class AppDelegate: ZXPResponder {
     }
 
     override func getNewAddedImage(_ thumbnail: UIImage?, asset: PHAsset) {
-        print("\(thumbnail) --- \(asset)")
+//        print("\(thumbnail) --- \(asset)")
+        Zuser.sharedInstance.Zimg = thumbnail
     }
 
 }
