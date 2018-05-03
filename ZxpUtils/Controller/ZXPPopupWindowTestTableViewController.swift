@@ -16,7 +16,7 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return 7
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,11 +48,11 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
             return cell
         }
         if section == 5 {
-            cell.textLabel?.text = "wwwwwwww"
+            cell.textLabel?.text = "Toast"
             return cell
         }
         if section == 6 {
-            cell.textLabel?.text = ""
+            cell.textLabel?.text = "加载圆圈"
             return cell
         }
         if section == 7 {
@@ -108,7 +108,17 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
             vc.toPresent()
         }
         if section == 5 {
-            ZXPToastView().showToast("哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈",position:.Bottom)
+            DispatchTimer(timeInterval: 1, repeatCount: 3) { (ttt, iii) in
+                if iii == 0 {
+                    self.Toast.showLoadingText("\(iii)哈哈哈哈哈哈哈哈",clickBgHidden:true)
+                }
+                if iii == 1 {
+                    self.Toast.showToastExt("\(iii)哈哈哈哈哈哈哈哈",position:.Mid)
+                }
+                if iii == 2 {
+                    self.Toast.showToast("\(iii)哈哈哈哈哈哈哈哈",position:.Bottom, autoHidden:true)
+                }
+            }
         }
         if section == 6 {
         }

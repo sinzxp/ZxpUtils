@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CJWUtilsS
 
 class ZXPTestTableViewController: UITableViewController {
 
@@ -106,18 +105,9 @@ class ZXPTestTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 6 {
-            DispatchTimer(timeInterval: 3, repeatCount: 5) { (ttt, iii) in
-//                self.view.showLoading(text: "\(iii)")
-                ZXPToastView().showToast("\(iii)哈哈哈哈哈哈哈哈",position:.Bottom)
-
-            }
             
-//            delayPerform(5) {
-//                self.view.hideLoading()
-//            }
         }
         if section == 7 {
-
         }
         if section == 8 {
             

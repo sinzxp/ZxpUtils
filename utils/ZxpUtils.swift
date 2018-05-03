@@ -46,8 +46,13 @@ public extension UIView {
         self.addGestureRecognizer(tapSingle)
         self.addGestureRecognizer(tapDouble)
     }
-   
     
+    ///长按
+    public func addLongPressGesture(_ target: Any?, action: Selector) {
+        let longPress = UILongPressGestureRecognizer(target: target, action: action)
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(longPress)
+    }
 }
 
 //extension UIViewController:UIGestureRecognizerDelegate {
@@ -333,6 +338,20 @@ extension String {
     func urlDecoded() -> String {
         return self.removingPercentEncoding ?? ""
     }
+    
+    ///url
+//    func encodeEscapesURL(_ value:String) -> String {
+//        let str:NSString = value as NSString
+//        let originalString = str as CFString
+//        let charactersToBeEscaped = "!*'();:@&=+$,/?%#[]" as CFString  //":/?&=;+!@#$()',*"    //转意符号
+//        //let charactersToLeaveUnescaped = "[]." as CFStringRef  //保留的符号
+//        let result = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+//                                                             originalString,
+//                                                    nil,    //charactersToLeaveUnescaped,
+//                charactersToBeEscaped,
+//                CFStringConvertNSStringEncodingToEncoding(String.Encoding.utf8.rawValue)) as NSString
+//        return result as String
+//    }
 }
 
 //MARK: - iphone X 的顶部和底部距离

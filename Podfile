@@ -11,8 +11,8 @@ target 'ZxpUtils' do
     pod 'SnapKit','3.2.0'
     pod 'XCGLogger','5.0.1'
     
-    pod 'SwiftyJSON','4.1.0'
-    pod 'SDWebImage','4.3.3'
+#    pod 'SwiftyJSON','4.1.0'
+#    pod 'SDWebImage','4.3.3'
     pod 'Alamofire','4.7.0'
     pod 'HMSegmentedControl'
 
