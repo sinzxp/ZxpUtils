@@ -19,6 +19,7 @@
 		664348BE2091C82E00F8BC98 /* ZXPFixedSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664348BD2091C82E00F8BC98 /* ZXPFixedSelectViewController.swift */; };
 		664AE9822089CBA600EB5621 /* ZXPAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664AE9812089CBA600EB5621 /* ZXPAlertController.swift */; };
 		664AE9842089D41500EB5621 /* ZXPPopModalVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664AE9832089D41500EB5621 /* ZXPPopModalVc.swift */; };
+		66677D9C209C0DB0005A825C /* ZXPDataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66677D9B209C0DB0005A825C /* ZXPDataPersistence.swift */; };
 		668120C62069F015002FD309 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668120C52069F014002FD309 /* AssetsLibrary.framework */; };
 		668120C82069F01F002FD309 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668120C72069F01F002FD309 /* AVFoundation.framework */; };
 		668120CA2069F029002FD309 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668120C92069F029002FD309 /* MediaPlayer.framework */; };
@@ -79,6 +80,7 @@
 		664348BD2091C82E00F8BC98 /* ZXPFixedSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPFixedSelectViewController.swift; sourceTree = "<group>"; };
 		664AE9812089CBA600EB5621 /* ZXPAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPAlertController.swift; sourceTree = "<group>"; };
 		664AE9832089D41500EB5621 /* ZXPPopModalVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPPopModalVc.swift; sourceTree = "<group>"; };
+		66677D9B209C0DB0005A825C /* ZXPDataPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPDataPersistence.swift; sourceTree = "<group>"; };
 		668120C52069F014002FD309 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		668120C72069F01F002FD309 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		668120C92069F029002FD309 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -303,6 +305,7 @@
 				C71538F52007A96E0020EC3B /* ZXPAppleImagePickerController.swift */,
 				C7229735208F7098007B5CAC /* ZXPImageBrowserVC.swift */,
 				66E1F4A2209470DC00C14445 /* ZXPResponder.swift */,
+				66677D9B209C0DB0005A825C /* ZXPDataPersistence.swift */,
 				66ABF8FA2092F99F00BD6784 /* AppAndDeviceInfoManager.swift */,
 				66294D3B20732BF7000B57D3 /* ZxpUtils.swift */,
 				6607E8642073421800A4A0E5 /* TableViewUtils.swift */,
@@ -676,6 +679,7 @@
 				6607E86B20735D6B00A4A0E5 /* ZXPTestTableViewController.swift in Sources */,
 				6607E86F207372B500A4A0E5 /* ZXPImagePickerGridCell.swift in Sources */,
 				C75CAD5920879F2100438E89 /* ZXPImagePickerUtils.swift in Sources */,
+				66677D9C209C0DB0005A825C /* ZXPDataPersistence.swift in Sources */,
 				66294D3C20732BF7000B57D3 /* ZxpUtils.swift in Sources */,
 				C7C69EBE206BE496006319B4 /* DownloadAndFileController.swift in Sources */,
 				664AE9822089CBA600EB5621 /* ZXPAlertController.swift in Sources */,
