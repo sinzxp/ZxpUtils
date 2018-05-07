@@ -121,6 +121,14 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
             }
         }
         if section == 6 {
+            let picker = RCDatePicker()
+            picker.show("请选择时间", mode: UIDatePickerMode.dateAndTime, block: { (date) -> () in
+                let fmt = DateFormatter()
+                fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let realDate = fmt.string(from: date)
+                self.Toast.showToastExt(realDate)
+            })
+            
         }
         if section == 7 {
             

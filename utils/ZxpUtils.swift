@@ -55,28 +55,6 @@ public extension UIView {
     }
 }
 
-//extension UIViewController:UIGestureRecognizerDelegate {
-//
-//    //重写侧滑
-//    func handleNavigationTransition() {
-//        let target = self.navigationController?.interactivePopGestureRecognizer!.delegate
-//        let pan = UIPanGestureRecognizer(target:target, action:Selector(("handleNavigationTransition:")))
-//        pan.delegate = self
-//        self.view.addGestureRecognizer(pan)
-//        //同时禁用系统原先的侧滑返回功能
-//        self.navigationController?.interactivePopGestureRecognizer!.isEnabled = false
-//    }
-//
-//    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if self.childViewControllers.count == 1     //没有push的界面不会触发侧滑
-//        {
-//            return false
-//        }
-//        return true
-//    }
-//
-//}
-
 //for 循环倒叙
 //
 //for i in (0...10).reversed() {
@@ -235,20 +213,6 @@ public extension NSObject {
     ///计时器每秒触发事件
     public func TimerPerformHandler() {
         
-    }
-}
-
-
-//MARK: - 返回随机颜色
-extension UIColor {
-    ///返回随机颜色
-    open class var randomColor:UIColor{
-        get {
-            let red = CGFloat(arc4random()%256)/255.0
-            let green = CGFloat(arc4random()%256)/255.0
-            let blue = CGFloat(arc4random()%256)/255.0
-            return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
-        }
     }
 }
 

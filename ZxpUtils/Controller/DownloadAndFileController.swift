@@ -13,6 +13,8 @@ import CJWUtilsS
 class DownloadAndFileController: UITableViewController {
     
     var downloadName = ""
+    
+    let downloadAndFile = DownloadAndFile()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,34 +89,34 @@ class DownloadAndFileController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = indexPath.section
         if section == 0 {
-            DownloadAndFile.share.contentsOfURL()
+            downloadAndFile.contentsOfURL()
         }
         if section == 1 {
             let image = UIImage(named: "favorite_select")
             let data:Data = UIImagePNGRepresentation(image!)!
-            DownloadAndFile.share.saveImageToDocument(data, name: "favorite_select", suffixType: .png)
+            downloadAndFile.saveImageToDocument(data, name: "favorite_select", suffixType: .png)
         }
         if section == 2 {
             let cell = tableView.cellForRow(at: indexPath) as! imgCell
-            if let img = DownloadAndFile.share.readFileForImage("favorite_select.png") {
+            if let img = downloadAndFile.readFileForImage("favorite_select.png") {
                 cell.img.image = img
             } else {
                 cell.img.image = UIImage(color: UIColor.white)
             }
         }
         if section == 3 {
-            if DownloadAndFile.share.removefile("favorite_select.png") {
+            if downloadAndFile.removefile("favorite_select.png") {
                 self.showTextTime("成功")
             } else {
                 self.showTextTime("失败")
             }
         }
         if section == 4 {
-            DownloadAndFile.share.removeAllfile()
+            downloadAndFile.removeAllfile()
         }
         if section == 5 {
             let url = "http://119.23.148.218/file/insurance/%E4%B9%98%E5%AE%A2%E4%BA%BA%E8%BA%AB%E6%84%8F%E5%A4%96%E4%BC%A4%E5%AE%B3%E4%BF%9D%E9%99%A9%E6%9D%A1%E6%AC%BE.pdf"
-            Daf.startDownloadUrl(url, fileName: nil, success: { (name, url, data) in
+            downloadAndFile.startDownloadUrl(url, fileName: nil, success: { (name, url, data) in
                self.downloadName = name
                 print("文件下载成功: \(name)")
             }, fail: { error in
@@ -124,10 +126,10 @@ class DownloadAndFileController: UITableViewController {
             })
         }
         if section == 6 {
-            Daf.stopBtnClick()
+            downloadAndFile.stopBtnClick()
         }
         if section == 7 {
-            Daf.continueDownload(success: { (name, url, data) in
+            downloadAndFile.continueDownload(success: { (name, url, data) in
                 self.downloadName = name
                 print("继续文件下载成功: \(name)")
             }, fail: { error in
@@ -137,7 +139,7 @@ class DownloadAndFileController: UITableViewController {
             })
         }
         if section == 8 {
-            if Daf.isFileExistsForDocuments(downloadName) && !downloadName.isEmpty {
+            if downloadAndFile.isFileExistsForDocuments(downloadName) && !downloadName.isEmpty {
                 let filePath = NSHomeDirectory() + "/Documents/" + downloadName.urlEncoded()
                 openPdfforWed(filePath)
             } else {

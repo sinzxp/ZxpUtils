@@ -9,11 +9,11 @@
 import UIKit
 import Alamofire
 
-extension NSObject {
-    var Daf: DownloadAndFile {
-        return DownloadAndFile.share
-    }
-}
+//extension NSObject {
+//    var Daf: DownloadAndFile {
+//        return DownloadAndFile.share
+//    }
+//}
 
 open class DownloadAndFile: NSObject {
     
@@ -24,7 +24,7 @@ open class DownloadAndFile: NSObject {
         case jpg = ".jpg"
     }
 
-    static open let share = DownloadAndFile()
+//    static open let share = DownloadAndFile()
     
     let manager = FileManager.default
     

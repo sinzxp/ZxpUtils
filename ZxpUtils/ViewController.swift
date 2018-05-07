@@ -39,18 +39,18 @@ class ViewController: UIViewController {
     func imagePicker1() {
 //        let picker = ZXPImagePickerController()
 //        self.pushViewController(picker)
-        let image = UIImage(named: "favorite_select")
-        let data:Data = UIImagePNGRepresentation(image!)!
-        DownloadAndFile.share.saveImageToDocument(data, name: "favorite_select", suffixType: .png)
+//        let image = UIImage(named: "favorite_select")
+//        let data:Data = UIImagePNGRepresentation(image!)!
+//        DownloadAndFile.share.saveImageToDocument(data, name: "favorite_select", suffixType: .png)
     }
     
     func tapHandler(sender:UITapGestureRecognizer) {
         
-        DownloadAndFile.share.contentsOfURL()
-        if let img = DownloadAndFile.share.readFileForImage("favorite_select.png") {
-            self.img.image = img
-        } else {
-        }
+//        DownloadAndFile.share.contentsOfURL()
+//        if let img = DownloadAndFile.share.readFileForImage("favorite_select.png") {
+//            self.img.image = img
+//        } else {
+//        }
         
 //        let pickerVc = ZLPhotoPickerViewController()
 //        pickerVc.status = .savePhotos
