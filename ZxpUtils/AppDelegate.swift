@@ -23,8 +23,8 @@ class AppDelegate: ZXPResponder {
         window.rootViewController = vc
         window.makeKeyAndVisible()
         
-        addPhPhotoLibraryRegister()
-                
+//        addPhPhotoLibraryRegister()
+        
         return true
     }
 
