@@ -16,7 +16,7 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 7
+        return 8
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,11 +52,11 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
             return cell
         }
         if section == 6 {
-            cell.textLabel?.text = "加载圆圈"
+            cell.textLabel?.text = "选择时间 中"
             return cell
         }
         if section == 7 {
-            cell.textLabel?.text = ""
+            cell.textLabel?.text = "选择时间 下"
             return cell
         }
         if section == 8 {
@@ -121,17 +121,24 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
             }
         }
         if section == 6 {
-            let picker = RCDatePicker()
-            picker.show("请选择时间", mode: UIDatePickerMode.dateAndTime, block: { (date) -> () in
+            let picker = ZXPDatePickerDialog()
+            picker.enableHistorySelection = true
+            picker.show("请选择时间", doneButtonTitle: "确定", cancelButtonTitle: "取消", defaultDate: Date(), datePickerMode: .date) { (date) -> Void in
                 let fmt = DateFormatter()
                 fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
                 let realDate = fmt.string(from: date)
                 self.Toast.showToastExt(realDate)
-            })
-            
+            }
         }
         if section == 7 {
-            
+            let picker = ZXPDatePickerDialog(true)
+            picker.enableHistorySelection = true
+            picker.show("请选择时间", doneButtonTitle: "确定", cancelButtonTitle: "取消", defaultDate: Date(), datePickerMode: .date) { (date) -> Void in
+                let fmt = DateFormatter()
+                fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let realDate = fmt.string(from: date)
+                self.Toast.showToastExt(realDate)
+            }
         }
         if section == 8 {
             
