@@ -28,6 +28,7 @@
 		6690F4DC20A04FAD008B89DE /* ZXPColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690F4DB20A04FAD008B89DE /* ZXPColor.swift */; };
 		66920A102099604F00D7A45F /* Zuser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66920A0F2099604F00D7A45F /* Zuser.swift */; };
 		66920A122099A0FD00D7A45F /* ZXPToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66920A112099A0FD00D7A45F /* ZXPToastView.swift */; };
+		669218C720A1AB0600B08E4C /* ZXPImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669218C620A1AB0600B08E4C /* ZXPImageUtils.swift */; };
 		6697FDD3208F07B900934249 /* TestTransitionFromViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6697FDD2208F07B900934249 /* TestTransitionFromViewController.swift */; };
 		66A3A22D200760DA001D8723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3A22C200760DA001D8723 /* AppDelegate.swift */; };
 		66A3A22F200760DA001D8723 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3A22E200760DA001D8723 /* ViewController.swift */; };
@@ -92,6 +93,7 @@
 		6690F4DB20A04FAD008B89DE /* ZXPColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPColor.swift; sourceTree = "<group>"; };
 		66920A0F2099604F00D7A45F /* Zuser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zuser.swift; sourceTree = "<group>"; };
 		66920A112099A0FD00D7A45F /* ZXPToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPToastView.swift; sourceTree = "<group>"; };
+		669218C620A1AB0600B08E4C /* ZXPImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImageUtils.swift; sourceTree = "<group>"; };
 		6697FDD2208F07B900934249 /* TestTransitionFromViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTransitionFromViewController.swift; sourceTree = "<group>"; };
 		66A3A229200760DA001D8723 /* ZxpUtils.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZxpUtils.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A3A22C200760DA001D8723 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				66E1F4A2209470DC00C14445 /* ZXPResponder.swift */,
 				66677D9B209C0DB0005A825C /* ZXPDataPersistence.swift */,
 				6690F4DB20A04FAD008B89DE /* ZXPColor.swift */,
+				669218C620A1AB0600B08E4C /* ZXPImageUtils.swift */,
 				66ABF8FA2092F99F00BD6784 /* AppAndDeviceInfoManager.swift */,
 				66294D3B20732BF7000B57D3 /* ZxpUtils.swift */,
 				6607E8642073421800A4A0E5 /* TableViewUtils.swift */,
@@ -688,6 +691,7 @@
 				6607E86B20735D6B00A4A0E5 /* ZXPTestTableViewController.swift in Sources */,
 				6607E86F207372B500A4A0E5 /* ZXPImagePickerGridCell.swift in Sources */,
 				C75CAD5920879F2100438E89 /* ZXPImagePickerUtils.swift in Sources */,
+				669218C720A1AB0600B08E4C /* ZXPImageUtils.swift in Sources */,
 				66677D9C209C0DB0005A825C /* ZXPDataPersistence.swift in Sources */,
 				66294D3C20732BF7000B57D3 /* ZxpUtils.swift in Sources */,
 				C7C69EBE206BE496006319B4 /* DownloadAndFileController.swift in Sources */,

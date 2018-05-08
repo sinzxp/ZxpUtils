@@ -235,6 +235,8 @@ public extension NSObject {
 
 //MARK: - view截图
 extension UIView {
+    // 影响图像尺寸的值：Scale Factor比例系数，也就是长与宽的比，设1才是原始的比例图像，设成0就变成屏幕的比例图像，根据屏幕的ScaleFactor的定义
+    
     ///截取view的图片
     func viewShot(_ save: Bool = false) -> UIImage? {
         guard frame.size.height > 0 && frame.size.width > 0 else {
