@@ -182,7 +182,7 @@ class ZXPFixedSelectViewControllerCS: ZXPFixedSelectViewController {
     }
     
     override func topView() -> UIView? {
-        return initSegmentView()
+        return initSegmentedControl()
     }
     
     override func bottomViewHeight() -> CGFloat {
@@ -212,7 +212,7 @@ extension UIViewController {
         return ["11111","22223","33333"]
     }
     ///自定义segment
-    open func customSegment(segment: HMSegmentedControl) -> HMSegmentedControl {
+    open func customSegmentedControl(_ segment: HMSegmentedControl) -> HMSegmentedControl {
         return segment
     }
     ///SegmentedControl选择后的Index
@@ -220,7 +220,7 @@ extension UIViewController {
         
     }
     ///返回一个HMSegmentedControl
-    public func initSegmentView() -> UIView {
+    public func initSegmentedControl() -> UIView {
         let selectionViewSelectedColor = UIColor.blue
         let selectionViewDeselectedColor = UIColor.purple
         let selectionViewFont = UIFont.systemFont(ofSize: 14)
@@ -236,18 +236,18 @@ extension UIViewController {
         segment.verticalDividerColor = UIColor.purple ///间隔颜色
         segment.titleTextAttributes = [ NSForegroundColorAttributeName: selectionViewDeselectedColor,NSFontAttributeName: selectionViewFont]
         segment.selectedTitleTextAttributes = [NSForegroundColorAttributeName: selectionViewSelectedColor, NSFontAttributeName: selectionViewFont]
-        segment.addTarget(self, action: #selector(segmentedControlChangedValue), for: UIControlEvents.valueChanged)
-        segment = customSegment(segment: segment)
+        segment.addTarget(self, action: #selector(segmentedControlChangedForValue), for: UIControlEvents.valueChanged)
+        segment = customSegmentedControl(segment)
         return segment
     }
     
-    @objc private func segmentedControlChangedValue(control: HMSegmentedControl) {
+    open func segmentedControlChangedForValue(_ control: HMSegmentedControl) {
         let index = control.selectedSegmentIndex
         selectSegmentedControlIndex(index)
         selectSegmentedControl(control)
     }
     
-    func selectSegmentedControl(_ control: HMSegmentedControl) {
+    open func selectSegmentedControl(_ control: HMSegmentedControl) {
         
     }
     

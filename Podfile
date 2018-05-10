@@ -5,22 +5,56 @@ target 'ZxpUtils' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-    pod 'CJWUtilsS', :path => '~/Desktop/3.0/CJWUtilsPro'
-    pod 'CryptoSwift','0.7.0'
-    pod 'PhoneNumberKit','1.2.3'
-    pod 'SnapKit','3.2.0'
-    pod 'XCGLogger','5.0.1'
-    
-#    pod 'SwiftyJSON','4.1.0'
-#    pod 'SDWebImage','4.3.3'
-    pod 'Alamofire','4.7.0'
-    pod 'HMSegmentedControl'
+#    pod 'CJWUtilsS', :path => '~/Desktop/3.0/CJWUtilsPro'
 
+    pod 'Alamofire','4.7.0'
+    pod 'AFNetworking'
+#    pod 'AsyncSwift' -
+    pod 'AwesomeCache'
+#    pod 'Bugly' -
+    pod 'CryptoSwift','0.7.0'
+    pod 'CGFloatType'
+    pod 'ClusterPrePermissions'
+    pod 'DZNEmptyDataSet'
+#    pod 'FXBlurView'
+    pod 'FlatUIKit'
+#    pod 'FMDB'
+    pod 'FLKAutoLayout'
+    pod 'FCFileManager'
+    pod 'GPUImage'
+#    pod 'HappyDNS'
+    pod 'HMSegmentedControl'
+#    pod 'iCarousel'
+    pod 'iVersion'
+    pod 'iRate'
+    pod 'INTULocationManager'
+    pod 'JXBAdPageView'
+    pod 'KLCPopup'
+    pod 'LKDBHelper'
+    pod 'MJRefresh'
+    pod 'MJExtension'
+    pod 'MBProgressHUD'
+#    pod 'MLeaksFinder'
+#    pod 'Masonry'
+    pod 'NSDate+TimeAgo'
+#    pod 'ObjcExceptionBridging'
+    pod 'PodAsset'
+#    pod 'PhoneNumberKit','1.2.3' -
+#    pod 'QRCodeReaderViewController'
+    pod 'Qiniu'
+    pod 'SDWebImage'
+    pod 'SnapKit','3.2.0'
+    pod 'SwiftyJSON'
+    pod 'SVProgressHUD'
+#    pod 'SAMKeychain'
+    #pod 'SSKeychain' -
+#    pod 'WebViewJavascriptBridge'
+#    pod 'YYModel'
+    pod 'XCGLogger','5.0.1'
 
 #    pod 'ZLPhotoLib', :path => '/Users/quickplain/Downloads/ZLPhotoLib'
 
 
-  #pod 'Alamofire'
   # Pods for ZxpUtils
 
   target 'ZxpUtilsTests' do

@@ -20,6 +20,55 @@
 		664AE9822089CBA600EB5621 /* ZXPAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664AE9812089CBA600EB5621 /* ZXPAlertController.swift */; };
 		664AE9842089D41500EB5621 /* ZXPPopModalVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664AE9832089D41500EB5621 /* ZXPPopModalVc.swift */; };
 		66677D9C209C0DB0005A825C /* ZXPDataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66677D9B209C0DB0005A825C /* ZXPDataPersistence.swift */; };
+		667D8FF420A4498100FB5B61 /* QPAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FA020A4497F00FB5B61 /* QPAlert.swift */; };
+		667D8FF520A4498100FB5B61 /* QPAlertActionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FA120A4497F00FB5B61 /* QPAlertActionUtils.swift */; };
+		667D8FF620A4498100FB5B61 /* QPAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FA220A4497F00FB5B61 /* QPAppearance.swift */; };
+		667D8FF720A4498100FB5B61 /* QPBaseTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FA320A4497F00FB5B61 /* QPBaseTableTableViewController.swift */; };
+		667D8FF820A4498100FB5B61 /* QPBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FA420A4497F00FB5B61 /* QPBaseTableViewCell.swift */; };
+		667D8FF920A4498100FB5B61 /* QPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FA520A4497F00FB5B61 /* QPBaseViewController.swift */; };
+		667D8FFA20A4498100FB5B61 /* QPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FA620A4497F00FB5B61 /* QPButton.swift */; };
+		667D8FFB20A4498100FB5B61 /* QPFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FA720A4497F00FB5B61 /* QPFeatureViewController.swift */; };
+		667D8FFC20A4498100FB5B61 /* QPFloatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FA820A4497F00FB5B61 /* QPFloatView.swift */; };
+		667D8FFD20A4498100FB5B61 /* QPGridTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FA920A4497F00FB5B61 /* QPGridTableViewCell.swift */; };
+		667D8FFE20A4498100FB5B61 /* QPHttpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FAA20A4497F00FB5B61 /* QPHttpUtils.swift */; };
+		667D8FFF20A4498100FB5B61 /* QPHUDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FAB20A4497F00FB5B61 /* QPHUDUtils.swift */; };
+		667D900020A4498100FB5B61 /* QPImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FAC20A4497F00FB5B61 /* QPImagePickerViewController.swift */; };
+		667D900120A4498100FB5B61 /* QPInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FAD20A4497F00FB5B61 /* QPInputTableViewCell.swift */; };
+		667D900220A4498100FB5B61 /* QPTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FAE20A4497F00FB5B61 /* QPTableView.swift */; };
+		667D900320A4498100FB5B61 /* QPTipsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FAF20A4497F00FB5B61 /* QPTipsLabel.swift */; };
+		667D900420A4498100FB5B61 /* QPUISupportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FB120A4497F00FB5B61 /* QPUISupportUtils.m */; };
+		667D900520A4498100FB5B61 /* QPViewDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FB220A4497F00FB5B61 /* QPViewDebug.swift */; };
+		667D900620A4498100FB5B61 /* QPWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FB320A4497F00FB5B61 /* QPWebViewController.swift */; };
+		667D900720A4498100FB5B61 /* UIImage+MLTint.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FB920A4498000FB5B61 /* UIImage+MLTint.m */; };
+		667D900820A4498100FB5B61 /* UIView+MLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FBB20A4498000FB5B61 /* UIView+MLExtension.m */; };
+		667D900920A4498100FB5B61 /* MLSelectPhotoAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FC020A4498000FB5B61 /* MLSelectPhotoAssets.m */; };
+		667D900A20A4498100FB5B61 /* MLSelectPhotoPickerBrowserPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FC220A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhoto.m */; };
+		667D900B20A4498100FB5B61 /* MLSelectPhotoPickerDatas.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FC420A4498000FB5B61 /* MLSelectPhotoPickerDatas.m */; };
+		667D900C20A4498100FB5B61 /* MLSelectPhotoPickerGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FC620A4498000FB5B61 /* MLSelectPhotoPickerGroup.m */; };
+		667D900D20A4498100FB5B61 /* MLSelectPhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FC920A4498000FB5B61 /* MLSelectPhotoBrowserViewController.m */; };
+		667D900E20A4498100FB5B61 /* MLSelectPhotoNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FCB20A4498000FB5B61 /* MLSelectPhotoNavigationViewController.m */; };
+		667D900F20A4498100FB5B61 /* MLSelectPhotoPickerAssetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FCD20A4498000FB5B61 /* MLSelectPhotoPickerAssetsViewController.m */; };
+		667D901020A4498100FB5B61 /* MLSelectPhotoPickerGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FCF20A4498000FB5B61 /* MLSelectPhotoPickerGroupViewController.m */; };
+		667D901120A4498100FB5B61 /* MLSelectPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FD120A4498000FB5B61 /* MLSelectPhotoPickerViewController.m */; };
+		667D901220A4498100FB5B61 /* MLPhotoPickerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FD420A4498000FB5B61 /* MLPhotoPickerImageView.m */; };
+		667D901320A4498100FB5B61 /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FD620A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoImageView.m */; };
+		667D901420A4498100FB5B61 /* MLSelectPhotoPickerBrowserPhotoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FD820A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoScrollView.m */; };
+		667D901520A4498100FB5B61 /* MLSelectPhotoPickerBrowserPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FDA20A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoView.m */; };
+		667D901620A4498100FB5B61 /* MLSelectPhotoPickerCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FDC20A4498000FB5B61 /* MLSelectPhotoPickerCollectionView.m */; };
+		667D901720A4498100FB5B61 /* MLSelectPhotoPickerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FDE20A4498000FB5B61 /* MLSelectPhotoPickerCollectionViewCell.m */; };
+		667D901820A4498100FB5B61 /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FE020A4498000FB5B61 /* MLSelectPhotoPickerFooterCollectionReusableView.m */; };
+		667D901920A4498100FB5B61 /* MLSelectPhotoPickerGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FE220A4498000FB5B61 /* MLSelectPhotoPickerGroupTableViewCell.m */; };
+		667D901A20A4498100FB5B61 /* MLSelectPhoto.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 667D8FE320A4498000FB5B61 /* MLSelectPhoto.bundle */; };
+		667D901B20A4498100FB5B61 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FE620A4498000FB5B61 /* NSDate+Utilities.m */; };
+		667D901C20A4498100FB5B61 /* AppInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FE920A4498000FB5B61 /* AppInfoManager.m */; };
+		667D901D20A4498100FB5B61 /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FEB20A4498000FB5B61 /* Bridge.m */; };
+		667D901E20A4498100FB5B61 /* QPAlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FED20A4498000FB5B61 /* QPAlertUtils.swift */; };
+		667D901F20A4498100FB5B61 /* QPCacheUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FEE20A4498000FB5B61 /* QPCacheUtils.swift */; };
+		667D902020A4498100FB5B61 /* QPCacheUtilsPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FEF20A4498000FB5B61 /* QPCacheUtilsPro.swift */; };
+		667D902120A4498100FB5B61 /* QPImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FF020A4498000FB5B61 /* QPImageUtils.swift */; };
+		667D902220A4498100FB5B61 /* QPResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FF120A4498000FB5B61 /* QPResponder.swift */; };
+		667D902320A4498100FB5B61 /* QPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FF220A4498000FB5B61 /* QPUtils.swift */; };
+		667D902420A4498100FB5B61 /* QPVersionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D8FF320A4498000FB5B61 /* QPVersionUtils.swift */; };
 		668120C62069F015002FD309 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668120C52069F014002FD309 /* AssetsLibrary.framework */; };
 		668120C82069F01F002FD309 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668120C72069F01F002FD309 /* AVFoundation.framework */; };
 		668120CA2069F029002FD309 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668120C92069F029002FD309 /* MediaPlayer.framework */; };
@@ -85,6 +134,80 @@
 		664AE9812089CBA600EB5621 /* ZXPAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPAlertController.swift; sourceTree = "<group>"; };
 		664AE9832089D41500EB5621 /* ZXPPopModalVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPPopModalVc.swift; sourceTree = "<group>"; };
 		66677D9B209C0DB0005A825C /* ZXPDataPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPDataPersistence.swift; sourceTree = "<group>"; };
+		667D8FA020A4497F00FB5B61 /* QPAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAlert.swift; sourceTree = "<group>"; };
+		667D8FA120A4497F00FB5B61 /* QPAlertActionUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAlertActionUtils.swift; sourceTree = "<group>"; };
+		667D8FA220A4497F00FB5B61 /* QPAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAppearance.swift; sourceTree = "<group>"; };
+		667D8FA320A4497F00FB5B61 /* QPBaseTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPBaseTableTableViewController.swift; sourceTree = "<group>"; };
+		667D8FA420A4497F00FB5B61 /* QPBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPBaseTableViewCell.swift; sourceTree = "<group>"; };
+		667D8FA520A4497F00FB5B61 /* QPBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPBaseViewController.swift; sourceTree = "<group>"; };
+		667D8FA620A4497F00FB5B61 /* QPButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPButton.swift; sourceTree = "<group>"; };
+		667D8FA720A4497F00FB5B61 /* QPFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPFeatureViewController.swift; sourceTree = "<group>"; };
+		667D8FA820A4497F00FB5B61 /* QPFloatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPFloatView.swift; sourceTree = "<group>"; };
+		667D8FA920A4497F00FB5B61 /* QPGridTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPGridTableViewCell.swift; sourceTree = "<group>"; };
+		667D8FAA20A4497F00FB5B61 /* QPHttpUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPHttpUtils.swift; sourceTree = "<group>"; };
+		667D8FAB20A4497F00FB5B61 /* QPHUDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPHUDUtils.swift; sourceTree = "<group>"; };
+		667D8FAC20A4497F00FB5B61 /* QPImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPImagePickerViewController.swift; sourceTree = "<group>"; };
+		667D8FAD20A4497F00FB5B61 /* QPInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPInputTableViewCell.swift; sourceTree = "<group>"; };
+		667D8FAE20A4497F00FB5B61 /* QPTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPTableView.swift; sourceTree = "<group>"; };
+		667D8FAF20A4497F00FB5B61 /* QPTipsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPTipsLabel.swift; sourceTree = "<group>"; };
+		667D8FB020A4497F00FB5B61 /* QPUISupportUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QPUISupportUtils.h; sourceTree = "<group>"; };
+		667D8FB120A4497F00FB5B61 /* QPUISupportUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QPUISupportUtils.m; sourceTree = "<group>"; };
+		667D8FB220A4497F00FB5B61 /* QPViewDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPViewDebug.swift; sourceTree = "<group>"; };
+		667D8FB320A4497F00FB5B61 /* QPWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPWebViewController.swift; sourceTree = "<group>"; };
+		667D8FB820A4498000FB5B61 /* UIImage+MLTint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MLTint.h"; sourceTree = "<group>"; };
+		667D8FB920A4498000FB5B61 /* UIImage+MLTint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MLTint.m"; sourceTree = "<group>"; };
+		667D8FBA20A4498000FB5B61 /* UIView+MLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MLExtension.h"; sourceTree = "<group>"; };
+		667D8FBB20A4498000FB5B61 /* UIView+MLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MLExtension.m"; sourceTree = "<group>"; };
+		667D8FBC20A4498000FB5B61 /* MLSelectPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhoto.h; sourceTree = "<group>"; };
+		667D8FBD20A4498000FB5B61 /* MLSelectPhotoCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoCommon.h; sourceTree = "<group>"; };
+		667D8FBF20A4498000FB5B61 /* MLSelectPhotoAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoAssets.h; sourceTree = "<group>"; };
+		667D8FC020A4498000FB5B61 /* MLSelectPhotoAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoAssets.m; sourceTree = "<group>"; };
+		667D8FC120A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerBrowserPhoto.h; sourceTree = "<group>"; };
+		667D8FC220A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerBrowserPhoto.m; sourceTree = "<group>"; };
+		667D8FC320A4498000FB5B61 /* MLSelectPhotoPickerDatas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerDatas.h; sourceTree = "<group>"; };
+		667D8FC420A4498000FB5B61 /* MLSelectPhotoPickerDatas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerDatas.m; sourceTree = "<group>"; };
+		667D8FC520A4498000FB5B61 /* MLSelectPhotoPickerGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerGroup.h; sourceTree = "<group>"; };
+		667D8FC620A4498000FB5B61 /* MLSelectPhotoPickerGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerGroup.m; sourceTree = "<group>"; };
+		667D8FC820A4498000FB5B61 /* MLSelectPhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoBrowserViewController.h; sourceTree = "<group>"; };
+		667D8FC920A4498000FB5B61 /* MLSelectPhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoBrowserViewController.m; sourceTree = "<group>"; };
+		667D8FCA20A4498000FB5B61 /* MLSelectPhotoNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoNavigationViewController.h; sourceTree = "<group>"; };
+		667D8FCB20A4498000FB5B61 /* MLSelectPhotoNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoNavigationViewController.m; sourceTree = "<group>"; };
+		667D8FCC20A4498000FB5B61 /* MLSelectPhotoPickerAssetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerAssetsViewController.h; sourceTree = "<group>"; };
+		667D8FCD20A4498000FB5B61 /* MLSelectPhotoPickerAssetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerAssetsViewController.m; sourceTree = "<group>"; };
+		667D8FCE20A4498000FB5B61 /* MLSelectPhotoPickerGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerGroupViewController.h; sourceTree = "<group>"; };
+		667D8FCF20A4498000FB5B61 /* MLSelectPhotoPickerGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerGroupViewController.m; sourceTree = "<group>"; };
+		667D8FD020A4498000FB5B61 /* MLSelectPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerViewController.h; sourceTree = "<group>"; };
+		667D8FD120A4498000FB5B61 /* MLSelectPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerViewController.m; sourceTree = "<group>"; };
+		667D8FD320A4498000FB5B61 /* MLPhotoPickerImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPhotoPickerImageView.h; sourceTree = "<group>"; };
+		667D8FD420A4498000FB5B61 /* MLPhotoPickerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLPhotoPickerImageView.m; sourceTree = "<group>"; };
+		667D8FD520A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerBrowserPhotoImageView.h; sourceTree = "<group>"; };
+		667D8FD620A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerBrowserPhotoImageView.m; sourceTree = "<group>"; };
+		667D8FD720A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerBrowserPhotoScrollView.h; sourceTree = "<group>"; };
+		667D8FD820A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerBrowserPhotoScrollView.m; sourceTree = "<group>"; };
+		667D8FD920A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerBrowserPhotoView.h; sourceTree = "<group>"; };
+		667D8FDA20A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerBrowserPhotoView.m; sourceTree = "<group>"; };
+		667D8FDB20A4498000FB5B61 /* MLSelectPhotoPickerCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerCollectionView.h; sourceTree = "<group>"; };
+		667D8FDC20A4498000FB5B61 /* MLSelectPhotoPickerCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerCollectionView.m; sourceTree = "<group>"; };
+		667D8FDD20A4498000FB5B61 /* MLSelectPhotoPickerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerCollectionViewCell.h; sourceTree = "<group>"; };
+		667D8FDE20A4498000FB5B61 /* MLSelectPhotoPickerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerCollectionViewCell.m; sourceTree = "<group>"; };
+		667D8FDF20A4498000FB5B61 /* MLSelectPhotoPickerFooterCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerFooterCollectionReusableView.h; sourceTree = "<group>"; };
+		667D8FE020A4498000FB5B61 /* MLSelectPhotoPickerFooterCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerFooterCollectionReusableView.m; sourceTree = "<group>"; };
+		667D8FE120A4498000FB5B61 /* MLSelectPhotoPickerGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerGroupTableViewCell.h; sourceTree = "<group>"; };
+		667D8FE220A4498000FB5B61 /* MLSelectPhotoPickerGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerGroupTableViewCell.m; sourceTree = "<group>"; };
+		667D8FE320A4498000FB5B61 /* MLSelectPhoto.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MLSelectPhoto.bundle; sourceTree = "<group>"; };
+		667D8FE520A4498000FB5B61 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
+		667D8FE620A4498000FB5B61 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
+		667D8FE820A4498000FB5B61 /* AppInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfoManager.h; sourceTree = "<group>"; };
+		667D8FE920A4498000FB5B61 /* AppInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfoManager.m; sourceTree = "<group>"; };
+		667D8FEA20A4498000FB5B61 /* Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		667D8FEB20A4498000FB5B61 /* Bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bridge.m; sourceTree = "<group>"; };
+		667D8FED20A4498000FB5B61 /* QPAlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPAlertUtils.swift; sourceTree = "<group>"; };
+		667D8FEE20A4498000FB5B61 /* QPCacheUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPCacheUtils.swift; sourceTree = "<group>"; };
+		667D8FEF20A4498000FB5B61 /* QPCacheUtilsPro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPCacheUtilsPro.swift; sourceTree = "<group>"; };
+		667D8FF020A4498000FB5B61 /* QPImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPImageUtils.swift; sourceTree = "<group>"; };
+		667D8FF120A4498000FB5B61 /* QPResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPResponder.swift; sourceTree = "<group>"; };
+		667D8FF220A4498000FB5B61 /* QPUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPUtils.swift; sourceTree = "<group>"; };
+		667D8FF320A4498000FB5B61 /* QPVersionUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QPVersionUtils.swift; sourceTree = "<group>"; };
 		668120C52069F014002FD309 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		668120C72069F01F002FD309 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		668120C92069F029002FD309 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -206,6 +329,157 @@
 			path = PopupWindow;
 			sourceTree = "<group>";
 		};
+		667D8F9F20A4497F00FB5B61 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				667D8FA020A4497F00FB5B61 /* QPAlert.swift */,
+				667D8FA120A4497F00FB5B61 /* QPAlertActionUtils.swift */,
+				667D8FA220A4497F00FB5B61 /* QPAppearance.swift */,
+				667D8FA320A4497F00FB5B61 /* QPBaseTableTableViewController.swift */,
+				667D8FA420A4497F00FB5B61 /* QPBaseTableViewCell.swift */,
+				667D8FA520A4497F00FB5B61 /* QPBaseViewController.swift */,
+				667D8FA620A4497F00FB5B61 /* QPButton.swift */,
+				667D8FA720A4497F00FB5B61 /* QPFeatureViewController.swift */,
+				667D8FA820A4497F00FB5B61 /* QPFloatView.swift */,
+				667D8FA920A4497F00FB5B61 /* QPGridTableViewCell.swift */,
+				667D8FAA20A4497F00FB5B61 /* QPHttpUtils.swift */,
+				667D8FAB20A4497F00FB5B61 /* QPHUDUtils.swift */,
+				667D8FAC20A4497F00FB5B61 /* QPImagePickerViewController.swift */,
+				667D8FAD20A4497F00FB5B61 /* QPInputTableViewCell.swift */,
+				667D8FAE20A4497F00FB5B61 /* QPTableView.swift */,
+				667D8FAF20A4497F00FB5B61 /* QPTipsLabel.swift */,
+				667D8FB020A4497F00FB5B61 /* QPUISupportUtils.h */,
+				667D8FB120A4497F00FB5B61 /* QPUISupportUtils.m */,
+				667D8FB220A4497F00FB5B61 /* QPViewDebug.swift */,
+				667D8FB320A4497F00FB5B61 /* QPWebViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		667D8FB420A4498000FB5B61 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				667D8FB520A4498000FB5B61 /* MLSelectPhoto */,
+				667D8FE420A4498000FB5B61 /* NSDate-Extensions-master */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		667D8FB520A4498000FB5B61 /* MLSelectPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				667D8FB620A4498000FB5B61 /* Classes */,
+				667D8FE320A4498000FB5B61 /* MLSelectPhoto.bundle */,
+			);
+			path = MLSelectPhoto;
+			sourceTree = "<group>";
+		};
+		667D8FB620A4498000FB5B61 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				667D8FB720A4498000FB5B61 /* Category */,
+				667D8FBC20A4498000FB5B61 /* MLSelectPhoto.h */,
+				667D8FBD20A4498000FB5B61 /* MLSelectPhotoCommon.h */,
+				667D8FBE20A4498000FB5B61 /* Models */,
+				667D8FC720A4498000FB5B61 /* ViewControllers */,
+				667D8FD220A4498000FB5B61 /* Views */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		667D8FB720A4498000FB5B61 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				667D8FB820A4498000FB5B61 /* UIImage+MLTint.h */,
+				667D8FB920A4498000FB5B61 /* UIImage+MLTint.m */,
+				667D8FBA20A4498000FB5B61 /* UIView+MLExtension.h */,
+				667D8FBB20A4498000FB5B61 /* UIView+MLExtension.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		667D8FBE20A4498000FB5B61 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				667D8FBF20A4498000FB5B61 /* MLSelectPhotoAssets.h */,
+				667D8FC020A4498000FB5B61 /* MLSelectPhotoAssets.m */,
+				667D8FC120A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhoto.h */,
+				667D8FC220A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhoto.m */,
+				667D8FC320A4498000FB5B61 /* MLSelectPhotoPickerDatas.h */,
+				667D8FC420A4498000FB5B61 /* MLSelectPhotoPickerDatas.m */,
+				667D8FC520A4498000FB5B61 /* MLSelectPhotoPickerGroup.h */,
+				667D8FC620A4498000FB5B61 /* MLSelectPhotoPickerGroup.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		667D8FC720A4498000FB5B61 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				667D8FC820A4498000FB5B61 /* MLSelectPhotoBrowserViewController.h */,
+				667D8FC920A4498000FB5B61 /* MLSelectPhotoBrowserViewController.m */,
+				667D8FCA20A4498000FB5B61 /* MLSelectPhotoNavigationViewController.h */,
+				667D8FCB20A4498000FB5B61 /* MLSelectPhotoNavigationViewController.m */,
+				667D8FCC20A4498000FB5B61 /* MLSelectPhotoPickerAssetsViewController.h */,
+				667D8FCD20A4498000FB5B61 /* MLSelectPhotoPickerAssetsViewController.m */,
+				667D8FCE20A4498000FB5B61 /* MLSelectPhotoPickerGroupViewController.h */,
+				667D8FCF20A4498000FB5B61 /* MLSelectPhotoPickerGroupViewController.m */,
+				667D8FD020A4498000FB5B61 /* MLSelectPhotoPickerViewController.h */,
+				667D8FD120A4498000FB5B61 /* MLSelectPhotoPickerViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		667D8FD220A4498000FB5B61 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				667D8FD320A4498000FB5B61 /* MLPhotoPickerImageView.h */,
+				667D8FD420A4498000FB5B61 /* MLPhotoPickerImageView.m */,
+				667D8FD520A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoImageView.h */,
+				667D8FD620A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoImageView.m */,
+				667D8FD720A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoScrollView.h */,
+				667D8FD820A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoScrollView.m */,
+				667D8FD920A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoView.h */,
+				667D8FDA20A4498000FB5B61 /* MLSelectPhotoPickerBrowserPhotoView.m */,
+				667D8FDB20A4498000FB5B61 /* MLSelectPhotoPickerCollectionView.h */,
+				667D8FDC20A4498000FB5B61 /* MLSelectPhotoPickerCollectionView.m */,
+				667D8FDD20A4498000FB5B61 /* MLSelectPhotoPickerCollectionViewCell.h */,
+				667D8FDE20A4498000FB5B61 /* MLSelectPhotoPickerCollectionViewCell.m */,
+				667D8FDF20A4498000FB5B61 /* MLSelectPhotoPickerFooterCollectionReusableView.h */,
+				667D8FE020A4498000FB5B61 /* MLSelectPhotoPickerFooterCollectionReusableView.m */,
+				667D8FE120A4498000FB5B61 /* MLSelectPhotoPickerGroupTableViewCell.h */,
+				667D8FE220A4498000FB5B61 /* MLSelectPhotoPickerGroupTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		667D8FE420A4498000FB5B61 /* NSDate-Extensions-master */ = {
+			isa = PBXGroup;
+			children = (
+				667D8FE520A4498000FB5B61 /* NSDate+Utilities.h */,
+				667D8FE620A4498000FB5B61 /* NSDate+Utilities.m */,
+			);
+			path = "NSDate-Extensions-master";
+			sourceTree = "<group>";
+		};
+		667D8FE720A4498000FB5B61 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				667D8FE820A4498000FB5B61 /* AppInfoManager.h */,
+				667D8FE920A4498000FB5B61 /* AppInfoManager.m */,
+				667D8FEA20A4498000FB5B61 /* Bridge.h */,
+				667D8FEB20A4498000FB5B61 /* Bridge.m */,
+				667D8FED20A4498000FB5B61 /* QPAlertUtils.swift */,
+				667D8FEE20A4498000FB5B61 /* QPCacheUtils.swift */,
+				667D8FEF20A4498000FB5B61 /* QPCacheUtilsPro.swift */,
+				667D8FF020A4498000FB5B61 /* QPImageUtils.swift */,
+				667D8FF120A4498000FB5B61 /* QPResponder.swift */,
+				667D8FF220A4498000FB5B61 /* QPUtils.swift */,
+				667D8FF320A4498000FB5B61 /* QPVersionUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		66A3A220200760DA001D8723 = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +539,9 @@
 		66E1F4A12094556700C14445 /* QP */ = {
 			isa = PBXGroup;
 			children = (
+				667D8FB420A4498000FB5B61 /* Lib */,
+				667D8F9F20A4497F00FB5B61 /* UI */,
+				667D8FE720A4498000FB5B61 /* Utils */,
 				6690F4D720A037EF008B89DE /* QPLogUtils.swift */,
 			);
 			path = QP;
@@ -447,6 +724,7 @@
 				66A3A237200760DA001D8723 /* LaunchScreen.storyboard in Resources */,
 				66A3A234200760DA001D8723 /* Assets.xcassets in Resources */,
 				66A3A232200760DA001D8723 /* Main.storyboard in Resources */,
+				667D901A20A4498100FB5B61 /* MLSelectPhoto.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,7 +867,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AwesomeCache/AwesomeCache.framework",
 				"${BUILT_PRODUCTS_DIR}/CGFloatType/CGFloatType.framework",
-				"${BUILT_PRODUCTS_DIR}/CJWUtilsS/CJWUtilsS.framework",
 				"${BUILT_PRODUCTS_DIR}/ClusterPrePermissions/ClusterPrePermissions.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
@@ -609,7 +886,6 @@
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/NSDate+TimeAgo/NSDate_TimeAgo.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/PodAsset/PodAsset.framework",
 				"${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -626,7 +902,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AwesomeCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CGFloatType.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CJWUtilsS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ClusterPrePermissions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
@@ -646,7 +921,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSDate_TimeAgo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PodAsset.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiniu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -687,36 +961,84 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				667D8FFD20A4498100FB5B61 /* QPGridTableViewCell.swift in Sources */,
 				66920A102099604F00D7A45F /* Zuser.swift in Sources */,
+				667D8FFF20A4498100FB5B61 /* QPHUDUtils.swift in Sources */,
+				667D902220A4498100FB5B61 /* QPResponder.swift in Sources */,
+				667D900F20A4498100FB5B61 /* MLSelectPhotoPickerAssetsViewController.m in Sources */,
+				667D900A20A4498100FB5B61 /* MLSelectPhotoPickerBrowserPhoto.m in Sources */,
 				6607E86B20735D6B00A4A0E5 /* ZXPTestTableViewController.swift in Sources */,
 				6607E86F207372B500A4A0E5 /* ZXPImagePickerGridCell.swift in Sources */,
 				C75CAD5920879F2100438E89 /* ZXPImagePickerUtils.swift in Sources */,
 				669218C720A1AB0600B08E4C /* ZXPImageUtils.swift in Sources */,
 				66677D9C209C0DB0005A825C /* ZXPDataPersistence.swift in Sources */,
+				667D901120A4498100FB5B61 /* MLSelectPhotoPickerViewController.m in Sources */,
 				66294D3C20732BF7000B57D3 /* ZxpUtils.swift in Sources */,
 				C7C69EBE206BE496006319B4 /* DownloadAndFileController.swift in Sources */,
+				667D8FF920A4498100FB5B61 /* QPBaseViewController.swift in Sources */,
+				667D901720A4498100FB5B61 /* MLSelectPhotoPickerCollectionViewCell.m in Sources */,
+				667D900C20A4498100FB5B61 /* MLSelectPhotoPickerGroup.m in Sources */,
+				667D900520A4498100FB5B61 /* QPViewDebug.swift in Sources */,
 				664AE9822089CBA600EB5621 /* ZXPAlertController.swift in Sources */,
 				6690F4D820A037EF008B89DE /* QPLogUtils.swift in Sources */,
+				667D901320A4498100FB5B61 /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
+				667D8FF820A4498100FB5B61 /* QPBaseTableViewCell.swift in Sources */,
+				667D900220A4498100FB5B61 /* QPTableView.swift in Sources */,
 				66C561E52074BD4E00C77A7E /* ZXPImagePreviewGridCell.swift in Sources */,
+				667D901420A4498100FB5B61 /* MLSelectPhotoPickerBrowserPhotoScrollView.m in Sources */,
 				6690F4DC20A04FAD008B89DE /* ZXPColor.swift in Sources */,
+				667D901820A4498100FB5B61 /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */,
 				66294D3F20732C72000B57D3 /* ZXPImagePickerTableVC.swift in Sources */,
+				667D901B20A4498100FB5B61 /* NSDate+Utilities.m in Sources */,
+				667D900020A4498100FB5B61 /* QPImagePickerViewController.swift in Sources */,
+				667D900820A4498100FB5B61 /* UIView+MLExtension.m in Sources */,
 				66ABF8FB2092F99F00BD6784 /* AppAndDeviceInfoManager.swift in Sources */,
+				667D900120A4498100FB5B61 /* QPInputTableViewCell.swift in Sources */,
+				667D901020A4498100FB5B61 /* MLSelectPhotoPickerGroupViewController.m in Sources */,
 				6607E869207353E600A4A0E5 /* ZXPImagePickerGridVC.swift in Sources */,
 				C75CAD572087896700438E89 /* ZXPImagePickerVC.swift in Sources */,
+				667D901620A4498100FB5B61 /* MLSelectPhotoPickerCollectionView.m in Sources */,
 				66A3A22F200760DA001D8723 /* ViewController.swift in Sources */,
+				667D901E20A4498100FB5B61 /* QPAlertUtils.swift in Sources */,
+				667D902420A4498100FB5B61 /* QPVersionUtils.swift in Sources */,
 				66C561E32074B98900C77A7E /* ZXPImagePreviewVC.swift in Sources */,
+				667D902120A4498100FB5B61 /* QPImageUtils.swift in Sources */,
+				667D901520A4498100FB5B61 /* MLSelectPhotoPickerBrowserPhotoView.m in Sources */,
+				667D900620A4498100FB5B61 /* QPWebViewController.swift in Sources */,
 				C78AEB5C2088EDE5009A61DC /* DownloadAndFile.swift in Sources */,
 				66ABF8FD20930DDD00BD6784 /* ZXPScrollSelectViewController.swift in Sources */,
 				66920A122099A0FD00D7A45F /* ZXPToastView.swift in Sources */,
 				66E1F4A3209470DC00C14445 /* ZXPResponder.swift in Sources */,
+				667D902320A4498100FB5B61 /* QPUtils.swift in Sources */,
+				667D900920A4498100FB5B61 /* MLSelectPhotoAssets.m in Sources */,
+				667D8FFE20A4498100FB5B61 /* QPHttpUtils.swift in Sources */,
+				667D8FF420A4498100FB5B61 /* QPAlert.swift in Sources */,
+				667D901220A4498100FB5B61 /* MLPhotoPickerImageView.m in Sources */,
+				667D8FFA20A4498100FB5B61 /* QPButton.swift in Sources */,
+				667D8FF520A4498100FB5B61 /* QPAlertActionUtils.swift in Sources */,
+				667D901920A4498100FB5B61 /* MLSelectPhotoPickerGroupTableViewCell.m in Sources */,
 				6607E8652073421800A4A0E5 /* TableViewUtils.swift in Sources */,
+				667D8FFB20A4498100FB5B61 /* QPFeatureViewController.swift in Sources */,
+				667D900E20A4498100FB5B61 /* MLSelectPhotoNavigationViewController.m in Sources */,
+				667D900D20A4498100FB5B61 /* MLSelectPhotoBrowserViewController.m in Sources */,
 				66A3A22D200760DA001D8723 /* AppDelegate.swift in Sources */,
+				667D900420A4498100FB5B61 /* QPUISupportUtils.m in Sources */,
+				667D8FF720A4498100FB5B61 /* QPBaseTableTableViewController.swift in Sources */,
 				C7229736208F7098007B5CAC /* ZXPImageBrowserVC.swift in Sources */,
+				667D901D20A4498100FB5B61 /* Bridge.m in Sources */,
 				664348BE2091C82E00F8BC98 /* ZXPFixedSelectViewController.swift in Sources */,
+				667D8FF620A4498100FB5B61 /* QPAppearance.swift in Sources */,
+				667D901F20A4498100FB5B61 /* QPCacheUtils.swift in Sources */,
+				667D900720A4498100FB5B61 /* UIImage+MLTint.m in Sources */,
 				6697FDD3208F07B900934249 /* TestTransitionFromViewController.swift in Sources */,
 				6607E86D20735FB200A4A0E5 /* ImagePickerAndBrowserController.swift in Sources */,
+				667D902020A4498100FB5B61 /* QPCacheUtilsPro.swift in Sources */,
 				C71538F62007A96E0020EC3B /* ZXPAppleImagePickerController.swift in Sources */,
 				664AE9842089D41500EB5621 /* ZXPPopModalVc.swift in Sources */,
+				667D900B20A4498100FB5B61 /* MLSelectPhotoPickerDatas.m in Sources */,
+				667D901C20A4498100FB5B61 /* AppInfoManager.m in Sources */,
+				667D8FFC20A4498100FB5B61 /* QPFloatView.swift in Sources */,
+				667D900320A4498100FB5B61 /* QPTipsLabel.swift in Sources */,
 				6690F4DA20A0409C008B89DE /* ZXPDatePickerDialog.swift in Sources */,
 				C78AEB5E2089046C009A61DC /* ZXPPopupWindowTestTableViewController.swift in Sources */,
 			);

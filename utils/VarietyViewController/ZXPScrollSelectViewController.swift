@@ -63,7 +63,7 @@ class ZXPScrollSelectViewController: UIViewController {
     }
     ///中间view的高 自动计算
     private func scrollViewHeight() -> CGFloat {
-        return containsView.height - bottomViewHeight()
+        return containsView.frame.height - bottomViewHeight()
     }
     
     ///vc个数
@@ -87,21 +87,21 @@ class ZXPScrollSelectViewController: UIViewController {
     }
     ///添加底view
     private func initContainsView() {
-        containsView.frame = CGRect(x: 0, y: topPading() , width: self.view.width, height: self.view.height - topPading() - bottomPading())
+        containsView.frame = CGRect(x: 0, y: topPading() , width: self.view.frame.width, height: self.view.frame.height - topPading() - bottomPading())
         containsView.backgroundColor = UIColor.green
         self.view.addSubview(containsView)
         
         mainScrollView.backgroundColor = UIColor.yellow
-        mainScrollView.frame = CGRect(x: 0, y: 0, width: containsView.width, height: scrollViewHeight())
+        mainScrollView.frame = CGRect(x: 0, y: 0, width: containsView.frame.width, height: scrollViewHeight())
         containsView.addSubview(mainScrollView)
         configMainScrollView()
         
-        topContainsView.backgroundColor = UIColor.alizarin()
-        topContainsView.frame = CGRect(x: 0, y: 0, width: containsView.width, height: topViewHeight())
+        topContainsView.backgroundColor = UIColor.randomColor
+        topContainsView.frame = CGRect(x: 0, y: 0, width: containsView.frame.width, height: topViewHeight())
         containsView.addSubview(topContainsView)
         
         bottomContainsView.backgroundColor = UIColor.green
-        bottomContainsView.frame = CGRect(x: 0, y: scrollViewHeight(), width: containsView.width, height: bottomViewHeight())
+        bottomContainsView.frame = CGRect(x: 0, y: scrollViewHeight(), width: containsView.frame.width, height: bottomViewHeight())
         containsView.addSubview(bottomContainsView)
         
         addView()
@@ -303,7 +303,7 @@ class ZXPScrollSelectViewControllerCS: ZXPScrollSelectViewController {
     
     override func topView() -> UIView? {
         let bg = UIView()
-        let sv = initSegmentView()
+        let sv = initSegmentedControl()
         bg.addSubview(sv)
         sv.frame = CGRect(x: 0, y: 100, width: ZSCREEN_WIDTH, height: 50)
         return bg
@@ -333,7 +333,7 @@ class ZXPScrollSelectViewControllerCS: ZXPScrollSelectViewController {
         scrollTo(index)
     }
     
-    override func customSegment(segment: HMSegmentedControl) -> HMSegmentedControl {
+    override func customSegmentedControl(_ segment: HMSegmentedControl) -> HMSegmentedControl {
         self.segment = segment
         return segment
     }
