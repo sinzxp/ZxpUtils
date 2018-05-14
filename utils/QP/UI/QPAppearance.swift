@@ -240,9 +240,7 @@ open class QPPaddingTextField: UITextField {
 	@IBInspectable public var paddingRight: CGFloat = 4
 
 	override open func textRect(forBounds bounds: CGRect) -> CGRect {
-//        CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
-        return CGRect(x:bounds.origin.x + paddingLeft, y:bounds.origin.y,
-                      width:bounds.size.width - paddingLeft - paddingRight, height:bounds.size.height);
+        return CGRect(x:bounds.origin.x + paddingLeft, y:bounds.origin.y, width:bounds.size.width - paddingLeft - paddingRight, height:bounds.size.height);
 	}
 
 	override open func editingRect(forBounds bounds: CGRect) -> CGRect {
