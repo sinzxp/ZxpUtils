@@ -88,6 +88,8 @@
 		66A3A24D200760DA001D8723 /* ZxpUtilsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3A24C200760DA001D8723 /* ZxpUtilsUITests.swift */; };
 		66ABF8FB2092F99F00BD6784 /* AppAndDeviceInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ABF8FA2092F99F00BD6784 /* AppAndDeviceInfoManager.swift */; };
 		66ABF8FD20930DDD00BD6784 /* ZXPScrollSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ABF8FC20930DDD00BD6784 /* ZXPScrollSelectViewController.swift */; };
+		66B2468F20A9700600E52E2D /* ClickOnTheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B2468E20A9700600E52E2D /* ClickOnTheViewController.swift */; };
+		66B2469120A98ECF00E52E2D /* ZXPViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B2469020A98ECF00E52E2D /* ZXPViewUtils.swift */; };
 		66C561E32074B98900C77A7E /* ZXPImagePreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C561E22074B98900C77A7E /* ZXPImagePreviewVC.swift */; };
 		66C561E52074BD4E00C77A7E /* ZXPImagePreviewGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C561E42074BD4E00C77A7E /* ZXPImagePreviewGridCell.swift */; };
 		66E1F4A3209470DC00C14445 /* ZXPResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1F4A2209470DC00C14445 /* ZXPResponder.swift */; };
@@ -233,6 +235,8 @@
 		66A3A24E200760DA001D8723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66ABF8FA2092F99F00BD6784 /* AppAndDeviceInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAndDeviceInfoManager.swift; sourceTree = "<group>"; };
 		66ABF8FC20930DDD00BD6784 /* ZXPScrollSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPScrollSelectViewController.swift; sourceTree = "<group>"; };
+		66B2468E20A9700600E52E2D /* ClickOnTheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickOnTheViewController.swift; sourceTree = "<group>"; };
+		66B2469020A98ECF00E52E2D /* ZXPViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPViewUtils.swift; sourceTree = "<group>"; };
 		66C561E22074B98900C77A7E /* ZXPImagePreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImagePreviewVC.swift; sourceTree = "<group>"; };
 		66C561E42074BD4E00C77A7E /* ZXPImagePreviewGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImagePreviewGridCell.swift; sourceTree = "<group>"; };
 		66E1F4A2209470DC00C14445 /* ZXPResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPResponder.swift; sourceTree = "<group>"; };
@@ -573,6 +577,7 @@
 			children = (
 				6607E86A20735D6B00A4A0E5 /* ZXPTestTableViewController.swift */,
 				C7C69EBD206BE496006319B4 /* DownloadAndFileController.swift */,
+				66B2468E20A9700600E52E2D /* ClickOnTheViewController.swift */,
 				6607E86C20735FB200A4A0E5 /* ImagePickerAndBrowserController.swift */,
 				C78AEB5D2089046C009A61DC /* ZXPPopupWindowTestTableViewController.swift */,
 				6697FDD2208F07B900934249 /* TestTransitionFromViewController.swift */,
@@ -594,6 +599,7 @@
 				66E1F4A2209470DC00C14445 /* ZXPResponder.swift */,
 				66677D9B209C0DB0005A825C /* ZXPDataPersistence.swift */,
 				6690F4DB20A04FAD008B89DE /* ZXPColor.swift */,
+				66B2469020A98ECF00E52E2D /* ZXPViewUtils.swift */,
 				669218C620A1AB0600B08E4C /* ZXPImageUtils.swift */,
 				66ABF8FA2092F99F00BD6784 /* AppAndDeviceInfoManager.swift */,
 				66294D3B20732BF7000B57D3 /* ZxpUtils.swift */,
@@ -973,6 +979,7 @@
 				669218C720A1AB0600B08E4C /* ZXPImageUtils.swift in Sources */,
 				66677D9C209C0DB0005A825C /* ZXPDataPersistence.swift in Sources */,
 				667D901120A4498100FB5B61 /* MLSelectPhotoPickerViewController.m in Sources */,
+				66B2468F20A9700600E52E2D /* ClickOnTheViewController.swift in Sources */,
 				66294D3C20732BF7000B57D3 /* ZxpUtils.swift in Sources */,
 				C7C69EBE206BE496006319B4 /* DownloadAndFileController.swift in Sources */,
 				667D8FF920A4498100FB5B61 /* QPBaseViewController.swift in Sources */,
@@ -997,6 +1004,7 @@
 				667D901020A4498100FB5B61 /* MLSelectPhotoPickerGroupViewController.m in Sources */,
 				6607E869207353E600A4A0E5 /* ZXPImagePickerGridVC.swift in Sources */,
 				C75CAD572087896700438E89 /* ZXPImagePickerVC.swift in Sources */,
+				66B2469120A98ECF00E52E2D /* ZXPViewUtils.swift in Sources */,
 				667D901620A4498100FB5B61 /* MLSelectPhotoPickerCollectionView.m in Sources */,
 				66A3A22F200760DA001D8723 /* ViewController.swift in Sources */,
 				667D901E20A4498100FB5B61 /* QPAlertUtils.swift in Sources */,

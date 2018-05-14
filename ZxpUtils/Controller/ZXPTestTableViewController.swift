@@ -57,7 +57,7 @@ class ZXPTestTableViewController: UITableViewController {
         }
         if section == 6 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "6666666"
+            cell.textLabel?.text = "点击事件动画"
             return cell
         }
         if section == 7 {
@@ -105,7 +105,8 @@ class ZXPTestTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 6 {
-            
+            let vc = ClickOnTheViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 7 {
         }
@@ -115,10 +116,6 @@ class ZXPTestTableViewController: UITableViewController {
         if section == 9 {
 
         }
-    }
-    
-    override func TimerPerformHandler() {
-        print("hhhhhhh")
     }
     
 }
