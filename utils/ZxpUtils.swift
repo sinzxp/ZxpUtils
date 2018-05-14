@@ -17,7 +17,7 @@ var ZSCREEN_WIDTH =  UIScreen.main.bounds.size.width
 
 //MARK: - 点击事件
 public extension UIView {
-    
+
     ///单击
     public func addTapViewGesture(_ target: Any?, action: Selector) {
         let tap = UITapGestureRecognizer(target: target, action: action)
