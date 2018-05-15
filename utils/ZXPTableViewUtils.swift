@@ -8,10 +8,6 @@
 
 import UIKit
 
-class TableViewUtils: NSObject {
-
-}
-
 extension UITableView {
     //MARK: - 去掉多余的分隔线
     func setExtraCellLineHidden() {

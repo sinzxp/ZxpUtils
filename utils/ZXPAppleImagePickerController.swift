@@ -140,10 +140,11 @@ extension NSObject{
     
     ///保存图片
     func savedPhoto(_ image:UIImage) {
+//        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
     }
     //保存图片的回调
-    func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject) {
+    open func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject) {
         if didFinishSavingWithError != nil {
             print("保存失败")
             return
@@ -283,7 +284,7 @@ public class ZXPAppleVideoController: UIImagePickerController,UIImagePickerContr
     }
     
     //保存回调
-    override func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject) {
+    override public func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject) {
         if didFinishSavingWithError != nil {
             print("保存失败")
             return

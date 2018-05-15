@@ -24,7 +24,7 @@ class ImagePickerAndBrowserController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 9
+        return 10
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,6 +81,11 @@ class ImagePickerAndBrowserController: UITableViewController {
         if section == 8 {
             let cell = UITableViewCell()
             cell.textLabel?.text = "监听相册变化 获取最新添加的图片"
+            return cell
+        }
+        if section == 9 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "php保存图片"
             return cell
         }
         return UITableViewCell()
@@ -143,6 +148,18 @@ class ImagePickerAndBrowserController: UITableViewController {
                 self.showTextTime("无图")
             }
             self.tableView.reloadData()
+        }
+        if section == 9 {
+            PhotoAlbumUtil.saveImageInAlbum(image: UIImage(), albumName: "航歌") { (result) in
+//                switch result{
+//                case .success:
+//                    print("保存成功")
+//                case .denied:
+//                    print("被拒绝")
+//                case .error:
+//                    print("保存错误")
+//                }
+            }
         }
     }
     

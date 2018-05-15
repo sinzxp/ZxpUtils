@@ -14,6 +14,7 @@ class ZXPImageUtils: NSObject {
 
 extension UIImage {
     
+    //MARK: - 压缩图片size大小
     func scaleToSize(_ size:CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         self.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
@@ -21,7 +22,7 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return img!
     }
-    
+    //MARK: - 压缩图片size大小,percent质量0-1
     func zipImage(_ scaleSize:CGFloat,percent: CGFloat) -> UIImage{
         UIGraphicsBeginImageContext(CGSize(width: self.size.width * scaleSize, height: self.size.height * scaleSize))
         self.draw(in: CGRect(x: 0, y: 0, width: self.size.width * scaleSize, height:self.size.height * scaleSize))
@@ -36,12 +37,12 @@ extension UIImage {
 }
 
 extension UIImage {
-    
+
     func compressImage(maxLength: Int) -> UIImage {
         let tempMaxLength: Int = maxLength / 8
         var compression: CGFloat = 1
         guard var data = UIImageJPEGRepresentation(self, compression), data.count > tempMaxLength else { return self }
-        
+
         // Compress by size
         var max: CGFloat = 1
         var min: CGFloat = 0
@@ -58,7 +59,7 @@ extension UIImage {
         }
         var resultImage: UIImage = UIImage(data: data)!
         if data.count < tempMaxLength { return resultImage }
-        
+
         // Compress by size
         var lastDataLength: Int = 0
         while data.count > tempMaxLength && data.count != lastDataLength {
@@ -75,7 +76,8 @@ extension UIImage {
         return resultImage
     }
 }
-    
+
+//MARK: - 压缩图片1280
 extension UIImage {
     
     ///    a，图片宽或者高均小于或等于1280时图片尺寸保持不变，不改变图片大小
@@ -140,7 +142,7 @@ extension UIImage {
         
     }
     
-    //图片压缩 1000kb以下的图片控制在100kb-200kb之间
+    ///图片压缩质量 1000kb以下的图片控制在100kb-200kb之间
     func compressImageSize() -> UIImage {
         let originalImgSize = UIImageJPEGRepresentation(self, 1)!.count
         var zipImageData:Data!
