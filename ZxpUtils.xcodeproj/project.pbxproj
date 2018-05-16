@@ -14,6 +14,7 @@
 		6607E86B20735D6B00A4A0E5 /* ZXPTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607E86A20735D6B00A4A0E5 /* ZXPTestTableViewController.swift */; };
 		6607E86D20735FB200A4A0E5 /* ImagePickerAndBrowserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607E86C20735FB200A4A0E5 /* ImagePickerAndBrowserController.swift */; };
 		6607E86F207372B500A4A0E5 /* ZXPImagePickerGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607E86E207372B500A4A0E5 /* ZXPImagePickerGridCell.swift */; };
+		6626A10B20ABDDC2005D1E7E /* ZXPPermissionsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6626A10A20ABDDC2005D1E7E /* ZXPPermissionsUtils.swift */; };
 		66294D3C20732BF7000B57D3 /* ZxpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66294D3B20732BF7000B57D3 /* ZxpUtils.swift */; };
 		66294D3F20732C72000B57D3 /* ZXPImagePickerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66294D3E20732C72000B57D3 /* ZXPImagePickerTableVC.swift */; };
 		664348BE2091C82E00F8BC98 /* ZXPFixedSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664348BD2091C82E00F8BC98 /* ZXPFixedSelectViewController.swift */; };
@@ -129,6 +130,7 @@
 		6607E86A20735D6B00A4A0E5 /* ZXPTestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPTestTableViewController.swift; sourceTree = "<group>"; };
 		6607E86C20735FB200A4A0E5 /* ImagePickerAndBrowserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerAndBrowserController.swift; sourceTree = "<group>"; };
 		6607E86E207372B500A4A0E5 /* ZXPImagePickerGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImagePickerGridCell.swift; sourceTree = "<group>"; };
+		6626A10A20ABDDC2005D1E7E /* ZXPPermissionsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPPermissionsUtils.swift; sourceTree = "<group>"; };
 		66294D3B20732BF7000B57D3 /* ZxpUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZxpUtils.swift; sourceTree = "<group>"; };
 		66294D3E20732C72000B57D3 /* ZXPImagePickerTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImagePickerTableVC.swift; sourceTree = "<group>"; };
 		66392BDB2068FDF200E67548 /* ZxpUtils-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZxpUtils-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 				66E1F4A2209470DC00C14445 /* ZXPResponder.swift */,
 				66677D9B209C0DB0005A825C /* ZXPDataPersistence.swift */,
 				6690F4DB20A04FAD008B89DE /* ZXPColor.swift */,
+				6626A10A20ABDDC2005D1E7E /* ZXPPermissionsUtils.swift */,
 				66B2469020A98ECF00E52E2D /* ZXPViewUtils.swift */,
 				669218C620A1AB0600B08E4C /* ZXPImageUtils.swift */,
 				66ABF8FA2092F99F00BD6784 /* ZXPAppAndDeviceInfoManager.swift */,
@@ -1018,6 +1021,7 @@
 				66920A122099A0FD00D7A45F /* ZXPToastView.swift in Sources */,
 				66E1F4A3209470DC00C14445 /* ZXPResponder.swift in Sources */,
 				667D902320A4498100FB5B61 /* QPUtils.swift in Sources */,
+				6626A10B20ABDDC2005D1E7E /* ZXPPermissionsUtils.swift in Sources */,
 				667D900920A4498100FB5B61 /* MLSelectPhotoAssets.m in Sources */,
 				667D8FFE20A4498100FB5B61 /* QPHttpUtils.swift in Sources */,
 				667D8FF420A4498100FB5B61 /* QPAlert.swift in Sources */,

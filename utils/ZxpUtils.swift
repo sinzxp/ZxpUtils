@@ -246,7 +246,7 @@ extension UIImage {
         let sourceImageRef: CGImage = self.cgImage!
         let newCGImage = sourceImageRef.cropping(to: CGRect(x: rect.minX * scale, y: rect.minY * scale, width: rect.width * scale, height: rect.height * scale ))
         let newImage = UIImage(cgImage: newCGImage!)
-        print("---> \(rect)")
+//        print("---> \(rect)")
         return newImage
     }
 }

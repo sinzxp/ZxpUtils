@@ -26,7 +26,7 @@ extension ZXPResponder : PHPhotoLibraryChangeObserver {
     
     ///监听相册变化
     public func addPhPhotoLibraryRegister() {
-        if PhotoLibraryPermissions() {
+        if isPhotoLibraryPermissions() {
             self.getAssetsFetchResults()
             PHPhotoLibrary.shared().register(self)
         }
@@ -37,45 +37,7 @@ extension ZXPResponder : PHPhotoLibraryChangeObserver {
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
     
-    //当照片库发生变化的时候会触发
-    public func photoLibraryDidChange(_ changeInstance: PHChange) {
-        if let assetsFetchResults = self.assetsFetchResults {
-            //获取assetsFetchResults的所有变化情况，以及assetsFetchResults的成员变化前后的数据
-            guard let collectionChanges = changeInstance.changeDetails(for: self.assetsFetchResults as! PHFetchResult<PHObject>) else { return }
-            DispatchQueue.main.async {
-                //获取最新的完整数据
-                if let allResult = collectionChanges.fetchResultAfterChanges as? PHFetchResult<PHAsset> {
-                    self.assetsFetchResults = allResult
-                }
-                
-                if !collectionChanges.hasIncrementalChanges || collectionChanges.hasMoves {
-                    return
-                } else {
-                    print("--- 监听到变化 ---")
-                    //            //照片删除情况
-                    //            if let removedIndexes = collectionChanges.removedIndexes, removedIndexes.count > 0{
-                    //                print("删除了\(removedIndexes.count)张照片")
-                    //            }
-                    //            //照片修改情况
-                    //            if let changedIndexes = collectionChanges.changedIndexes, changedIndexes.count > 0{
-                    //                print("修改了\(changedIndexes.count)张照片")
-                    //            }
-                    //照片新增情况
-                    if let insertedIndexes = collectionChanges.insertedIndexes, insertedIndexes.count > 0 {
-                        print("新增了\(insertedIndexes.count)张照片")
-                        //获取最后添加的图片资源
-                        let asset = assetsFetchResults[insertedIndexes.first!]
-                        //获取缩略图
-                        PHImageManager.default().requestImage(for: asset, targetSize: self.setImgSize() , contentMode: .aspectFill, options: nil) { (image, info) in
-                            self.getNewAddedImage(image, asset: asset)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    //图大小
+    //图大小 默认PHImageManagerMaximumSize
     open func setImgSize() -> CGSize {
 //        let scale = UIScreen.main.scale //像素?
 //        let thumbnailSize = CGSize( width: ZSCREEN_WIDTH * 0.3 * scale , height: ZSCREEN_WIDTH * 0.3 * scale)
@@ -90,5 +52,39 @@ extension ZXPResponder : PHPhotoLibraryChangeObserver {
         self.assetsFetchResults = PHAsset.fetchAssets(with: .image, options: allPhotosOptions)
     }
     
+    //当照片库发生变化的时候会触发
+    public func photoLibraryDidChange(_ changeInstance: PHChange) {
+        if let _ = self.assetsFetchResults {
+            //获取assetsFetchResults的所有变化情况，以及assetsFetchResults的成员变化前后的数据
+            guard let collectionChanges = changeInstance.changeDetails(for: self.assetsFetchResults as! PHFetchResult<PHObject>) else { return }
+            //获取最新的完整数据
+            if let allResult = collectionChanges.fetchResultAfterChanges as? PHFetchResult<PHAsset> {
+                self.assetsFetchResults = allResult
+            }
+            if !collectionChanges.hasIncrementalChanges || collectionChanges.hasMoves {
+                return
+            } else {
+//                print("--- 监听到变化 ---")
+//                //照片删除情况
+//                if let removedIndexes = collectionChanges.removedIndexes, removedIndexes.count > 0{
+//                    print("删除了\(removedIndexes.count)张照片")
+//                }
+//                //照片修改情况
+//                if let changedIndexes = collectionChanges.changedIndexes, changedIndexes.count > 0{
+//                    print("修改了\(changedIndexes.count)张照片")
+//                }
+                //照片新增情况
+                if let insertedIndexes = collectionChanges.insertedIndexes, insertedIndexes.count > 0 {
+                    print("新增了\(insertedIndexes.count)张照片")
+                    //获取最后添加的图片资源
+                    let asset = self.assetsFetchResults![insertedIndexes.first!]
+                    //获取缩略图
+                    PHImageManager.default().requestImage(for: asset, targetSize: self.setImgSize() , contentMode: .aspectFill, options: nil) { (image, info) in
+                        self.getNewAddedImage(image, asset: asset)
+                    }
+                }
+            }
+        }
+    }
 }
 

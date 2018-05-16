@@ -103,7 +103,7 @@ public class ZXPAppleImagePickerController: UIImagePickerController,UIImagePicke
      当来数据来源是照相机的时候这个值才有效 UIImagePickerControllerMediaMetadata
      */
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        print("图片选择：\(info)")
+//        print("图片选择：\(info)")
         if isEditor {
             //获取编辑后的图片
             let image = info[UIImagePickerControllerEditedImage] as? UIImage
@@ -138,7 +138,7 @@ public class ZXPAppleImagePickerController: UIImagePickerController,UIImagePicke
 
 extension NSObject{
     
-    ///保存图片
+    ///保存图片 UIImageWriteToSavedPhotosAlbum方法 回调image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject)
     func savedPhoto(_ image:UIImage) {
 //        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
@@ -149,6 +149,7 @@ extension NSObject{
             print("保存失败")
             return
         }
+        self.Toast.showToastExt("保存成功",position:.Bottom)
         print("OK")
     }
     
@@ -165,26 +166,6 @@ extension NSObject{
     func isCameraFront() -> Bool {
         ///判断 isCameraDeviceAvailable
         return UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.front)
-    }
-    
-    ///判断相机权限
-    func cameraPermissions() -> Bool{
-        let authStatus:AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
-        if (authStatus == .denied || authStatus == .restricted) {
-            return false
-        }else {
-            return true
-        }
-    }
-    
-    ///判断相册权限
-    func PhotoLibraryPermissions() -> Bool {
-        let library:PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-        if (library == .denied || library == .restricted) {
-            return false
-        }else {
-            return true
-        }
     }
     
 }
