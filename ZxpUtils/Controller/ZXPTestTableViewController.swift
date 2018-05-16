@@ -109,6 +109,7 @@ class ZXPTestTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 7 {
+            print("\(ZXPPermissionsUtils.isPermissions(.Audio))")
         }
         if section == 8 {
             

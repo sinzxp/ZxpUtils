@@ -9,9 +9,45 @@
 import UIKit
 import Photos
 
+
 ///权限
 class ZXPPermissionsUtils: NSObject {
-
+    
+    enum permissionsMediaType:String {
+        case Video , Audio
+    }
+    
+    class public func isPermissions(_ mediaType: permissionsMediaType) -> Bool {
+        var status:AVAuthorizationStatus!
+        if mediaType == permissionsMediaType.Audio {
+            status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeAudio)
+        }
+        if mediaType == permissionsMediaType.Video {
+            status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        }
+        switch status {
+        case .authorized:
+            return true
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeAudio, completionHandler: {
+                (status) in
+                DispatchQueue.main.async(execute: { () -> Void in
+                    _ = self.isPermissions(mediaType)
+                })
+            })
+        default:
+            var text = ""
+            if mediaType == permissionsMediaType.Audio {
+                text = "麦克风"
+            }
+            if mediaType == permissionsMediaType.Video {
+                text = "相机"
+            }
+            NSObject().toOpenSetting("访问\(text)受限", message: "点击“设置”，允许访问您\(text).")
+        }
+        return false
+    }
+    
 }
 
 //MARK: - 跳转到app设置
@@ -80,6 +116,8 @@ public extension NSObject {
             return true
         }
     }
+    
+
 
 }
 
