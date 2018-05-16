@@ -105,9 +105,9 @@ class DownloadAndFileController: UITableViewController {
         }
         if section == 3 {
             if downloadAndFile.removefile("favorite_select.png") {
-                self.showTextTime("成功")
+                self.Toast.showToastExt("成功")
             } else {
-                self.showTextTime("失败")
+                self.Toast.showToastExt("失败")
             }
         }
         if section == 4 {
@@ -142,7 +142,7 @@ class DownloadAndFileController: UITableViewController {
                 let filePath = NSHomeDirectory() + "/Documents/" + downloadName.urlEncoded()
                 openPdfforWed(filePath)
             } else {
-                self.showTextTime("没有文件")
+                self.Toast.showToastExt("没有文件")
             }
         }
         

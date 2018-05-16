@@ -15,46 +15,6 @@ class ZxpUtils: NSObject {
 var ZSCREEN_HEIGHT =  UIScreen.main.bounds.size.height
 var ZSCREEN_WIDTH =  UIScreen.main.bounds.size.width
 
-//MARK: - 点击事件
-public extension UIView {
-
-    ///单击
-    public func addTapViewGesture(_ target: Any?, action: Selector) {
-        let tap = UITapGestureRecognizer(target: target, action: action)
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(tap)
-    }
-    
-    ///去除点击事件
-    public func removeViewGesture() {
-        self.isUserInteractionEnabled = false
-    }
-    
-    ///双击
-    public func addTapDoubleGesture(target: Any?, tapSingleDid: Selector?,tapDoubleDid: Selector?) {
-        self.isUserInteractionEnabled = true
-        //单击监听
-        let tapSingle = UITapGestureRecognizer(target:target, action: tapSingleDid)
-        tapSingle.numberOfTapsRequired = 1
-        tapSingle.numberOfTouchesRequired = 1
-        //双击监听
-        let tapDouble = UITapGestureRecognizer(target:target, action: tapDoubleDid)
-        tapDouble.numberOfTapsRequired = 2
-        tapDouble.numberOfTouchesRequired = 1
-        //声明点击事件需要双击事件检测失败后才会执行
-        tapSingle.require(toFail: tapDouble)
-        self.addGestureRecognizer(tapSingle)
-        self.addGestureRecognizer(tapDouble)
-    }
-    
-    ///长按
-    public func addLongPressGesture(_ target: Any?, action: Selector) {
-        let longPress = UILongPressGestureRecognizer(target: target, action: action)
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(longPress)
-    }
-}
-
 //for 循环倒叙
 //
 //for i in (0...10).reversed() {
@@ -286,7 +246,7 @@ extension UIImage {
         let sourceImageRef: CGImage = self.cgImage!
         let newCGImage = sourceImageRef.cropping(to: CGRect(x: rect.minX * scale, y: rect.minY * scale, width: rect.width * scale, height: rect.height * scale ))
         let newImage = UIImage(cgImage: newCGImage!)
-        print("---> \(rect)")
+//        print("---> \(rect)")
         return newImage
     }
 }

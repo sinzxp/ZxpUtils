@@ -253,7 +253,6 @@ class ZXPImagePickerGridVC: ZXPImagePickerVC {
             return
         }
 //        self.presentedViewController?.dismiss(animated: false, completion: nil)
-        print("乘车--- \(imgs)")
         completeHandlerIMG?(imgs)
         self.dismiss(animated: true, completion: nil)
      }

@@ -93,7 +93,7 @@ class secondViewController: ZXPFixedSelectChildTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        rootSegment.sss = "\(indexPath.section)"
 //        self.tableView.reloadData()
-        self.showTextTime("哈哈哈哈")
+        self.showText("哈哈哈哈")
     }
 
 }

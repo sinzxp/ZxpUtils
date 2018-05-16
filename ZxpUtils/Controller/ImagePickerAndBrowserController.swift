@@ -24,7 +24,7 @@ class ImagePickerAndBrowserController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 9
+        return 10
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,6 +83,11 @@ class ImagePickerAndBrowserController: UITableViewController {
             cell.textLabel?.text = "监听相册变化 获取最新添加的图片"
             return cell
         }
+        if section == 9 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "php保存图片"
+            return cell
+        }
         return UITableViewCell()
     }
     
@@ -96,13 +101,16 @@ class ImagePickerAndBrowserController: UITableViewController {
         }
         if section == 1 {
             self.presentAssetsPicker(maxSelected: 5) { (assets) in
-                print("\(assets)-----\(assets.count)")
+//                print("\(assets)-----\(assets.count)")
                 self.tableView.reloadData()
+                PhotoAlbumUtil.PHAssetUrl(assets[0]) { url in
+                    print("------- \(url)")
+                }
             }
         }
         if section == 2 {
             self.presentImagePicker(maxSelected: 5) { (imgs) in
-                print("\(imgs)-----\(imgs.count)")
+//                print("\(imgs)-----\(imgs.count)")
                 self.imgs = imgs
                 self.tableView.reloadData()
             }
@@ -114,7 +122,6 @@ class ImagePickerAndBrowserController: UITableViewController {
             picker.pickerImage(vc: self,maxSelected:5, block: { (imgs) in
                 self.imgs = imgs
                 self.tableView.reloadData()
-                
             })
         }
         if section == 4 {
@@ -140,9 +147,23 @@ class ImagePickerAndBrowserController: UITableViewController {
             if let img = Zuser.sharedInstance.Zimg {
                 imgs.append(img)
             } else {
-                self.showTextTime("无图")
+                self.Toast.showToastExt("无图", delay: 1, position: .Bottom)
             }
             self.tableView.reloadData()
+        }
+        if section == 9 {
+            let picker = ZXPAppleImagePickerController()
+            picker.pickerImage(vc: self,maxSelected:1, block: { (imgs) in
+                self.saveImageInAlbum(image: imgs[0], albumName: "zxp") { (result) in
+                    switch result{
+                    case .success:
+                        print("保存成功")
+                    case .error:
+                        print("保存错误")
+                    }
+                }
+            })
+
         }
     }
     

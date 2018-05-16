@@ -23,7 +23,7 @@ class AppDelegate: ZXPResponder {
         window.rootViewController = vc
         window.makeKeyAndVisible()
         
-//        addPhPhotoLibraryRegister()
+        addPhPhotoLibraryRegister()
         
         return true
     }
@@ -51,7 +51,7 @@ class AppDelegate: ZXPResponder {
     }
 
     override func getNewAddedImage(_ thumbnail: UIImage?, asset: PHAsset) {
-//        print("\(thumbnail) --- \(asset)")
+        print("图片   \(thumbnail) --- \(asset)")
         Zuser.sharedInstance.Zimg = thumbnail
     }
 
