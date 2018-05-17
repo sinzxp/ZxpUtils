@@ -8,7 +8,7 @@
 
 import UIKit
 ///获取app和设备信息
-class AppAndDeviceInfoManager: NSObject {
+class AppAndDeviceInfoManager {
 
     //应用程序信息
     let infoDictionary = Bundle.main.infoDictionary!
@@ -53,7 +53,7 @@ class AppAndDeviceInfoManager: NSObject {
     ///获取appstore中应用的信息
     class func getAPPStoreInfo(_ appId:String) -> Any? {
         let appurlStr:String = String.init(format: "https://itunes.apple.com/cn/lookup?id=%@", appId)
-        let url:URL=URL.init(string: appurlStr)!
+        let url:URL = URL.init(string: appurlStr)!
         do {
             let jsonData = try Data.init(contentsOf: url)
             let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String:Any]

@@ -14,7 +14,7 @@ extension UIViewController {
     
     ///图片浏览器 返回[UIImage]
     func presentImagePicker(maxSelected:Int,handler:@escaping (_ images:[UIImage])->()) {
-        guard isPhotoLibraryPermissions() else {
+        guard ZXPPermissionsUtils.isPhotoLibraryPermissions() else {
             return
         }
         let vc = ZXPImagePickerTableVC()
@@ -26,7 +26,7 @@ extension UIViewController {
     
     ///图片浏览器 返回[PHAsset]
     func presentAssetsPicker(maxSelected:Int,handler:@escaping (_ assets:[PHAsset])->()) {
-        guard isPhotoLibraryPermissions() else {
+        guard ZXPPermissionsUtils.isPhotoLibraryPermissions() else {
             return
         }
         let vc = ZXPImagePickerTableVC()
@@ -40,23 +40,24 @@ extension UIViewController {
 
 
 //MARK: - 保存图片到相册 自定义相册名
-extension NSObject {
+class PhotoAlbumUtil {
     
     //操作结果枚举
     enum PhotoAlbumUtilResult {
         case success, error
     }
     
-    ///保存图片到相册
-    func saveImageInAlbum(image: UIImage, albumName: String = "", completion: ((_ result: PhotoAlbumUtilResult) -> ())?) {
+    ///保存图片到相册  要读取和写入权限
+    ///主线程会卡
+    class func SaveImageInAlbum(image: UIImage, albumName: String = "", completion: ((_ result: PhotoAlbumUtilResult) -> ())?) {
         
         //权限验证
-        guard isPhotoLibraryPermissions() else {
+        guard ZXPPermissionsUtils.isPhotoLibraryPermissions() else {
             return
         }
         
         var assetAlbum: PHAssetCollection?
-
+        
         //如果指定的相册名称为空，则保存到相机胶卷。（否则保存到指定相册）
         if albumName.isEmpty {
             let list = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary,options: nil)
@@ -76,12 +77,12 @@ extension NSObject {
                 PHPhotoLibrary.shared().performChanges({
                     PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: albumName)
                 }, completionHandler: { (isSuccess, error) in
-                    self.saveImageInAlbum(image: image, albumName: albumName,completion: completion) //再来一次
+                    self.SaveImageInAlbum(image: image, albumName: albumName,completion: completion) //再来一次
                 })
                 return
             }
         }
-
+        
         //保存图片
         PHPhotoLibrary.shared().performChanges({
             //添加的相机胶卷
@@ -101,10 +102,6 @@ extension NSObject {
             }
         }
     }
-    
-}
-
-class PhotoAlbumUtil: NSObject {
     
     ///PHAsset 图片资源本地地址 支线程
     class func PHAssetUrl(_ asset:PHAsset,handler:@escaping (_ result: URL?) -> ()){

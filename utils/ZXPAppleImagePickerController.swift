@@ -59,7 +59,7 @@ public class ZXPAppleImagePickerController: UIImagePickerController,UIImagePicke
     ///相机
     private func pickerCamera(_ vc:UIViewController) {
         if isCamera() {
-            if vc.isCameraPermissions() {
+            if ZXPPermissionsUtils.isPermissions(.Video) {
                 self.camera(vc)
             }
         } else {
@@ -136,8 +136,9 @@ public class ZXPAppleImagePickerController: UIImagePickerController,UIImagePicke
     
 }
 
-extension NSObject{
+extension NSObject {
     
+    ///只要写入权限
     ///保存图片 UIImageWriteToSavedPhotosAlbum方法 回调image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject)
     func savedPhoto(_ image:UIImage) {
 //        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)

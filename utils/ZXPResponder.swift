@@ -26,7 +26,7 @@ extension ZXPResponder : PHPhotoLibraryChangeObserver {
     
     ///监听相册变化
     public func addPhPhotoLibraryRegister() {
-        if isPhotoLibraryPermissions() {
+        if ZXPPermissionsUtils.isPhotoLibraryPermissions() {
             self.getAssetsFetchResults()
             PHPhotoLibrary.shared().register(self)
         }

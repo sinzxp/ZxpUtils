@@ -11,12 +11,30 @@ import Photos
 
 
 ///权限
-class ZXPPermissionsUtils: NSObject {
+class ZXPPermissionsUtils {
     
-    enum permissionsMediaType:String {
+    //MARK: - 跳转到app设置
+    class public func toOpenSetting(_ title:String = "提示",message:String = "跳转到app设置") {
+        DispatchQueue.main.async(execute: { () -> Void in
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title:  "取消", style: .cancel, handler:nil)
+            let settingsAction = UIAlertAction(title: "设置", style: .destructive , handler: { (action) -> Void in
+                let url = URL(string: UIApplicationOpenSettingsURLString)
+                if let url = url , UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            })
+            alertController.addAction(cancelAction)
+            alertController.addAction(settingsAction)
+            alertController.atTheTopViewController()?.present(alertController, animated: true, completion: nil)
+        })
+    }
+    
+    public enum permissionsMediaType:String {
         case Video , Audio
     }
     
+    //MARK: - 授权相册 麦克风 相机
     class public func isPermissions(_ mediaType: permissionsMediaType) -> Bool {
         var status:AVAuthorizationStatus!
         if mediaType == permissionsMediaType.Audio {
@@ -43,38 +61,13 @@ class ZXPPermissionsUtils: NSObject {
             if mediaType == permissionsMediaType.Video {
                 text = "相机"
             }
-            NSObject().toOpenSetting("访问\(text)受限", message: "点击“设置”，允许访问您\(text).")
+            self.toOpenSetting("访问\(text)受限", message: "点击“设置”，允许访问您\(text).")
         }
         return false
     }
     
-}
-
-//MARK: - 跳转到app设置
-public extension NSObject {
-    ///跳转到app设置
-    public func toOpenSetting(_ title:String,message:String) {
-        DispatchQueue.main.async(execute: { () -> Void in
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title:  "取消", style: .cancel, handler:nil)
-            let settingsAction = UIAlertAction(title: "设置", style: .destructive , handler: { (action) -> Void in
-                let url = URL(string: UIApplicationOpenSettingsURLString)
-                if let url = url , UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            })
-            alertController.addAction(cancelAction)
-            alertController.addAction(settingsAction)
-            self.atTheTopViewController()?.present(alertController, animated: true, completion: nil)
-        })
-    }
-}
-
-//MARK: - 相机相册权限
-public extension NSObject {
-
-    ///授权相册
-    public func isPhotoLibraryPermissions(_ status: PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()) -> Bool {
+    //MARK: - 授权相册
+    class public func isPhotoLibraryPermissions(_ status: PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()) -> Bool {
         
         switch status {
         case .authorized:
@@ -93,31 +86,10 @@ public extension NSObject {
 //        case .restricted:
 //            print("这个应用还没有被授权可以访问照片数据 用户不能改变这个应用的授权状态，可能是由于活动限制，例如家长控制模式。")
         default:
-            toOpenSetting("访问相册受限", message: "点击“设置”，允许访问您的相册")
+            self.toOpenSetting("访问相册受限", message: "点击“设置”，允许访问您的相册")
         }
         return false
     }
     
-    ///相机权限
-    public func isCameraPermissions() -> Bool {
-        if !cameraPermissions() {
-            toOpenSetting("访问相机受限", message: "点击“设置”，允许使用您的相机")
-            return false
-        }
-        return true
-    }
-    
-    ///判断相机权限
-    public func cameraPermissions() -> Bool{
-        let authStatus:AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
-        if (authStatus == .denied || authStatus == .restricted) {
-            return false
-        }else {
-            return true
-        }
-    }
-    
-
-
 }
 

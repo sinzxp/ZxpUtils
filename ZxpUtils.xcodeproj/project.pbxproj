@@ -73,6 +73,7 @@
 		668120C62069F015002FD309 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668120C52069F014002FD309 /* AssetsLibrary.framework */; };
 		668120C82069F01F002FD309 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668120C72069F01F002FD309 /* AVFoundation.framework */; };
 		668120CA2069F029002FD309 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668120C92069F029002FD309 /* MediaPlayer.framework */; };
+		6687BFE820AD2E1600282A0F /* ZXPPermissionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6687BFE720AD2E1600282A0F /* ZXPPermissionsTableViewController.swift */; };
 		6690F4D820A037EF008B89DE /* QPLogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690F4D720A037EF008B89DE /* QPLogUtils.swift */; };
 		6690F4DA20A0409C008B89DE /* ZXPDatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690F4D920A0409C008B89DE /* ZXPDatePickerDialog.swift */; };
 		6690F4DC20A04FAD008B89DE /* ZXPColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690F4DB20A04FAD008B89DE /* ZXPColor.swift */; };
@@ -215,6 +216,7 @@
 		668120C52069F014002FD309 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		668120C72069F01F002FD309 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		668120C92069F029002FD309 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		6687BFE720AD2E1600282A0F /* ZXPPermissionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPPermissionsTableViewController.swift; sourceTree = "<group>"; };
 		6690F4D720A037EF008B89DE /* QPLogUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QPLogUtils.swift; sourceTree = "<group>"; };
 		6690F4D920A0409C008B89DE /* ZXPDatePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPDatePickerDialog.swift; sourceTree = "<group>"; };
 		6690F4DB20A04FAD008B89DE /* ZXPColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPColor.swift; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 				66B2468E20A9700600E52E2D /* ClickOnTheViewController.swift */,
 				6607E86C20735FB200A4A0E5 /* ImagePickerAndBrowserController.swift */,
 				C78AEB5D2089046C009A61DC /* ZXPPopupWindowTestTableViewController.swift */,
+				6687BFE720AD2E1600282A0F /* ZXPPermissionsTableViewController.swift */,
 				6697FDD2208F07B900934249 /* TestTransitionFromViewController.swift */,
 				66920A0F2099604F00D7A45F /* Zuser.swift */,
 			);
@@ -1009,6 +1012,7 @@
 				C75CAD572087896700438E89 /* ZXPImagePickerVC.swift in Sources */,
 				66B2469120A98ECF00E52E2D /* ZXPViewUtils.swift in Sources */,
 				667D901620A4498100FB5B61 /* MLSelectPhotoPickerCollectionView.m in Sources */,
+				6687BFE820AD2E1600282A0F /* ZXPPermissionsTableViewController.swift in Sources */,
 				66A3A22F200760DA001D8723 /* ViewController.swift in Sources */,
 				667D901E20A4498100FB5B61 /* QPAlertUtils.swift in Sources */,
 				667D902420A4498100FB5B61 /* QPVersionUtils.swift in Sources */,

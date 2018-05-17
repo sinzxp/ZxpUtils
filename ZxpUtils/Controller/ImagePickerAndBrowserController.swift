@@ -24,7 +24,7 @@ class ImagePickerAndBrowserController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return 11
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,7 +85,12 @@ class ImagePickerAndBrowserController: UITableViewController {
         }
         if section == 9 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "php保存图片"
+            cell.textLabel?.text = "保存图片1"
+            return cell
+        }
+        if section == 10 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "保存图片2"
             return cell
         }
         return UITableViewCell()
@@ -104,7 +109,7 @@ class ImagePickerAndBrowserController: UITableViewController {
 //                print("\(assets)-----\(assets.count)")
                 self.tableView.reloadData()
                 PhotoAlbumUtil.PHAssetUrl(assets[0]) { url in
-                    print("------- \(url)")
+                    self.Toast.showToast("\(String(describing: url))")
                 }
             }
         }
@@ -154,17 +159,23 @@ class ImagePickerAndBrowserController: UITableViewController {
         if section == 9 {
             let picker = ZXPAppleImagePickerController()
             picker.pickerImage(vc: self,maxSelected:1, block: { (imgs) in
-                self.saveImageInAlbum(image: imgs[0], albumName: "zxp") { (result) in
+                PhotoAlbumUtil.SaveImageInAlbum(image: imgs[0], albumName: "zxp") { (result) in
                     switch result{
                     case .success:
-                        print("保存成功")
+                        self.Toast.showToast("保存成功")
                     case .error:
-                        print("保存错误")
+                        self.Toast.showToast("保存错误")
                     }
                 }
             })
-
         }
+        if section == 10 {
+            let picker = ZXPAppleImagePickerController()
+            picker.pickerImage(vc: self,maxSelected:1, block: { (imgs) in
+                self.savedPhoto(imgs[0])
+            })
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -180,6 +191,10 @@ class ImagePickerAndBrowserController: UITableViewController {
         vc.images = imgs
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+//    override func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject) {
+//        print("tu")
+//    }
 
 }
 

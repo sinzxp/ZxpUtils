@@ -1,22 +1,22 @@
 //
-//  ZXPTestTableViewController.swift
+//  ZXPPermissionsTableViewController.swift
 //  ZxpUtils
 //
-//  Created by quickplain on 2018/4/3.
+//  Created by quickplain on 2018/5/17.
 //  Copyright © 2018年 quickplain. All rights reserved.
 //
 
 import UIKit
 
-class ZXPTestTableViewController: UITableViewController {
+class ZXPPermissionsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "测试首页"
+        self.title = "权限"
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 8
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,22 +27,22 @@ class ZXPTestTableViewController: UITableViewController {
         let section = indexPath.section
         if section == 0 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "下载和文件操作"
+            cell.textLabel?.text = "打开设置"
             return cell
         }
         if section == 1 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "图片选择器和图片浏览器,图片其他操作"
+            cell.textLabel?.text = "相机权限"
             return cell
         }
         if section == 2 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "弹窗测试"
+            cell.textLabel?.text = "麦克风权限"
             return cell
         }
         if section == 3 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "测试_滑动的选择VC菜单TestTransitionFromViewController"
+            cell.textLabel?.text = "相册权限"
             return cell
         }
         if section == 4 {
@@ -62,7 +62,7 @@ class ZXPTestTableViewController: UITableViewController {
         }
         if section == 7 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "权限"
+            cell.textLabel?.text = "77777"
             return cell
         }
         if section == 8 {
@@ -81,16 +81,13 @@ class ZXPTestTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = indexPath.section
         if section == 0 {
-            let vc = DownloadAndFileController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            ZXPPermissionsUtils.toOpenSetting()
         }
         if section == 1 {
-            let vc = ImagePickerAndBrowserController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.Toast.showToast("\(ZXPPermissionsUtils.isPermissions(.Video))")
         }
         if section == 2 {
-            let vc = ZXPPopupWindowTestTabBar()
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.Toast.showToast("\(ZXPPermissionsUtils.isPermissions(.Audio))")
         }
         if section == 3 {
             let vc = ZXPScrollSelectViewControllerCS()
@@ -109,58 +106,13 @@ class ZXPTestTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 7 {
-            let vc = ZXPPermissionsTableViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 8 {
             
         }
         if section == 9 {
-
+            
         }
-    }
-    
-}
-
-class AppAndDeviceInfoVC: UIViewController {
-    
-    let apptext = UITextView()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.title = "AppAndDeviceInfo"
-        let bb1 = UILabel()
-        bb1.text = "跳转到apps"
-        bb1.backgroundColor = UIColor.orange
-        bb1.frame = CGRect(x: 0, y: 64, width: ZSCREEN_WIDTH / 2, height: 44)
-        self.view.addSubview(bb1)
-        bb1.addTapViewGesture(self, action: #selector(toAPPStore))
-        let bb2 = UILabel()
-        bb2.text = "appstore中应用的信息"
-        bb2.backgroundColor = UIColor.purple
-        bb2.frame = CGRect(x: ZSCREEN_WIDTH / 2, y: 64, width: ZSCREEN_WIDTH / 2, height: 44)
-        self.view.addSubview(bb2)
-        bb2.addTapViewGesture(self, action: #selector(getAPPStoreInfo))
-
-        let text = UITextView()
-        text.frame = CGRect(x: 0, y: 108, width: ZSCREEN_WIDTH, height: (ZSCREEN_HEIGHT - 108) / 2)
-        self.view.addSubview(text)
-        let info = AppAndDeviceInfoManager()
-        text.text = "应用程序信息\n\(info.bundId)\n\(info.appName)\n\(info.appVersion)\n\(info.appBuildVersion)\n设备信息\n\(info.iosVersion)\n\(String(describing: info.identifierNumber))\n\(info.systemName)\n\(info.model)\n\(info.modelName)\n\(info.localizedModel)"
-        
-        apptext.frame = CGRect(x: 0, y: 108 + (ZSCREEN_HEIGHT - 108) / 2 , width: ZSCREEN_WIDTH, height: (ZSCREEN_HEIGHT - 108) / 2)
-        self.view.addSubview(apptext)
-        apptext.backgroundColor = UIColor.purple
-    }
-    
-    func toAPPStore() {
-        AppAndDeviceInfoManager.toAPPStore("1179213465")
-    }
-    
-    func getAPPStoreInfo() {
-        let ss = AppAndDeviceInfoManager.getAPPStoreInfo("1179213465")
-        print("appstore中应用的信息\n\(String(describing: ss))")
-        apptext.text = "\(ss)"
     }
     
 }

@@ -15,7 +15,7 @@ import Alamofire
 //    }
 //}
 
-open class DownloadAndFile: NSObject {
+open class DownloadAndFile {
     
     ///路径有后缀要加上
     

@@ -38,43 +38,43 @@ extension UIImage {
 
 extension UIImage {
 
-    func compressImage(maxLength: Int) -> UIImage {
-        let tempMaxLength: Int = maxLength / 8
-        var compression: CGFloat = 1
-        guard var data = UIImageJPEGRepresentation(self, compression), data.count > tempMaxLength else { return self }
-
-        // Compress by size
-        var max: CGFloat = 1
-        var min: CGFloat = 0
-        for _ in 0..<6 {
-            compression = (max + min) / 2
-            data = UIImageJPEGRepresentation(self, compression)!
-            if CGFloat(data.count) < CGFloat(tempMaxLength) * 0.9 {
-                min = compression
-            } else if data.count > tempMaxLength {
-                max = compression
-            } else {
-                break
-            }
-        }
-        var resultImage: UIImage = UIImage(data: data)!
-        if data.count < tempMaxLength { return resultImage }
-
-        // Compress by size
-        var lastDataLength: Int = 0
-        while data.count > tempMaxLength && data.count != lastDataLength {
-            lastDataLength = data.count
-            let ratio: CGFloat = CGFloat(tempMaxLength) / CGFloat(data.count)
-            print("Ratio =", ratio)
-            let size: CGSize = CGSize(width: Int(resultImage.size.width * sqrt(ratio)), height: Int(resultImage.size.height * sqrt(ratio)))
-            UIGraphicsBeginImageContext(size)
-            resultImage.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-            resultImage = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
-            data = UIImageJPEGRepresentation(resultImage, compression)!
-        }
-        return resultImage
-    }
+//    func compressImage(maxLength: Int) -> UIImage {
+//        let tempMaxLength: Int = maxLength / 8
+//        var compression: CGFloat = 1
+//        guard var data = UIImageJPEGRepresentation(self, compression), data.count > tempMaxLength else { return self }
+//
+//        // Compress by size
+//        var max: CGFloat = 1
+//        var min: CGFloat = 0
+//        for _ in 0..<6 {
+//            compression = (max + min) / 2
+//            data = UIImageJPEGRepresentation(self, compression)!
+//            if CGFloat(data.count) < CGFloat(tempMaxLength) * 0.9 {
+//                min = compression
+//            } else if data.count > tempMaxLength {
+//                max = compression
+//            } else {
+//                break
+//            }
+//        }
+//        var resultImage: UIImage = UIImage(data: data)!
+//        if data.count < tempMaxLength { return resultImage }
+//
+//        // Compress by size
+//        var lastDataLength: Int = 0
+//        while data.count > tempMaxLength && data.count != lastDataLength {
+//            lastDataLength = data.count
+//            let ratio: CGFloat = CGFloat(tempMaxLength) / CGFloat(data.count)
+//            print("Ratio =", ratio)
+//            let size: CGSize = CGSize(width: Int(resultImage.size.width * sqrt(ratio)), height: Int(resultImage.size.height * sqrt(ratio)))
+//            UIGraphicsBeginImageContext(size)
+//            resultImage.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+//            resultImage = UIGraphicsGetImageFromCurrentImageContext()!
+//            UIGraphicsEndImageContext()
+//            data = UIImageJPEGRepresentation(resultImage, compression)!
+//        }
+//        return resultImage
+//    }
 }
 
 //MARK: - 压缩图片1280

@@ -97,7 +97,6 @@ public extension NSObject {
     public func delayPerform(_ time:DispatchTime,_ block: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: time, execute: block)
     }
-    
 }
 
 extension DispatchTime: ExpressibleByIntegerLiteral {
