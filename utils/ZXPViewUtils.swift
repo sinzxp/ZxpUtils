@@ -141,5 +141,13 @@ public extension UIView {
         self.addGestureRecognizer(panGesture)
     }
     
+    //    //边缘滑动手势
+    //    public func addScreenEdgePanGesture(_ target: Any?, action: Selector, isLeft:Bool = false, isRight:Bool = true, isUp:Bool = false, isDown:Bool = false) {
+    //        self.isUserInteractionEnabled = true
+    //        let swipeGesture1 = UIScreenEdgePanGestureRecognizer(target: target, action: action)
+    //        swipeGesture1.edges = .left
+    //        self.addGestureRecognizer(swipeGesture1)
+    //    }
+    
 }
 

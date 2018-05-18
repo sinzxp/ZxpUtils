@@ -36,18 +36,19 @@ class ZXPPermissionsUtils {
     
     //MARK: - 授权相册 麦克风 相机
     class public func isPermissions(_ mediaType: permissionsMediaType) -> Bool {
-        var status:AVAuthorizationStatus!
+        var type:AVMediaType!
         if mediaType == permissionsMediaType.Audio {
-            status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeAudio)
+            type = AVMediaTypeAudio as AVMediaType
         }
         if mediaType == permissionsMediaType.Video {
-            status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+            type = AVMediaTypeVideo as AVMediaType
         }
+        let status:AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: type as String?)
         switch status {
         case .authorized:
             return true
         case .notDetermined:
-            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeAudio, completionHandler: {
+            AVCaptureDevice.requestAccess(forMediaType: type as String?, completionHandler: {
                 (status) in
                 DispatchQueue.main.async(execute: { () -> Void in
                     _ = self.isPermissions(mediaType)

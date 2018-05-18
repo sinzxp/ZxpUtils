@@ -16,7 +16,7 @@ class ZXPPermissionsTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,8 +90,8 @@ class ZXPPermissionsTableViewController: UITableViewController {
             self.Toast.showToast("\(ZXPPermissionsUtils.isPermissions(.Audio))")
         }
         if section == 3 {
-            let vc = ZXPScrollSelectViewControllerCS()
-            self.navigationController?.pushViewController(vc, animated: true)
+            
+            self.Toast.showToast("\(ZXPPermissionsUtils.isPhotoLibraryPermissions())")
         }
         if section == 4 {
             let vc = ZXPFixedSelectViewControllerCS()

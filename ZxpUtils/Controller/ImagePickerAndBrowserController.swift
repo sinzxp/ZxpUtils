@@ -24,7 +24,7 @@ class ImagePickerAndBrowserController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 11
+        return 12
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,6 +91,11 @@ class ImagePickerAndBrowserController: UITableViewController {
         if section == 10 {
             let cell = UITableViewCell()
             cell.textLabel?.text = "保存图片2"
+            return cell
+        }
+        if section == 11 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "模糊"
             return cell
         }
         return UITableViewCell()
@@ -175,7 +180,10 @@ class ImagePickerAndBrowserController: UITableViewController {
                 self.savedPhoto(imgs[0])
             })
         }
-        
+        if section == 11 {
+            let vc = BlurVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -225,5 +233,57 @@ class imgAbcCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
+    }
+}
+
+class BlurVC:UIViewController {
+    
+    var imgView:UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "模糊"
+        self.view.backgroundColor = UIColor.white
+        imgView = UIImageView(image:UIImage(named:"idcard3"))
+        imgView.frame = CGRect(x:0, y:100, width:ZSCREEN_WIDTH, height:200)
+        self.view.addSubview(imgView)
+        
+        let slider = UISlider(frame:CGRect(x:0, y:0, width:300, height:50))
+        slider.center = self.view.center
+        self.view.addSubview(slider)
+        
+//        slider.isContinuous = false  //滑块滑动停止后才触发ValueChanged事件
+        slider.addTarget(self,action:#selector(sliderDidchange(_:)), for:UIControlEvents.valueChanged)
+        bbbb()
+    }
+    
+    func sliderDidchange(_ slider:UISlider){
+        print(slider.value)
+
+    }
+    
+    func bbbb() {
+        //首先创建一个模糊效果
+        let blurEffect = UIBlurEffect(style: .light)
+        //接着创建一个承载模糊效果的视图
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        //设置模糊视图的大小（全屏）
+        blurView.frame = imgView.bounds
+        
+        //创建并添加vibrancy视图   放在这里的东西比较突出 可以不创建
+        let vibrancyView = UIVisualEffectView(effect:UIVibrancyEffect(blurEffect: blurEffect))
+        vibrancyView.frame = imgView.bounds
+        blurView.contentView.addSubview(vibrancyView)
+        
+        //将文本标签添加到vibrancy视图中
+        let label=UILabel(frame:CGRect(x: 10, y: 10, width: 2000, height: 50) )
+        label.text = "hangge.com"
+        label.font = UIFont(name: "HelveticaNeue-Bold", size: 40)
+        label.textAlignment = .center
+        label.textColor = UIColor.white
+        vibrancyView.contentView.addSubview(label)
+        
+        self.imgView.addSubview(blurView)
+        
     }
 }

@@ -14,6 +14,8 @@
 		6607E86B20735D6B00A4A0E5 /* ZXPTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607E86A20735D6B00A4A0E5 /* ZXPTestTableViewController.swift */; };
 		6607E86D20735FB200A4A0E5 /* ImagePickerAndBrowserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607E86C20735FB200A4A0E5 /* ImagePickerAndBrowserController.swift */; };
 		6607E86F207372B500A4A0E5 /* ZXPImagePickerGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607E86E207372B500A4A0E5 /* ZXPImagePickerGridCell.swift */; };
+		660E3D7720AE7DBB00067716 /* HardwareTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660E3D7620AE7DBB00067716 /* HardwareTableViewController.swift */; };
+		660E3D7A20AED1ED00067716 /* msg.wav in Resources */ = {isa = PBXBuildFile; fileRef = 660E3D7920AED1ED00067716 /* msg.wav */; };
 		6626A10B20ABDDC2005D1E7E /* ZXPPermissionsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6626A10A20ABDDC2005D1E7E /* ZXPPermissionsUtils.swift */; };
 		66294D3C20732BF7000B57D3 /* ZxpUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66294D3B20732BF7000B57D3 /* ZxpUtils.swift */; };
 		66294D3F20732C72000B57D3 /* ZXPImagePickerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66294D3E20732C72000B57D3 /* ZXPImagePickerTableVC.swift */; };
@@ -131,6 +133,8 @@
 		6607E86A20735D6B00A4A0E5 /* ZXPTestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPTestTableViewController.swift; sourceTree = "<group>"; };
 		6607E86C20735FB200A4A0E5 /* ImagePickerAndBrowserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerAndBrowserController.swift; sourceTree = "<group>"; };
 		6607E86E207372B500A4A0E5 /* ZXPImagePickerGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImagePickerGridCell.swift; sourceTree = "<group>"; };
+		660E3D7620AE7DBB00067716 /* HardwareTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareTableViewController.swift; sourceTree = "<group>"; };
+		660E3D7920AED1ED00067716 /* msg.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = msg.wav; sourceTree = "<group>"; };
 		6626A10A20ABDDC2005D1E7E /* ZXPPermissionsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPPermissionsUtils.swift; sourceTree = "<group>"; };
 		66294D3B20732BF7000B57D3 /* ZxpUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZxpUtils.swift; sourceTree = "<group>"; };
 		66294D3E20732C72000B57D3 /* ZXPImagePickerTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImagePickerTableVC.swift; sourceTree = "<group>"; };
@@ -301,6 +305,14 @@
 				B7A7D9D40BD3C5F229FA56D9 /* Pods_ZxpUtilsUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		660E3D7820AED1E700067716 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				660E3D7920AED1ED00067716 /* msg.wav */,
+			);
+			path = Lib;
 			sourceTree = "<group>";
 		};
 		66294D3D20732C54000B57D3 /* ZXPPhotoPicker */ = {
@@ -513,6 +525,7 @@
 		66A3A22B200760DA001D8723 /* ZxpUtils */ = {
 			isa = PBXGroup;
 			children = (
+				660E3D7820AED1E700067716 /* Lib */,
 				C7C69EBC206BE478006319B4 /* Controller */,
 				C7C96CDF20079E200029E8E1 /* utils */,
 				66A3A22C200760DA001D8723 /* AppDelegate.swift */,
@@ -584,6 +597,7 @@
 				66B2468E20A9700600E52E2D /* ClickOnTheViewController.swift */,
 				6607E86C20735FB200A4A0E5 /* ImagePickerAndBrowserController.swift */,
 				C78AEB5D2089046C009A61DC /* ZXPPopupWindowTestTableViewController.swift */,
+				660E3D7620AE7DBB00067716 /* HardwareTableViewController.swift */,
 				6687BFE720AD2E1600282A0F /* ZXPPermissionsTableViewController.swift */,
 				6697FDD2208F07B900934249 /* TestTransitionFromViewController.swift */,
 				66920A0F2099604F00D7A45F /* Zuser.swift */,
@@ -733,6 +747,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				660E3D7A20AED1ED00067716 /* msg.wav in Resources */,
 				66A3A237200760DA001D8723 /* LaunchScreen.storyboard in Resources */,
 				66A3A234200760DA001D8723 /* Assets.xcassets in Resources */,
 				66A3A232200760DA001D8723 /* Main.storyboard in Resources */,
@@ -1028,6 +1043,7 @@
 				6626A10B20ABDDC2005D1E7E /* ZXPPermissionsUtils.swift in Sources */,
 				667D900920A4498100FB5B61 /* MLSelectPhotoAssets.m in Sources */,
 				667D8FFE20A4498100FB5B61 /* QPHttpUtils.swift in Sources */,
+				660E3D7720AE7DBB00067716 /* HardwareTableViewController.swift in Sources */,
 				667D8FF420A4498100FB5B61 /* QPAlert.swift in Sources */,
 				667D901220A4498100FB5B61 /* MLPhotoPickerImageView.m in Sources */,
 				667D8FFA20A4498100FB5B61 /* QPButton.swift in Sources */,

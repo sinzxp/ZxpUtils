@@ -40,12 +40,12 @@ class ClickOnTheViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func handleTapGesture(sender: UITapGestureRecognizer) {
+    func handleTapGesture(_ sender: UITapGestureRecognizer) {
         print("点击")
     }
     
     //长按手势
-    func handleLongpressGesture(sender : UILongPressGestureRecognizer) {
+    func handleLongpressGesture(_ sender : UILongPressGestureRecognizer) {
         //state 手势识别器的当前状态。
         if sender.state == UIGestureRecognizerState.ended {
             print("长按结束")
@@ -55,7 +55,7 @@ class ClickOnTheViewController: UIViewController {
     }
     
     //捏的手势，使图片放大和缩小，捏的动作是一个连续的动作
-    func handlePinchGesture(sender: UIPinchGestureRecognizer) {
+    func handlePinchGesture(_ sender: UIPinchGestureRecognizer) {
         let factor = sender.scale
 //        print("factor ---> \(factor)")
         vview.transform = CGAffineTransform(scaleX: factor, y: factor)
@@ -68,7 +68,7 @@ class ClickOnTheViewController: UIViewController {
     }
     
     //旋转手势
-    func handleRotateGesture(sender: UIRotationGestureRecognizer) {
+    func handleRotateGesture(_ sender: UIRotationGestureRecognizer) {
         //浮点类型，得到sender的旋转度数
         let rotation = sender.rotation
 //        print("rotation ---> \(rotation)")
@@ -83,7 +83,7 @@ class ClickOnTheViewController: UIViewController {
     }
     
     //划动手势
-    func handleSwipeGesture(sender: UISwipeGestureRecognizer) {
+    func handleSwipeGesture(_ sender: UISwipeGestureRecognizer) {
         //划动的方向
         let direction = sender.direction
         //判断是上下左右
@@ -115,12 +115,18 @@ class ClickOnTheViewController: UIViewController {
     }
     
     //拖手势
-    func handlePanGesture(sender: UIPanGestureRecognizer){
+    func handlePanGesture(_ sender: UIPanGestureRecognizer){
         //得到拖的过程中的xy坐标
         let translation = sender.translation(in: vview)
 //        print("translation ---> \(translation)")
         //平移图片CGAffineTransformMakeTranslation
         vview.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+    }
+    
+    func handleScreenEdgePanGesture(_ sender:UIScreenEdgePanGestureRecognizer) {
+        let point = sender.location(in: eview)
+        //这个点是滑动的起点
+        print("边缘滑动 \(point)")
     }
 
 }

@@ -16,7 +16,7 @@ class ZXPTestTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 8
+        return 9
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,7 +67,7 @@ class ZXPTestTableViewController: UITableViewController {
         }
         if section == 8 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "网页打开pdf"
+            cell.textLabel?.text = "硬件传感器"
             return cell
         }
         if section == 9 {
@@ -114,6 +114,8 @@ class ZXPTestTableViewController: UITableViewController {
         }
         if section == 8 {
             
+            let vc = HardwareTableViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 9 {
 
