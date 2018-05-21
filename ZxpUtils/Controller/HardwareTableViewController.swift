@@ -24,7 +24,7 @@ class HardwareTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return 7
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,6 +51,9 @@ class HardwareTableViewController: UITableViewController {
         }
         if section == 5 {
             cell.textLabel?.text = "加速传感器"
+        }
+        if section == 6 {
+            cell.textLabel?.text = "播放视频"
         }
         return cell
     }
@@ -107,6 +110,12 @@ class HardwareTableViewController: UITableViewController {
             let vc = AccelerationSensorVC()
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        
+        if section == 6 {
+            let vc = AVPlayerController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
         
     }
     
@@ -230,6 +239,30 @@ class AccelerationSensorVC:UIViewController {
                 self.ball.center = CGPoint(x:posX, y:posY)
             }
         }
+    }
+    
+}
+
+import AVKit
+import AVFoundation
+
+class AVPlayerController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
+        
+        //定义一个视频文件路径
+        let filePath = Bundle.main.path(forResource: "VID_20151007_112528", ofType: "mp4")!
+        let vv = AVPlayerView(filePath,frame: CGRect(x: 0, y: 64, width: ZSCREEN_WIDTH, height: 300))
+//        vv.setAVPlayer(filePath)
+//        vv.frame = CGRect(x: 0, y: 64, width: ZSCREEN_WIDTH, height: 300)
+        self.view.addSubview(vv)
+
+    }
+    
+    func playerDidFinishPlaying() {
+        print("播放完毕!")
     }
     
 }

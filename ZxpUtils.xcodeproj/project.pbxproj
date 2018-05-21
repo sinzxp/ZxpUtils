@@ -106,6 +106,9 @@
 		85441F2E423D1CF61300A0B3 /* Pods_ZxpUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B49F9896CF5C8C4948FB5EA /* Pods_ZxpUtils.framework */; };
 		C71538F62007A96E0020EC3B /* ZXPAppleImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71538F52007A96E0020EC3B /* ZXPAppleImagePickerController.swift */; };
 		C7229736208F7098007B5CAC /* ZXPImageBrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7229735208F7098007B5CAC /* ZXPImageBrowserVC.swift */; };
+		C75A3CA620B32BE100CAA559 /* wxcamera.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C75A3CA520B329B000CAA559 /* wxcamera.mp4 */; };
+		C75A3CA820B32DDF00CAA559 /* VID_20151007_112528.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C75A3CA720B32DDF00CAA559 /* VID_20151007_112528.mp4 */; };
+		C75A3CAA20B32EDA00CAA559 /* AVPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75A3CA920B32EDA00CAA559 /* AVPlayerView.swift */; };
 		C75CAD572087896700438E89 /* ZXPImagePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75CAD562087896700438E89 /* ZXPImagePickerVC.swift */; };
 		C75CAD5920879F2100438E89 /* ZXPImagePickerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75CAD5820879F2100438E89 /* ZXPImagePickerUtils.swift */; };
 		C78AEB5C2088EDE5009A61DC /* DownloadAndFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78AEB5B2088EDE5009A61DC /* DownloadAndFile.swift */; };
@@ -267,6 +270,9 @@
 		C33D143344B785195EC68859 /* Pods-ZxpUtils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZxpUtils.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZxpUtils/Pods-ZxpUtils.debug.xcconfig"; sourceTree = "<group>"; };
 		C71538F52007A96E0020EC3B /* ZXPAppleImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXPAppleImagePickerController.swift; sourceTree = "<group>"; };
 		C7229735208F7098007B5CAC /* ZXPImageBrowserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImageBrowserVC.swift; sourceTree = "<group>"; };
+		C75A3CA520B329B000CAA559 /* wxcamera.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxcamera.mp4; sourceTree = "<group>"; };
+		C75A3CA720B32DDF00CAA559 /* VID_20151007_112528.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = VID_20151007_112528.mp4; sourceTree = "<group>"; };
+		C75A3CA920B32EDA00CAA559 /* AVPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerView.swift; sourceTree = "<group>"; };
 		C75CAD562087896700438E89 /* ZXPImagePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXPImagePickerVC.swift; sourceTree = "<group>"; };
 		C75CAD5820879F2100438E89 /* ZXPImagePickerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImagePickerUtils.swift; sourceTree = "<group>"; };
 		C78AEB5B2088EDE5009A61DC /* DownloadAndFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadAndFile.swift; sourceTree = "<group>"; };
@@ -322,6 +328,8 @@
 		660E3D7820AED1E700067716 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				C75A3CA720B32DDF00CAA559 /* VID_20151007_112528.mp4 */,
+				C75A3CA520B329B000CAA559 /* wxcamera.mp4 */,
 				6678780120B2B8210020B00C /* area.txt */,
 				660E3D7920AED1ED00067716 /* msg.wav */,
 			);
@@ -368,6 +376,7 @@
 			children = (
 				667877FB20B2A8290020B00C /* ZXPCopyLabel.swift */,
 				667877FF20B2B78C0020B00C /* ZXPCitySelectionTVC.swift */,
+				C75A3CA920B32EDA00CAA559 /* AVPlayerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -775,10 +784,12 @@
 			files = (
 				660E3D7A20AED1ED00067716 /* msg.wav in Resources */,
 				6678780220B2B8210020B00C /* area.txt in Resources */,
+				C75A3CA820B32DDF00CAA559 /* VID_20151007_112528.mp4 in Resources */,
 				66A3A237200760DA001D8723 /* LaunchScreen.storyboard in Resources */,
 				66A3A234200760DA001D8723 /* Assets.xcassets in Resources */,
 				66A3A232200760DA001D8723 /* Main.storyboard in Resources */,
 				667D901A20A4498100FB5B61 /* MLSelectPhoto.bundle in Resources */,
+				C75A3CA620B32BE100CAA559 /* wxcamera.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1024,6 +1035,7 @@
 				660E3D7E20B29B9F00067716 /* TextTableViewController.swift in Sources */,
 				6607E86B20735D6B00A4A0E5 /* ZXPTestTableViewController.swift in Sources */,
 				6607E86F207372B500A4A0E5 /* ZXPImagePickerGridCell.swift in Sources */,
+				C75A3CAA20B32EDA00CAA559 /* AVPlayerView.swift in Sources */,
 				C75CAD5920879F2100438E89 /* ZXPImagePickerUtils.swift in Sources */,
 				669218C720A1AB0600B08E4C /* ZXPImageUtils.swift in Sources */,
 				66677D9C209C0DB0005A825C /* ZXPDataPersistence.swift in Sources */,
