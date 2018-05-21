@@ -255,8 +255,6 @@ class AVPlayerController: UIViewController {
         //定义一个视频文件路径
         let filePath = Bundle.main.path(forResource: "VID_20151007_112528", ofType: "mp4")!
         let vv = AVPlayerView(filePath,frame: CGRect(x: 0, y: 64, width: ZSCREEN_WIDTH, height: 300))
-//        vv.setAVPlayer(filePath)
-//        vv.frame = CGRect(x: 0, y: 64, width: ZSCREEN_WIDTH, height: 300)
         self.view.addSubview(vv)
 
     }
