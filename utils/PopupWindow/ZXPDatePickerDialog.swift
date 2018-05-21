@@ -139,8 +139,6 @@ class ZXPDatePickerDialog: UIView {
         self.titleLabel.textAlignment = NSTextAlignment.center
         self.titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
         view.addSubview(self.titleLabel)
-        if !positionBottom {
-        }
 
         addButtonsToView(view)
         

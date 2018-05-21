@@ -16,7 +16,7 @@ class ZXPTestTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 9
+        return 10
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,7 +72,7 @@ class ZXPTestTableViewController: UITableViewController {
         }
         if section == 9 {
             let cell = UITableViewCell()
-            cell.textLabel?.text = "测试相册"
+            cell.textLabel?.text = "文本"
             return cell
         }
         return UITableViewCell()
@@ -113,12 +113,12 @@ class ZXPTestTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 8 {
-            
             let vc = HardwareTableViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if section == 9 {
-
+            let vc = TextTableViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

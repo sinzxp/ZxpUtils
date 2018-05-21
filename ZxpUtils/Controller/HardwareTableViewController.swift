@@ -100,12 +100,13 @@ class HardwareTableViewController: UITableViewController {
                 NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
             }
             self.tableView.reloadData()
+            
         }
+        
         if section == 5 {
             let vc = AccelerationSensorVC()
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
         
     }
     

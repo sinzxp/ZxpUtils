@@ -16,7 +16,7 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 8
+        return 9
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,7 +60,7 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
             return cell
         }
         if section == 8 {
-            cell.textLabel?.text = ""
+            cell.textLabel?.text = "选择地址"
             return cell
         }
         if section == 9 {
@@ -141,7 +141,11 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
             }
         }
         if section == 8 {
-            
+            let picker = ZXPCityPickerDialog(true)
+            picker.show("请选择地址", doneButtonTitle: "确定", cancelButtonTitle: "取消") { (date) -> Void in
+                print("\(date)")
+                self.Toast.showToastExt("ojbk")
+            }
         }
         if section == 9 {
             
