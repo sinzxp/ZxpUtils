@@ -16,7 +16,7 @@ class ZXPTestTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return 11
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,6 +75,11 @@ class ZXPTestTableViewController: UITableViewController {
             cell.textLabel?.text = "文本"
             return cell
         }
+        if section == 10 {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "Gallery画廊效果"
+            return cell
+        }
         return UITableViewCell()
     }
     
@@ -120,6 +125,11 @@ class ZXPTestTableViewController: UITableViewController {
             let vc = TextTableViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        if section == 10 {
+            let vc = GalleryViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
     
 }
