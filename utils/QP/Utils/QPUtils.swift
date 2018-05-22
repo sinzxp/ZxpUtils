@@ -1345,3 +1345,27 @@ public class QPSearchBar: UISearchBar, UISearchBarDelegate {
     
 }
 
+//MARK: - 新装导航
+extension QPUtils {
+    
+    class func canShowNewFeature() -> Bool {
+        let flag = CoreNewFeatureVC.canShowNewFeature()
+        return flag
+    }
+    
+    class func guidingViewController(images: [String], block: @escaping QPNormalBlock) -> UIViewController {
+        var models: [NewFeatureModel] = []
+        for img in images {
+            let image = UIImage(named: img)!
+            let model = NewFeatureModel(image)
+            models.append(model!)
+        }
+        
+        let vc = CoreNewFeatureVC (models: models) {
+            block()
+        }
+        
+        return vc!
+    }
+}
+

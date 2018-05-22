@@ -142,15 +142,14 @@ class thirdViewController: ZXPFixedSelectChildTableViewController {
 class GalleryCollectionViewCell: UICollectionViewCell {
     
     //用于显示图片
-    var imageView: UIImageView!
+    var labelView: UILabel!
     
     public func setup() {
         //  展示图片
-        imageView = UIImageView(frame: contentView.bounds)
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.backgroundColor = UIColor.randomColor
-        contentView.addSubview(imageView)
+        labelView = UILabel(frame: contentView.bounds)
+        labelView.textAlignmentCenter()
+        labelView.backgroundColor = UIColor.randomColor
+        contentView.addSubview(labelView)
         
     }
     
@@ -168,22 +167,38 @@ class GalleryCollectionViewCell: UICollectionViewCell {
 
 class GalleryViewController: UIViewController {
     
+    //普通的flow流式布局
+    var flowLayout:UICollectionViewFlowLayout!
+    //自定义的线性布局
+    var linearLayput:LinearCollectionViewLayout!
+    
+    var stackLayput:StackCollectionViewLayout!
+
+    
     var collectionView:UICollectionView!
     //重用的单元格的Identifier
     let CellIdentifier = "myCell"
+    
+    var abc = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.gray
         
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 120, height: 60)
-        flowLayout.sectionInset = UIEdgeInsets(top: 74, left: 50, bottom: 50, right: 50)
-//        flowLayout.scrollDirection = .horizontal
+        flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 60, height: 60)
+        flowLayout.sectionInset = UIEdgeInsets(top: 74, left: 0, bottom: 0, right: 0)
         
+        linearLayput = LinearCollectionViewLayout()
+//        linearLayput.itemWidth = 200
+//        linearLayput.itemHeight = 150
+        
+        stackLayput = StackCollectionViewLayout()
+        stackLayput.itemSize = CGSize(width:120, height:120)
+
         //初始化Collection View
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: 70, width: ZSCREEN_WIDTH, height: 500) , collectionViewLayout: flowLayout)
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: 70, width: ZSCREEN_WIDTH, height: 200) , collectionViewLayout: stackLayput)
         
         //Collection View代理设置
         collectionView.delegate = self
@@ -195,7 +210,40 @@ class GalleryViewController: UIViewController {
         
         //将Collection View添加到主视图中
         view.addSubview(collectionView)
+        
+        collectionView.addTapViewGesture(self, action: #selector(handleTap))
 
+    }
+    
+    //点击手势响应
+    func handleTap(_ sender:UITapGestureRecognizer){
+        if sender.state == UIGestureRecognizerState.ended {
+            let tapPoint = sender.location(in: self.collectionView)
+            //点击的是单元格元素 didSelectItemAt方法也可以
+            if let indexPath = self.collectionView.indexPathForItem(at: tapPoint) {
+                //通过performBatchUpdates对collectionView中的元素进行批量的插入，删除，移动等操作
+                //同时该方法触发collectionView所对应的layout的对应的动画。
+                print("删除 -- \(indexPath) --- \(tapPoint)")
+                self.collectionView.performBatchUpdates({ () -> Void in
+                    self.collectionView.deleteItems(at: [indexPath])
+                    abc -= 1
+                }, completion: nil)
+            
+            }
+            //点击的是空白位置
+            else{
+                print("插入")
+                //新元素插入的位置（开头）
+                let index = 0
+                abc += 1
+                self.collectionView.insertItems(at: [IndexPath(item: index, section: 0)])
+            }
+            
+//            self.collectionView.collectionViewLayout.invalidateLayout()
+//            //交替切换新布局
+//            let newLayout = collectionView.collectionViewLayout.isKind(of:LinearCollectionViewLayout.self) ? flowLayout : linearLayput
+//            collectionView.setCollectionViewLayout(newLayout!, animated: true)
+        }
     }
 }
 
@@ -203,18 +251,19 @@ class GalleryViewController: UIViewController {
 extension GalleryViewController: UICollectionViewDataSource {
     //获取分区数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     //获取每个分区里单元格数量
     func collectionView(_ collectionView: UICollectionView,numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return abc
     }
     
     //返回每个单元格视图
     func collectionView(_ collectionView: UICollectionView,cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //获取重用的单元格
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:CellIdentifier, for: indexPath) as! GalleryCollectionViewCell
+        cell.labelView.text = "\(indexPath)"
         return cell
     }
 }

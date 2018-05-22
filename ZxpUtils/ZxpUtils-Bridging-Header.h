@@ -22,4 +22,5 @@
 #import "MLSelectPhotoPickerGroupViewController.h"
 #import "MLSelectPhotoCommon.h"
 #import "MLSelectPhotoAssets.h"
+#import "CoreNewFeatureVC.h"
 

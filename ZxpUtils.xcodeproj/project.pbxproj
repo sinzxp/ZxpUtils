@@ -88,6 +88,16 @@
 		66920A102099604F00D7A45F /* Zuser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66920A0F2099604F00D7A45F /* Zuser.swift */; };
 		66920A122099A0FD00D7A45F /* ZXPToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66920A112099A0FD00D7A45F /* ZXPToastView.swift */; };
 		669218C720A1AB0600B08E4C /* ZXPImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669218C620A1AB0600B08E4C /* ZXPImageUtils.swift */; };
+		6692F4E720B3EBD10076449E /* VID_20151007_112528.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6692F4E520B3EBD10076449E /* VID_20151007_112528.mp4 */; };
+		6692F4E820B3EBD10076449E /* wxcamera.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6692F4E620B3EBD10076449E /* wxcamera.mp4 */; };
+		6692F4EA20B3EBEB0076449E /* AVPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6692F4E920B3EBEB0076449E /* AVPlayerView.swift */; };
+		6692F4FC20B403220076449E /* UIApplication+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 6692F4EF20B403220076449E /* UIApplication+Extend.m */; };
+		6692F4FD20B403220076449E /* UIView+NFLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6692F4F120B403220076449E /* UIView+NFLayout.m */; };
+		6692F4FE20B403220076449E /* CoreNewFeatureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6692F4F320B403220076449E /* CoreNewFeatureVC.m */; };
+		6692F4FF20B403220076449E /* NewFeatureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6692F4F620B403220076449E /* NewFeatureModel.m */; };
+		6692F50020B403220076449E /* NewFeatureImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = 6692F4F920B403220076449E /* NewFeatureImageV.m */; };
+		6692F50120B403220076449E /* NewFeatureScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6692F4FB20B403220076449E /* NewFeatureScrollView.m */; };
+		6692F50320B415010076449E /* StackCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6692F50220B415010076449E /* StackCollectionViewLayout.swift */; };
 		6697FDD3208F07B900934249 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6697FDD2208F07B900934249 /* TestViewController.swift */; };
 		66A3A22D200760DA001D8723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3A22C200760DA001D8723 /* AppDelegate.swift */; };
 		66A3A22F200760DA001D8723 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3A22E200760DA001D8723 /* ViewController.swift */; };
@@ -240,6 +250,22 @@
 		66920A0F2099604F00D7A45F /* Zuser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zuser.swift; sourceTree = "<group>"; };
 		66920A112099A0FD00D7A45F /* ZXPToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPToastView.swift; sourceTree = "<group>"; };
 		669218C620A1AB0600B08E4C /* ZXPImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImageUtils.swift; sourceTree = "<group>"; };
+		6692F4E520B3EBD10076449E /* VID_20151007_112528.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = VID_20151007_112528.mp4; sourceTree = "<group>"; };
+		6692F4E620B3EBD10076449E /* wxcamera.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxcamera.mp4; sourceTree = "<group>"; };
+		6692F4E920B3EBEB0076449E /* AVPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerView.swift; sourceTree = "<group>"; };
+		6692F4EE20B403220076449E /* UIApplication+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+Extend.h"; sourceTree = "<group>"; };
+		6692F4EF20B403220076449E /* UIApplication+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+Extend.m"; sourceTree = "<group>"; };
+		6692F4F020B403220076449E /* UIView+NFLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NFLayout.h"; sourceTree = "<group>"; };
+		6692F4F120B403220076449E /* UIView+NFLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NFLayout.m"; sourceTree = "<group>"; };
+		6692F4F220B403220076449E /* CoreNewFeatureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreNewFeatureVC.h; sourceTree = "<group>"; };
+		6692F4F320B403220076449E /* CoreNewFeatureVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreNewFeatureVC.m; sourceTree = "<group>"; };
+		6692F4F520B403220076449E /* NewFeatureModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeatureModel.h; sourceTree = "<group>"; };
+		6692F4F620B403220076449E /* NewFeatureModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeatureModel.m; sourceTree = "<group>"; };
+		6692F4F820B403220076449E /* NewFeatureImageV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeatureImageV.h; sourceTree = "<group>"; };
+		6692F4F920B403220076449E /* NewFeatureImageV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeatureImageV.m; sourceTree = "<group>"; };
+		6692F4FA20B403220076449E /* NewFeatureScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeatureScrollView.h; sourceTree = "<group>"; };
+		6692F4FB20B403220076449E /* NewFeatureScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeatureScrollView.m; sourceTree = "<group>"; };
+		6692F50220B415010076449E /* StackCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackCollectionViewLayout.swift; sourceTree = "<group>"; };
 		6697FDD2208F07B900934249 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		66A3A229200760DA001D8723 /* ZxpUtils.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZxpUtils.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A3A22C200760DA001D8723 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -324,6 +350,8 @@
 		660E3D7820AED1E700067716 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				6692F4E520B3EBD10076449E /* VID_20151007_112528.mp4 */,
+				6692F4E620B3EBD10076449E /* wxcamera.mp4 */,
 				6678780120B2B8210020B00C /* area.txt */,
 				660E3D7920AED1ED00067716 /* msg.wav */,
 			);
@@ -368,9 +396,11 @@
 		667877F920B2A7760020B00C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6692F4E920B3EBEB0076449E /* AVPlayerView.swift */,
 				667877FB20B2A8290020B00C /* ZXPCopyLabel.swift */,
 				667877FF20B2B78C0020B00C /* ZXPCitySelectionTVC.swift */,
 				66C3F5F520B3C40D004D7217 /* LinearCollectionViewLayout.swift */,
+				6692F50220B415010076449E /* StackCollectionViewLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -405,6 +435,7 @@
 		667D8FB420A4498000FB5B61 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				6692F4EB20B403220076449E /* CoreNewFeatureVC */,
 				667D8FB520A4498000FB5B61 /* MLSelectPhoto */,
 				667D8FE420A4498000FB5B61 /* NSDate-Extensions-master */,
 			);
@@ -524,6 +555,57 @@
 				667D8FF320A4498000FB5B61 /* QPVersionUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		6692F4EB20B403220076449E /* CoreNewFeatureVC */ = {
+			isa = PBXGroup;
+			children = (
+				6692F4EC20B403220076449E /* Category */,
+				6692F4F220B403220076449E /* CoreNewFeatureVC.h */,
+				6692F4F320B403220076449E /* CoreNewFeatureVC.m */,
+				6692F4F420B403220076449E /* Model */,
+				6692F4F720B403220076449E /* View */,
+			);
+			path = CoreNewFeatureVC;
+			sourceTree = "<group>";
+		};
+		6692F4EC20B403220076449E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				6692F4ED20B403220076449E /* UIApplication */,
+				6692F4F020B403220076449E /* UIView+NFLayout.h */,
+				6692F4F120B403220076449E /* UIView+NFLayout.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		6692F4ED20B403220076449E /* UIApplication */ = {
+			isa = PBXGroup;
+			children = (
+				6692F4EE20B403220076449E /* UIApplication+Extend.h */,
+				6692F4EF20B403220076449E /* UIApplication+Extend.m */,
+			);
+			path = UIApplication;
+			sourceTree = "<group>";
+		};
+		6692F4F420B403220076449E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6692F4F520B403220076449E /* NewFeatureModel.h */,
+				6692F4F620B403220076449E /* NewFeatureModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6692F4F720B403220076449E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6692F4F820B403220076449E /* NewFeatureImageV.h */,
+				6692F4F920B403220076449E /* NewFeatureImageV.m */,
+				6692F4FA20B403220076449E /* NewFeatureScrollView.h */,
+				6692F4FB20B403220076449E /* NewFeatureScrollView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		66A3A220200760DA001D8723 = {
@@ -779,9 +861,11 @@
 				660E3D7A20AED1ED00067716 /* msg.wav in Resources */,
 				6678780220B2B8210020B00C /* area.txt in Resources */,
 				66A3A237200760DA001D8723 /* LaunchScreen.storyboard in Resources */,
+				6692F4E820B3EBD10076449E /* wxcamera.mp4 in Resources */,
 				66A3A234200760DA001D8723 /* Assets.xcassets in Resources */,
 				66A3A232200760DA001D8723 /* Main.storyboard in Resources */,
 				667D901A20A4498100FB5B61 /* MLSelectPhoto.bundle in Resources */,
+				6692F4E720B3EBD10076449E /* VID_20151007_112528.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1030,9 +1114,11 @@
 				C75CAD5920879F2100438E89 /* ZXPImagePickerUtils.swift in Sources */,
 				669218C720A1AB0600B08E4C /* ZXPImageUtils.swift in Sources */,
 				66677D9C209C0DB0005A825C /* ZXPDataPersistence.swift in Sources */,
+				6692F4FC20B403220076449E /* UIApplication+Extend.m in Sources */,
 				667D901120A4498100FB5B61 /* MLSelectPhotoPickerViewController.m in Sources */,
 				66B2468F20A9700600E52E2D /* ClickOnTheViewController.swift in Sources */,
 				66294D3C20732BF7000B57D3 /* ZxpUtils.swift in Sources */,
+				6692F50320B415010076449E /* StackCollectionViewLayout.swift in Sources */,
 				C7C69EBE206BE496006319B4 /* DownloadAndFileController.swift in Sources */,
 				667D8FF920A4498100FB5B61 /* QPBaseViewController.swift in Sources */,
 				667D901720A4498100FB5B61 /* MLSelectPhotoPickerCollectionViewCell.m in Sources */,
@@ -1046,6 +1132,7 @@
 				667D900220A4498100FB5B61 /* QPTableView.swift in Sources */,
 				66C561E52074BD4E00C77A7E /* ZXPImagePreviewGridCell.swift in Sources */,
 				667D901420A4498100FB5B61 /* MLSelectPhotoPickerBrowserPhotoScrollView.m in Sources */,
+				6692F4EA20B3EBEB0076449E /* AVPlayerView.swift in Sources */,
 				6690F4DC20A04FAD008B89DE /* ZXPColor.swift in Sources */,
 				667D901820A4498100FB5B61 /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */,
 				66294D3F20732C72000B57D3 /* ZXPImagePickerTableVC.swift in Sources */,
@@ -1058,13 +1145,16 @@
 				6607E869207353E600A4A0E5 /* ZXPImagePickerGridVC.swift in Sources */,
 				C75CAD572087896700438E89 /* ZXPImagePickerVC.swift in Sources */,
 				6678780420B2BCC90020B00C /* ZXPCityPickerDialog.swift in Sources */,
+				6692F4FE20B403220076449E /* CoreNewFeatureVC.m in Sources */,
 				66B2469120A98ECF00E52E2D /* ZXPViewUtils.swift in Sources */,
 				667D901620A4498100FB5B61 /* MLSelectPhotoPickerCollectionView.m in Sources */,
 				6687BFE820AD2E1600282A0F /* ZXPPermissionsTableViewController.swift in Sources */,
 				66A3A22F200760DA001D8723 /* ViewController.swift in Sources */,
 				667D901E20A4498100FB5B61 /* QPAlertUtils.swift in Sources */,
 				667D902420A4498100FB5B61 /* QPVersionUtils.swift in Sources */,
+				6692F4FD20B403220076449E /* UIView+NFLayout.m in Sources */,
 				66C561E32074B98900C77A7E /* ZXPImagePreviewVC.swift in Sources */,
+				6692F4FF20B403220076449E /* NewFeatureModel.m in Sources */,
 				667D902120A4498100FB5B61 /* QPImageUtils.swift in Sources */,
 				667D901520A4498100FB5B61 /* MLSelectPhotoPickerBrowserPhotoView.m in Sources */,
 				667D900620A4498100FB5B61 /* QPWebViewController.swift in Sources */,
@@ -1080,6 +1170,7 @@
 				667877FE20B2AE6C0020B00C /* ZXPStringUtils.swift in Sources */,
 				667D8FF420A4498100FB5B61 /* QPAlert.swift in Sources */,
 				667D901220A4498100FB5B61 /* MLPhotoPickerImageView.m in Sources */,
+				6692F50120B403220076449E /* NewFeatureScrollView.m in Sources */,
 				667877FC20B2A8290020B00C /* ZXPCopyLabel.swift in Sources */,
 				667D8FFA20A4498100FB5B61 /* QPButton.swift in Sources */,
 				667D8FF520A4498100FB5B61 /* QPAlertActionUtils.swift in Sources */,
@@ -1096,6 +1187,7 @@
 				664348BE2091C82E00F8BC98 /* ZXPFixedSelectViewController.swift in Sources */,
 				667D8FF620A4498100FB5B61 /* QPAppearance.swift in Sources */,
 				667D901F20A4498100FB5B61 /* QPCacheUtils.swift in Sources */,
+				6692F50020B403220076449E /* NewFeatureImageV.m in Sources */,
 				667D900720A4498100FB5B61 /* UIImage+MLTint.m in Sources */,
 				6697FDD3208F07B900934249 /* TestViewController.swift in Sources */,
 				6607E86D20735FB200A4A0E5 /* ImagePickerAndBrowserController.swift in Sources */,

@@ -12,6 +12,9 @@ import AVFoundation
 
 class AVPlayerView: UIView {
     
+    //媒体资源管理对象，管理一些基本信息和状态
+    var playerItem:AVPlayerItem!
+    //视频操作对象
     var player:AVPlayer?
     
     init(_ filePath:String ,frame: CGRect) {
@@ -49,26 +52,26 @@ class AVPlayerView: UIView {
 //        let filePath = Bundle.main.path(forResource: "VID_20151007_112528", ofType: "mp4")
         let videoURL = URL(fileURLWithPath: filePath)
         //定义一个playerItem，并监听相关的通知
-        let playerItem = AVPlayerItem(url: videoURL)
+        self.playerItem = AVPlayerItem(url: videoURL)
         NotificationCenter.default.addObserver(self,selector: #selector(AVPlayerView.playerDidFinishPlaying),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,object: playerItem)
-        //定义一个视频播放器，通过playerItem径初始化
+        //定义一个视频播放器，通过playerItem径初始化 将视频资源赋值给视频播放对象
         self.player = AVPlayer(playerItem: playerItem)
-        //设置大小和位置（全屏）
+        //设置大小和位置
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = self.bounds
+        // 设置显示模式
+        playerLayer.videoGravity = AVLayerVideoGravityResizeAspect
+        playerLayer.contentsScale = UIScreen.main.scale
         //添加到界面上
         self.layer.addSublayer(playerLayer)
 //        print("\(player?.currentTime())")
-//        player?.
+        playerItem.loadedTimeRanges
     }
     
     func playerDidFinishPlaying(_ info:NSNotification) {
         if let item = info.object as? AVPlayerItem {
-            item.currentTime()
-            item.forwardPlaybackEndTime.timescale = 0
             print("播放完毕!")
         }
-        
     }
     
     func onPlay() {
@@ -81,12 +84,10 @@ class AVPlayerView: UIView {
         player?.pause()
     }
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    deinit{
+//        playerItem.removeObserver(self, forKeyPath: "loadedTimeRanges")
+//        playerItem.removeObserver(self, forKeyPath: "status")
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
     }
-    */
 
 }
