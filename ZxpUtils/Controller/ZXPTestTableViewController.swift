@@ -172,7 +172,7 @@ class AppAndDeviceInfoVC: UIViewController {
     func getAPPStoreInfo() {
         let ss = AppAndDeviceInfoManager.getAPPStoreInfo("1179213465")
         print("appstore中应用的信息\n\(String(describing: ss))")
-        apptext.text = "\(ss)"
+        apptext.text = "\(String(describing: ss))"
     }
     
 }

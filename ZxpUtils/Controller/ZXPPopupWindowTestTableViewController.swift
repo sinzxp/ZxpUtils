@@ -141,7 +141,7 @@ class ZXPPopupWindowTestTableViewController: UITableViewController {
             }
         }
         if section == 8 {
-            let picker = ZXPCityPickerDialog(true)
+            let picker = ZXPCityPickerDialog()
             picker.show("请选择地址", doneButtonTitle: "确定", cancelButtonTitle: "取消") { (date) -> Void in
                 print("\(date)")
                 self.Toast.showToastExt("ojbk")

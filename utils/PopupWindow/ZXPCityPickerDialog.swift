@@ -266,8 +266,12 @@ extension ZXPCityPickerDialog: UIPickerViewDelegate, UIPickerViewDataSource{
         let area = city["level3"][areaIndex]
         self.records.removeAll()
         self.records.append(province)
-        self.records.append(city)
-        self.records.append(area)
+        if !city.isEmpty {
+            self.records.append(city)
+        }
+        if !area.isEmpty {
+            self.records.append(area)
+        }
     }
     
 }
