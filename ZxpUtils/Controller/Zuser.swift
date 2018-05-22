@@ -17,7 +17,6 @@ class Zuser: NSObject {
     func ccc() {
         UserDefaults.AccountInfo.set(value: "chilli cheng", forKey: .userName)
         UserDefaults.standard.clearAllUserDefaultsData()
-        
     }
 
 }
