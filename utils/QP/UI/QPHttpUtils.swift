@@ -370,57 +370,6 @@ open class QPHttpUtils: NSObject {
 //	}
 
 	open func uploadImage(url: String, param: [String: Any]?, imageName: [String], images: [UIImage], success: QPSuccessBlock!, fail: QPFailBlock!) {
-
-//		if let URL = NSURL(string: url.addParam(param)) {
-//			let mutableURLRequest = NSMutableURLRequest(URL: URL)
-//			mutableURLRequest.HTTPMethod = "POST"
-//			Alamofire.URLRequestConvertible
-//			let encoding: ParameterEncoding = .URL
-//			let encodedURLRequest = encoding.encode(mutableURLRequest, parameters: param).0
-//			log.debug("url:\(encodedURLRequest)")
-//			log.debug("param \(param) imageName:\(imageName) \(encodedURLRequest)")
-//
-////			manager.request(.POST, url, parameters: param)
-//			manager.upload(encodedURLRequest, multipartFormData: { (multipartFormData) -> Void in
-//				var iii = 0
-//				for image in images {
-//					let dataObj = UIImageJPEGRepresentation(image, 1.0)!
-//					let name = imageName[iii]
-//					multipartFormData.appendBodyPart(data: dataObj, name: name, fileName: "\(name).png", mimeType: "multipart/form-data")
-//					iii += 1
-//				}
-//				}, encodingCompletion: { encodingResult in
-//				switch encodingResult {
-//				case .Success(let upload, _, _):
-//					upload.responseJSON { response in
-//						let datastring = NSString(data: response.data!, encoding: NSUTF8StringEncoding)
-//						if let value = datastring as? String {
-//							let json = JSON.parse(value)
-//							if json == nil {
-//								let json = JSON(value)
-//								success(response: json)
-//								return
-//							}
-//							success(response: json)
-//							return
-//						} else if let value = response.result.value as? String {
-//							let json = JSON.parse(value)
-//							success(response: json)
-//							return
-//						} else {
-//							fail()
-//							return
-//						}
-//					}
-//				case .Failure(let encodingError):
-//					print(encodingError)
-//					log.error("encodingError \(encodingError)")
-//					fail()
-//				}
-//			})
-//		} else {
-//			fail()
-//		}
         
         let mgr  = self.mgr()
 //        let ss = mgr.session

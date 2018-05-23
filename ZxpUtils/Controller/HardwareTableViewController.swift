@@ -257,21 +257,33 @@ class AVPlayerController: UIViewController {
         //定义一个视频文件路径
         let filePath1 = Bundle.main.path(forResource: "VID_20151007_112528", ofType: "mp4")!
         let filePath2 = "http://bos.nj.bpc.baidu.com/tieba-smallvideo/11772_3c435014fb2dd9a5fd56a57cc369f6a0.mp4"
-//        vv = AVPlayerView(filePath,frame: CGRect(x: 0, y: 64, width: ZSCREEN_WIDTH, height: 200))
         vv = AVPlayerView()
         vv.frame = CGRect(x: 0, y: 64, width: ZSCREEN_WIDTH, height: 200)
-//        vv.setAVPlayerItem(filePath)
-        vv.filePathNames = ["要网的","不要网的"]
+        vv.filePathNames = ["不要网的","要网的"]
         vv.filePaths = [filePath1,filePath2]
         vv.isAutomaticCyclePlay = true
-        vv.isAutoPlayimg = true
-        vv.onChangePlayerItem()
+        vv.isAutoPlayimg = false
+        vv.startAVPlayer()
         self.view.addSubview(vv)
-
+        
+        let vvv = UIView()
+        vvv.frame = CGRect(x: 0, y: 300, width: 100, height: 100)
+        vvv.backgroundColor = UIColor.randomColor
+        self.view.addSubview(vvv)
+        vvv.addTapViewGesture(self, action: #selector(toAVPlayerVC))
     }
     
-    func playerDidFinishPlaying() {
-        print("播放完毕!")
+    func toAVPlayerVC() {
+//        //定义一个视频文件路径
+//        let filePath = Bundle.main.path(forResource: "VID_20151007_112528", ofType: "mp4")!
+//        let videoURL = URL(fileURLWithPath: filePath)
+//        //定义一个视频播放器，通过本地文件路径初始化
+//        let player = AVPlayer(url: videoURL)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = vv.player
+        self.present(playerViewController, animated: true) {
+            playerViewController.player!.play()
+        }
     }
     
     deinit {
