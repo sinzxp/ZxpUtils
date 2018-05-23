@@ -255,9 +255,17 @@ class AVPlayerController: UIViewController {
         self.view.backgroundColor = UIColor.white
         
         //定义一个视频文件路径
-//        let filePath = Bundle.main.path(forResource: "VID_20151007_112528", ofType: "mp4")!
-        let filePath = "http://bos.nj.bpc.baidu.com/tieba-smallvideo/11772_3c435014fb2dd9a5fd56a57cc369f6a0.mp4"
-        vv = AVPlayerView(filePath,frame: CGRect(x: 0, y: 64, width: ZSCREEN_WIDTH, height: 300))
+        let filePath1 = Bundle.main.path(forResource: "VID_20151007_112528", ofType: "mp4")!
+        let filePath2 = "http://bos.nj.bpc.baidu.com/tieba-smallvideo/11772_3c435014fb2dd9a5fd56a57cc369f6a0.mp4"
+//        vv = AVPlayerView(filePath,frame: CGRect(x: 0, y: 64, width: ZSCREEN_WIDTH, height: 200))
+        vv = AVPlayerView()
+        vv.frame = CGRect(x: 0, y: 64, width: ZSCREEN_WIDTH, height: 200)
+//        vv.setAVPlayerItem(filePath)
+        vv.filePathNames = ["要网的","不要网的"]
+        vv.filePaths = [filePath1,filePath2]
+        vv.isAutomaticCyclePlay = true
+        vv.isAutoPlayimg = true
+        vv.onChangePlayerItem()
         self.view.addSubview(vv)
 
     }
@@ -268,7 +276,7 @@ class AVPlayerController: UIViewController {
     
     deinit {
         print("销毁AVPlayerController")
-        vv.removeFromSuperview()
+        vv.removeTimeObserver()
     }
     
 }

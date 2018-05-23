@@ -34,5 +34,14 @@ extension UITableView {
             return cell
         }
     }
+    
+    func dequeueDynamicCell<T: UITableViewCell>(reuseIdentifier:String) -> T {
+        if let cell = self.dequeueReusableCell(withIdentifier: reuseIdentifier) as? T {
+            return cell
+        }else {
+            let cell = T(style: .default, reuseIdentifier: reuseIdentifier)
+            return cell
+        }
+    }
 }
 

@@ -17,24 +17,40 @@ class AVPlayerView: UIView {
     //视频操作对象
     var player:AVPlayer!
     //可拖动的进度条
-    var playbackSlider: UISlider!
-    var progressView:UIProgressView!
-    var playButton:UIButton!
-    var timeLabel:UILabel!
-    
-    var autoPlayimg = false
-    
-    var periodicTimeObserver:Any?
+    private var playbackSlider: UISlider!
+    private var progressView:UIProgressView!
+    private var playButton:UIButton!
+    private var timeLabel:UILabel!
+    private var aindicatorView:UIActivityIndicatorView!
+    private var changePlayerItemButton:UIButton!
+    fileprivate var changePlayerTableView:UITableView!
+    fileprivate var itemIndex = 0
 
-    init(_ filePath:String ,frame: CGRect) {
-        super.init(frame:frame)
-        operationButton()
-        setAVPlayer(filePath)
-        self.backgroundColor = UIColor.black
-    }
+    /// 视频连接
+    var filePaths:[String] = []
+    /// 视频连接名称
+    var filePathNames:[String] = []
+    ///自动播放
+    var isAutoPlayimg = false
+    ///滑块滑动是视屏是否同步改变画面
+    var isSyncDisplayScreen = false
+    ///播放结束后进度条回到到开头
+    var isPlayEndToTimeZero = false
+    ///循环播放
+    var isAutomaticCyclePlay = false
+    ///拖拽滑块时是否在播放 用来判断拖拽完后是否自动播放
+    private var isDragingSliderIsPlaying = false
+    private var periodicTimeObserver:Any?
+    
+//    init(_ filePaths:[String] ,frame: CGRect) {
+//        super.init(frame:frame)
+//        self.filePaths = filePaths
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        operationButton()
+        self.backgroundColor = UIColor.black
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,22 +63,37 @@ class AVPlayerView: UIView {
         timeLabel = UILabel()
         progressView = UIProgressView()
         playbackSlider = UISlider()
+        aindicatorView = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        changePlayerItemButton = UIButton()
+        changePlayerTableView = UITableView()
         
-        contentView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        contentView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         playButton.backgroundColor = UIColor.red
         timeLabel.text = "00:00/00:00"
         timeLabel.textColor = UIColor.white
+        timeLabel.textAlignment = .right
+        timeLabel.font = FONT_NORMAL
+        timeLabel.adjustsFontSizeToFitWidth = true
         progressView.backgroundColor = UIColor.lightGray
         progressView.tintColor = UIColor.red
         progressView.progress = 0
         playbackSlider.maximumTrackTintColor = UIColor.clear
         playbackSlider.minimumTrackTintColor = UIColor.white
+        aindicatorView.startAnimating()
+        changePlayerItemButton.backgroundColor = UIColor.yellow
+        changePlayerTableView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         self.addSubview(contentView)
         contentView.addSubview(playButton)
         contentView.addSubview(timeLabel)
         contentView.addSubview(progressView)
         contentView.addSubview(playbackSlider)
+        self.addSubview(aindicatorView)
+        self.addSubview(changePlayerItemButton)
+        self.addSubview(changePlayerTableView)
+
+        aindicatorView.centerView(self)
+        aindicatorView.aspectRatio("30")
 
         contentView.bottomAlign(self, predicate: "0")
         contentView.leadingAlign(self, predicate: "0")
@@ -77,6 +108,7 @@ class AVPlayerView: UIView {
         timeLabel.topAlign(contentView, predicate: "0")
         timeLabel.bottomAlign(contentView, predicate: "0")
         timeLabel.trailingAlign(contentView, predicate: "-10")
+        timeLabel.width(contentView, predicate: "*0.2")
         
         playbackSlider.leadingConstrain(playButton, predicate: "10")
         playbackSlider.trailingConstrain(timeLabel, predicate: "-10")
@@ -88,55 +120,104 @@ class AVPlayerView: UIView {
         progressView.centerY(playbackSlider)
         progressView.heightConstrain("20")
         
+        changePlayerItemButton.topAlign(self, predicate: "10")
+        changePlayerItemButton.trailingAlign(self, predicate: "10")
+        changePlayerItemButton.aspectRatio("20")
+        
+        changePlayerTableView.bottomConstrain(contentView, predicate: "0")
+        changePlayerTableView.topAlign(self, predicate: "0")
+        changePlayerTableView.trailingAlign(self, predicate: "0")
+        changePlayerTableView.width(self, predicate: "*0.3")
+        
         playButton.addTarget(target: self, action: #selector(onPlay))
+        changePlayerItemButton.addTarget(target: self, action: #selector(onChangePlayerItem))
 
     }
     
-    ///进度条
+    func onChangePlayerItem() {
+        if changePlayerItemButton.isSelected {
+            changePlayerItemButton.isSelected = false
+            setAVPlayerItem(filePaths[0])
+        } else {
+            changePlayerItemButton.isSelected = true
+            setAVPlayerItem(filePaths[1])
+        }
+        
+        initTableView()
+    }
+    ///设置进度条
     func setSlider() {
         //设置进度条相关属性
 //        let seconds = TimeInterval(playerItem.duration.value) / TimeInterval(playerItem.duration.timescale)
 //        let duration : CMTime = playerItem!.asset.duration
 //        let seconds : Float64 = CMTimeGetSeconds(duration)
-        playbackSlider.minimumValue = 0
-        playbackSlider.maximumValue = 1
-        playbackSlider.isContinuous = false
+//        playbackSlider.minimumValue = 0
+//        playbackSlider.maximumValue = 1
+        playbackSlider.isContinuous = true
         // 按下的时候
         playbackSlider.addTarget(self, action: #selector(sliderTouchDown( _:)), for: UIControlEvents.touchDown)
         // 弹起的时候
         playbackSlider.addTarget(self, action: #selector(sliderTouchUpOut( _:)), for: UIControlEvents.touchUpOutside)
         playbackSlider.addTarget(self, action: #selector(sliderTouchUpOut( _:)), for: UIControlEvents.touchUpInside)
         playbackSlider.addTarget(self, action: #selector(sliderTouchUpOut( _:)), for: UIControlEvents.touchCancel)
+        //滑块滑动事件
+        if isSyncDisplayScreen {
+            playbackSlider.addTarget(self,action:#selector(sliderDidchange(_:)), for:UIControlEvents.valueChanged)
+        }
+    }
+    
+    ///滑块滑动是视屏是否显示画面
+    func sliderDidchange(_ slider:UISlider) {
+        if self.player.status == AVPlayerStatus.readyToPlay {
+            let duration = slider.value * Float(CMTimeGetSeconds(self.player.currentItem!.duration))
+            let seekTime = CMTimeMake(Int64(duration), 1)
+            // 指定视频位置
+            player.seek(to: seekTime)
+        }
     }
     
     func sliderTouchDown(_ slider:UISlider){
-        player.pause()
+        if self.player.status == AVPlayerStatus.readyToPlay {
+            if self.player.rate == 0 {
+                isDragingSliderIsPlaying = false
+            } else {
+                isDragingSliderIsPlaying = true
+                player.pause()
+            }
+        }
     }
     
     func sliderTouchUpOut(_ slider:UISlider){
         if self.player.status == AVPlayerStatus.readyToPlay {
             let duration = slider.value * Float(CMTimeGetSeconds(self.player.currentItem!.duration))
             let seekTime = CMTimeMake(Int64(duration), 1)
-            // 指定视频位置
             player.seek(to: seekTime) { (b) in
-                if self.player.rate == 0 {
+                if self.isDragingSliderIsPlaying {
                     self.player.play()
                 }
             }
         }
     }
     
-    func setAVPlayer(_ filePath:String) {
+    func setAVPlayerItem(_ filePath:String) {
         //定义一个视频文件路径
         let videoURL = URL(fileURLWithPath: filePath)
-        //定义一个playerItem，并监听相关的通知
-        self.playerItem = AVPlayerItem(url: videoURL)
-        //播放完毕通知
-        NotificationCenter.default.addObserver(self,selector: #selector(AVPlayerView.playerDidFinishPlaying),name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,object: playerItem)
-        // 监听缓冲进度改变
-        playerItem.addObserver(self, forKeyPath: "loadedTimeRanges", options: NSKeyValueObservingOptions.new, context: nil)
-        // 监听状态改变
-        playerItem.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
+        if let _ = self.player {
+            removeObservers()
+            self.playerItem = AVPlayerItem(url: videoURL)
+            addObservers()
+            ///切换当前播放的内容
+            self.player.replaceCurrentItem(with: self.playerItem)
+        } else {
+            ///第一次
+            //定义一个playerItem，并监听相关的通知
+            self.playerItem = AVPlayerItem(url: videoURL)
+            setAVPlayer()
+            addObservers()
+        }
+    }
+    
+    func setAVPlayer() {
         //定义一个视频播放器，通过playerItem径初始化 将视频资源赋值给视频播放对象
         self.player = AVPlayer(playerItem: playerItem)
         //播放过程中动态改变进度条值和时间标签
@@ -153,14 +234,22 @@ class AVPlayerView: UIView {
         // 设置显示模式 重力感应
 //        playerLayer.videoGravity = AVLayerVideoGravityResizeAspect
         //添加到界面上
-        self.layer.addSublayer(playerLayer)
+        self.layer.insertSublayer(playerLayer, at: 0)
     }
     
+    ///播放完毕
     func playerDidFinishPlaying(_ info:NSNotification) {
         if let item = info.object as? AVPlayerItem {
             print("播放完毕!")
-            item.seek(to: kCMTimeZero) { (b) in
-//                self.player.play()
+            if isPlayEndToTimeZero && !isAutomaticCyclePlay {
+                item.seek(to: kCMTimeZero)
+                playButtonStyle()
+            }
+            if isAutomaticCyclePlay {
+                item.seek(to: kCMTimeZero) { (b) in
+                    self.player.play()
+                    self.playButtonStyle()
+                }
             }
         }
     }
@@ -174,9 +263,25 @@ class AVPlayerView: UIView {
             } else {
                 self.player.pause()
             }
-        }else{
+            playButtonStyle()
+        } else {
             print("加载异常")
         }
+    }
+    
+    func playButtonStyle() {
+        if player.rate == 0 {
+            playButton.backgroundColor = UIColor.red
+        } else {
+            playButton.backgroundColor = UIColor.green
+        }
+    }
+    
+    func removeTimeObserver() {
+        if let pto = self.periodicTimeObserver {
+            player.removeTimeObserver(pto)
+        }
+        self.periodicTimeObserver = nil
     }
     
     ///状态
@@ -190,13 +295,19 @@ class AVPlayerView: UIView {
             let percent = loadedTime / totalTime // 计算出比例
             // 改变进度条
             self.progressView.progress = Float(percent)
-            print("11111")
+            if playbackSlider.value > Float(percent) {
+                aindicatorView.startAnimating()
+            } else {
+                aindicatorView.stopAnimating()
+            }
         }else if keyPath == "status"{
             // 监听状态改变 只有在这个状态下才能播放
             if playerItem.status == AVPlayerItemStatus.readyToPlay {
                 setSlider()
-                if autoPlayimg {
-                    onPlay()
+                update()
+                if isAutoPlayimg {
+                    self.player.play()
+                    playButtonStyle()
                 }
             }else{
                 print("加载异常")
@@ -239,20 +350,60 @@ class AVPlayerView: UIView {
     
     deinit{
         print("销毁AVPlayerView")
-        if let pto = self.periodicTimeObserver {
-            player.removeTimeObserver(pto)
-        }
-        playerItem.removeObserver(self, forKeyPath: "loadedTimeRanges")
-        playerItem.removeObserver(self, forKeyPath: "status")
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
+        removeObservers()
+        self.player.replaceCurrentItem(with: nil)
+        self.playerItem = nil
+        self.player = nil
     }
     
-    ///CADisplayLink 的执行次数相当于屏幕的帧数，iPhone 不卡顿的时候是每秒60次。把它加入主loop中，默认Mode 。差不多每秒执行60次。
-//    var link:CADisplayLink!
-//
-//    func onLink() {
-//        self.link = CADisplayLink(target: self, selector: #selector(update))
-//        self.link.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
-//    }
+    func removeObservers() {
+        playerItem.removeObserver(self, forKeyPath: "loadedTimeRanges")
+        playerItem.removeObserver(self, forKeyPath: "status")
+        NotificationCenter.default.removeObserver(self)
+        player.currentItem?.cancelPendingSeeks()
+        player.currentItem?.asset.cancelLoading()
+    }
+    
+    func addObservers() {
+        //播放完毕通知
+        NotificationCenter.default.addObserver(self,selector: #selector(playerDidFinishPlaying),name:NSNotification.Name.AVPlayerItemDidPlayToEndTime,object: playerItem)
+        // 监听缓冲进度改变
+        playerItem.addObserver(self, forKeyPath: "loadedTimeRanges", options: NSKeyValueObservingOptions.new, context: nil)
+        // 监听状态改变
+        playerItem.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
+    }
+}
+
+extension AVPlayerView: UITableViewDelegate, UITableViewDataSource {
+    
+    func initTableView() {
+        self.changePlayerTableView.delegate = self
+        self.changePlayerTableView.dataSource = self
+        self.changePlayerTableView.disableSeparator()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filePaths.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        let cell: UITableViewCell = tableView.dequeueDynamicCell(reuseIdentifier: "AVPlayerViewCell")
+        cell.textLabel?.text = "\(row + 1)." + filePathNames[row]
+        cell.textLabel?.textColor = UIColor.white
+        cell.backgroundColor =  UIColor.clear
+//        cell.selectionStyle = .none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        self.itemIndex = row
+        tableView.reloadData()
+    }
 
 }

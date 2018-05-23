@@ -159,6 +159,19 @@ public extension NSObject {
    
 }
 
+//MARK: - CADisplayLink循环
+//public extension NSObject {
+    ///CADisplayLink 的执行次数相当于屏幕的帧数，iPhone 不卡顿的时候是每秒60次。把它加入主loop中，默认Mode 。差不多每秒执行60次。
+    //    var link:CADisplayLink!
+    //
+//    func onLink() -> CADisplayLink {
+//        let link = CADisplayLink(target: self, selector: #selector(update))
+//        link.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
+//        return link
+//    }
+//}
+
+
 //MARK: - Timer定时器倒计时
 public extension NSObject {
     
