@@ -356,4 +356,34 @@ extension String {
     
 }
 
+//MARK: - UILabel行间距
+extension UILabel {
+    ///行间距
+    func setLineSpacing(_ spacing:CGFloat) {
+        //通过富文本来设置行间距
+        let paraph = NSMutableParagraphStyle()
+        //将行间距设置为28
+        paraph.lineSpacing = spacing
+        //样式属性集合
+        let attributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 15),NSParagraphStyleAttributeName: paraph]
+        self.attributedText = NSAttributedString(string: self.text! , attributes: attributes)
+    }
+}
+
+//MARK: - UITextView行间距 可编辑的情况要将相关代码放到 textview 的 delegate 方法里
+extension UITextView {
+    ///行间距
+    func setLineSpacing(_ spacing:CGFloat) {
+        //通过富文本来设置行间距
+        let paraph = NSMutableParagraphStyle()
+        //将行间距设置为28
+        paraph.lineSpacing = spacing
+        //样式属性集合
+        let attributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 15),NSParagraphStyleAttributeName: paraph]
+        self.attributedText = NSAttributedString(string: self.text! , attributes: attributes)
+    }
+}
+
+
+
 
