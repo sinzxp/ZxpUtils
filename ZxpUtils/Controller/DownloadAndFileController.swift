@@ -141,6 +141,7 @@ class DownloadAndFileController: UITableViewController {
             if downloadAndFile.isFileExistsForDocuments(downloadName) && !downloadName.isEmpty {
                 let filePath = NSHomeDirectory() + "/Documents/" + downloadName.urlEncoded()
                 openPdfforWed(filePath)
+//                toUIDocumentInteractionController(filePath)
             } else {
                 self.Toast.showToastExt("没有文件")
             }
@@ -178,6 +179,33 @@ class DownloadAndFileController: UITableViewController {
         }
     }
 }
+
+//import PDFKit
+
+//extension DownloadAndFileController:PDFDocumentDelegate {
+//
+//    func toUIDocumentInteractionController(_ filename: String) {
+//        let url = URL(fileURLWithPath: filename)
+//        if #available(iOS 11.0, *) {
+//            let pdfView = PDFView(frame: self.view.frame)
+//            let Document = PDFDocument(url: url)
+//            Document?.delegate = self
+//            pdfView.document = Document
+//            self.view.addSubview(pdfView)
+//        } else {
+//        }
+
+//        let documentController = UIDocumentInteractionController(url: url)
+//        documentController.delegate = self
+//        documentController.presentPreview(animated: true)
+//        let ss = documentController.presentOpenInMenu(from: self.view.frame, in: self.view, animated: true)
+//    }
+//
+//    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+//        return self
+//    }
+//
+//}
 
 class imgCell: UITableViewCell {
     
