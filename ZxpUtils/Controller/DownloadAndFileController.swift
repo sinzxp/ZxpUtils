@@ -125,7 +125,9 @@ class DownloadAndFileController: UITableViewController {
             })
         }
         if section == 6 {
-            downloadAndFile.stopBtnClick()
+            downloadAndFile.stopBtnClick {
+                
+            }
         }
         if section == 7 {
             downloadAndFile.continueDownload(success: { (name, url, data) in

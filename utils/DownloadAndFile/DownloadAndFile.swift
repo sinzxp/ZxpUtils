@@ -42,10 +42,11 @@ open class DownloadAndFile {
         print("contentsOfURL: \(String(describing: contentsOfURL))")
     }
     
-    ///Documents里判断文件或文件夹是否存在
-    func isFileExistsForDocuments(_ name:String) -> Bool {
+    ///Documents里判断文件或文件夹是否存在 isDirectory是否是文件夹
+    func isFileExistsForDocuments(_ name:String ,isDirectory:ObjCBool = false) -> Bool {
         let filePath:String = NSHomeDirectory() + "/Documents/\(name)"
-        let exist = manager.fileExists(atPath: filePath)
+        var isDir: ObjCBool = isDirectory
+        let exist = manager.fileExists(atPath: filePath, isDirectory: &isDir)
         return exist
     }
     
@@ -136,6 +137,8 @@ open class DownloadAndFile {
 //    private var setDSuccess:DSuccessBlock!
 //    private var setDFail:DFailBlock!
 //    private var setDProgress:DProgressBlock?
+    public typealias StopBlock = () -> ()
+
     
     private var downloadRequest: DownloadRequest! //下载请求对象
     private var cancelledData: Data? //断点下载保存数据
@@ -189,12 +192,12 @@ open class DownloadAndFile {
                 progress?(progre.fractionCompleted)
             }
             downloadRequest.responseData { (response) in
+                let name =  response.response?.suggestedFilename
                 switch response.result {
                 case .success(let data):
-                    let name = response.response!.suggestedFilename!
-                    success(name,response.destinationURL!,data)
+                    success(name == nil ? "" : name! ,response.destinationURL!,data)
                 case .failure(let error):
-                    fail(error,"1")
+                    fail(error,name == nil ? "" : name!)
                     self.cancelledData = response.resumeData //意外终止的话，把已下载的数据储存起来
                 }
             }
@@ -204,8 +207,9 @@ open class DownloadAndFile {
     }
     
     ///点击停止
-    func stopBtnClick() {
+    func stopBtnClick(_ showBlock:StopBlock) {
         self.downloadRequest?.cancel()
+        showBlock()
         print("停止下载")
     }
     
@@ -229,8 +233,46 @@ open class DownloadAndFile {
 
 }
 
-
-extension DownloadAndFile {
+extension String {
+    /// 获取文件大小 注意返回值为UInt64类型，单位字节
+    func getFileSize() -> UInt64  {
+        var size: UInt64 = 0
+        let fileManager = FileManager.default
+        var isDir: ObjCBool = false
+        let isExists = fileManager.fileExists(atPath: self, isDirectory: &isDir)
+        // 判断文件存在
+        if isExists {
+            // 是否为文件夹
+            if isDir.boolValue {
+                // 迭代器 存放文件夹下的所有文件名
+                let enumerator = fileManager.enumerator(atPath: self)
+                for subPath in enumerator! {
+                    // 获得全路径
+                    let fullPath = self.appending("/\(subPath)")
+                    do {
+                        let attr = try fileManager.attributesOfItem(atPath: fullPath)
+                        size += attr[FileAttributeKey.size] as! UInt64
+                    } catch  {
+                        print("error :\(error)")
+                    }
+                }
+            } else {    // 单文件
+                do {
+                    let attr = try fileManager.attributesOfItem(atPath: self)
+                    size += attr[FileAttributeKey.size] as! UInt64
+                    
+                } catch  {
+                    print("error :\(error)")
+                }
+            }
+        }
+        return size
+    }
     
+    func getFileSizeForName() -> Int {
+        let ttt = NSHomeDirectory() + "/Documents/\(self)"
+        return Int(ttt.getFileSize())
+    }
 }
+
 
