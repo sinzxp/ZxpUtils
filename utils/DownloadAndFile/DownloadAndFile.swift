@@ -104,6 +104,19 @@ open class DownloadAndFile {
         return nil
     }
     
+    ///重命名 用移动文件方法
+    func renamefile(_ name:String,rename:String) -> Bool {
+        let file = getUrlForDocument().appendingPathComponent(name)
+        let refile = getUrlForDocument().appendingPathComponent(rename)
+        if let _ = try? manager.moveItem(at: file, to: refile) {
+            print("重命名成功")
+            return true
+        } else {
+            print("重命名失败")
+            return false
+        }
+    }
+    
     ///删除文件
     func removefile(_ name:String) -> Bool {
         let file = getUrlForDocument().appendingPathComponent(name)
@@ -117,14 +130,18 @@ open class DownloadAndFile {
     }
     
     ///删除目录下所有的文件：获取所有文件，然后遍历删除
-    func removeAllfile(_ directoryName:String = "") {
+    func removeAllfile(_ directoryName:String = "" , tRouleOut:String = "") {
         let myDirectory = NSHomeDirectory() + "/Documents/\(directoryName)"
         let fileArray = manager.subpaths(atPath: myDirectory)
         for fn in fileArray!{
-            if let _ = try? manager.removeItem(atPath: myDirectory + "/\(fn)") {
+            if tRouleOut == fn {
+                continue
             } else {
-                print("删除失败")
-                break
+                if let _ = try? manager.removeItem(atPath: myDirectory + "/\(fn)") {
+                } else {
+                    print("删除失败")
+                    break
+                }
             }
         }
     }
@@ -155,7 +172,6 @@ open class DownloadAndFile {
         //设置下载路径。保存到用户文档目录，文件名不变，如果有同名文件则会覆盖
         destination = { _, response in
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            //            print("response.suggestedFilename!--------->\(response.suggestedFilename!)")
             let fileURL = documentsURL.appendingPathComponent("\(fileName == nil ? response.suggestedFilename! : fileName!)") //名称
             //两个参数表示如果有同名文件则会覆盖 如果路径中文件夹不存在则会自动创建
             return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
@@ -169,12 +185,14 @@ open class DownloadAndFile {
             progress?(progre.fractionCompleted)
         }
         downloadRequest.responseData { (response) in
+//            let hhh =  response.response?.allHeaderFields //可以获取格式,大小
+//            print("allHeaderFields2 --- \(hhh?["Content-Length"])")
+            let name =  response.response?.suggestedFilename
             switch response.result {
             case .success(let data):
-                let name = response.response!.suggestedFilename!
-                success(name,response.destinationURL!,data)
+                success(name == nil ? "" : name! ,response.destinationURL!,data)
             case .failure(let error):
-                fail(error,"0")
+                fail(error,name == nil ? "" : name!)
                 self.cancelledData = response.resumeData //意外终止的话，把已下载的数据储存起来
             }
         }
@@ -230,6 +248,24 @@ open class DownloadAndFile {
 //            self.cancelledData = response.resumeData //意外终止的话，把已下载的数据储存起来
 //        }
 //    }
+    
+    ///测试
+    func testURLSession(_ url:String) {
+        if let urll = URL(string: url) {
+            let request = URLRequest(url: urll)
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request) { (data, response, error) in
+                if error != nil{
+                    print(error.debugDescription)
+                }else{
+//                    let str = String(data: data!, encoding: String.Encoding.utf8)
+                    print("abcdefg ---- \(data!) --- \(response!)")
+                }
+            }
+            //使用resume方法启动任务
+            dataTask.resume()
+        }
+    }
 
 }
 

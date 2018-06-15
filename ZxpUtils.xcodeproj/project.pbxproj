@@ -114,6 +114,7 @@
 		66C561E32074B98900C77A7E /* ZXPImagePreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C561E22074B98900C77A7E /* ZXPImagePreviewVC.swift */; };
 		66C561E52074BD4E00C77A7E /* ZXPImagePreviewGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C561E42074BD4E00C77A7E /* ZXPImagePreviewGridCell.swift */; };
 		66E1F4A3209470DC00C14445 /* ZXPResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1F4A2209470DC00C14445 /* ZXPResponder.swift */; };
+		66EF3B1820D3BD7A00DA74A9 /* OpenTheFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EF3B1720D3BD7A00DA74A9 /* OpenTheFileViewController.swift */; };
 		85441F2E423D1CF61300A0B3 /* Pods_ZxpUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B49F9896CF5C8C4948FB5EA /* Pods_ZxpUtils.framework */; };
 		C71538F62007A96E0020EC3B /* ZXPAppleImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71538F52007A96E0020EC3B /* ZXPAppleImagePickerController.swift */; };
 		C7229736208F7098007B5CAC /* ZXPImageBrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7229735208F7098007B5CAC /* ZXPImageBrowserVC.swift */; };
@@ -288,6 +289,7 @@
 		66C561E22074B98900C77A7E /* ZXPImagePreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImagePreviewVC.swift; sourceTree = "<group>"; };
 		66C561E42074BD4E00C77A7E /* ZXPImagePreviewGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPImagePreviewGridCell.swift; sourceTree = "<group>"; };
 		66E1F4A2209470DC00C14445 /* ZXPResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXPResponder.swift; sourceTree = "<group>"; };
+		66EF3B1720D3BD7A00DA74A9 /* OpenTheFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTheFileViewController.swift; sourceTree = "<group>"; };
 		69F608B0CE695CAD78B3957E /* Pods-ZxpUtilsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZxpUtilsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZxpUtilsUITests/Pods-ZxpUtilsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8E9E9CCA6A123CAAB57F5534 /* Pods-ZxpUtilsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZxpUtilsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZxpUtilsUITests/Pods-ZxpUtilsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		946DF7778CB0C947BE7DB5FF /* Pods_ZxpUtilsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZxpUtilsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -693,6 +695,7 @@
 			isa = PBXGroup;
 			children = (
 				C78AEB5B2088EDE5009A61DC /* DownloadAndFile.swift */,
+				66EF3B1720D3BD7A00DA74A9 /* OpenTheFileViewController.swift */,
 			);
 			path = DownloadAndFile;
 			sourceTree = "<group>";
@@ -1138,6 +1141,7 @@
 				66294D3F20732C72000B57D3 /* ZXPImagePickerTableVC.swift in Sources */,
 				667D901B20A4498100FB5B61 /* NSDate+Utilities.m in Sources */,
 				667D900020A4498100FB5B61 /* QPImagePickerViewController.swift in Sources */,
+				66EF3B1820D3BD7A00DA74A9 /* OpenTheFileViewController.swift in Sources */,
 				667D900820A4498100FB5B61 /* UIView+MLExtension.m in Sources */,
 				66ABF8FB2092F99F00BD6784 /* ZXPAppAndDeviceInfoManager.swift in Sources */,
 				667D900120A4498100FB5B61 /* QPInputTableViewCell.swift in Sources */,

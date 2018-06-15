@@ -11,7 +11,7 @@ import Photos
 
 class DownloadAndFileController: UITableViewController {
     
-    var downloadName = ""
+    var downloadName = "乘客人身意外伤害保险条款.pdf"
     
     let downloadAndFile = DownloadAndFile()
 
@@ -141,9 +141,15 @@ class DownloadAndFileController: UITableViewController {
         }
         if section == 8 {
             if downloadAndFile.isFileExistsForDocuments(downloadName) && !downloadName.isEmpty {
-                let filePath = NSHomeDirectory() + "/Documents/" + downloadName.urlEncoded()
-                openPdfforWed(filePath)
-//                toUIDocumentInteractionController(filePath)
+//                let filePath = NSHomeDirectory() + "/Documents/" + downloadName.urlEncoded()
+//                openPdfforWed(filePath)
+                let filePath = self.downloadAndFile.getUrlForDocument().appendingPathComponent(downloadName)
+                toUIDocumentInteractionController(filePath)
+//                self.previewUrl = filePath
+//                toQuickLook()
+//                let vc = OpenTheFileViewController()
+//                vc.previewUrl = filePath
+//                self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 self.Toast.showToastExt("没有文件")
             }
@@ -180,34 +186,64 @@ class DownloadAndFileController: UITableViewController {
             return 44
         }
     }
+    
+    var previewUrl:URL?
+    
+    var documentController:UIDocumentInteractionController!
+
 }
 
-//import PDFKit
+import QuickLook
+extension DownloadAndFileController:QLPreviewControllerDataSource,QLPreviewControllerDelegate {
+    
+    func toQuickLook() {
+        if self.previewUrl != nil {
+            let previewController = QLPreviewController()
+            previewController.dataSource =  self
+            previewController.delegate =  self
+            self.present(previewController, animated: true) {}
+        }
+    }
+    
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        return self.previewUrl! as QLPreviewItem
+    }
+    
+}
 
-//extension DownloadAndFileController:PDFDocumentDelegate {
-//
-//    func toUIDocumentInteractionController(_ filename: String) {
-//        let url = URL(fileURLWithPath: filename)
-//        if #available(iOS 11.0, *) {
-//            let pdfView = PDFView(frame: self.view.frame)
-//            let Document = PDFDocument(url: url)
-//            Document?.delegate = self
-//            pdfView.document = Document
-//            self.view.addSubview(pdfView)
-//        } else {
-//        }
+extension DownloadAndFileController : UIDocumentInteractionControllerDelegate {
 
-//        let documentController = UIDocumentInteractionController(url: url)
-//        documentController.delegate = self
-//        documentController.presentPreview(animated: true)
+    func toUIDocumentInteractionController(_ filename: URL) {
+        let url = filename
+        documentController = UIDocumentInteractionController(url: url)
+        documentController.delegate = self
+        documentController.presentPreview(animated: true)
 //        let ss = documentController.presentOpenInMenu(from: self.view.frame, in: self.view, animated: true)
-//    }
-//
-//    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
-//        return self
-//    }
-//
-//}
+//        let ss = documentController.presentOptionsMenu(from: self.view.frame, in: self.view, animated: true)
+//        print(ss)
+    }
+
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
+    
+    func documentInteractionControllerDidDismissOpenInMenu(_ controller: UIDocumentInteractionController) {
+        print("文件分享面板退出时调用")
+    }
+    
+    func documentInteractionControllerWillPresentOpenInMenu(_ controller: UIDocumentInteractionController) {
+        print("文件分享面板弹出的时候调用")
+    }
+    
+    func documentInteractionController(_ controller: UIDocumentInteractionController, willBeginSendingToApplication application: String?) {
+        print("当选择一个文件分享App的时候调用 --- \(String(describing: application))")
+    }
+
+}
 
 class imgCell: UITableViewCell {
     
