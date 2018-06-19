@@ -26,7 +26,7 @@ class DownloadAndFileController: UITableViewController {
 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 9
+        return 10
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,7 +80,9 @@ class DownloadAndFileController: UITableViewController {
             return cell
         }
         if section == 9 {
-
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "打开文件"
+            return cell
         }
         return UITableViewCell()
     }
@@ -141,22 +143,17 @@ class DownloadAndFileController: UITableViewController {
         }
         if section == 8 {
             if downloadAndFile.isFileExistsForDocuments(downloadName) && !downloadName.isEmpty {
-//                let filePath = NSHomeDirectory() + "/Documents/" + downloadName.urlEncoded()
-//                openPdfforWed(filePath)
-                let filePath = self.downloadAndFile.getUrlForDocument().appendingPathComponent(downloadName)
-                toUIDocumentInteractionController(filePath)
-//                self.previewUrl = filePath
-//                toQuickLook()
-//                let vc = OpenTheFileViewController()
-//                vc.previewUrl = filePath
-//                self.navigationController?.pushViewController(vc, animated: true)
+                let filePath = NSHomeDirectory() + "/Documents/" + downloadName.urlEncoded()
+                openPdfforWed(filePath)
             } else {
                 self.Toast.showToastExt("没有文件")
             }
         }
-        
         if section == 9 {
-
+            let filePath = self.downloadAndFile.getUrlForDocument().appendingPathComponent(downloadName)
+//            toUIDocumentInteractionController(filePath)
+            self.urls = [filePath,filePath]
+            toQuickLook()
         }
     }
     
@@ -187,8 +184,7 @@ class DownloadAndFileController: UITableViewController {
         }
     }
     
-    var previewUrl:URL?
-    
+    var urls:[URL] = []
     var documentController:UIDocumentInteractionController!
 
 }
@@ -197,20 +193,18 @@ import QuickLook
 extension DownloadAndFileController:QLPreviewControllerDataSource,QLPreviewControllerDelegate {
     
     func toQuickLook() {
-        if self.previewUrl != nil {
-            let previewController = QLPreviewController()
-            previewController.dataSource =  self
-            previewController.delegate =  self
-            self.present(previewController, animated: true) {}
-        }
+        let previewController = QLPreviewController()
+        previewController.dataSource =  self
+        previewController.delegate =  self
+        self.present(previewController, animated: true) {}
     }
     
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
-        return 1
+        return urls.count
     }
     
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        return self.previewUrl! as QLPreviewItem
+        return urls[index] as QLPreviewItem
     }
     
 }
